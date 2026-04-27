@@ -7,15 +7,15 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        var direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
         Velocity = direction * Speed;
         MoveAndSlide();
 
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (Input.IsActionJustPressed("attack"))
         {
             var bullet = BulletScene.Instantiate<Bullet>();
             bullet.GlobalPosition = GlobalPosition;
-            bullet.Direction = Vector2.Down;
+            bullet.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition());
             GetTree().CurrentScene.AddChild(bullet);
         }
     }

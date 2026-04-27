@@ -8,6 +8,7 @@ public partial class Bullet : Area2D
     public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
+        GetTree().CreateTimer(2.0f).Timeout += QueueFree;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -20,7 +21,7 @@ public partial class Bullet : Area2D
         if (body is Player)
             return;
         else if (body is Enemy enemy)
-            enemy.TakeDamage(1f);
+            enemy.TakeDamage(50f);
 
         QueueFree();
     }

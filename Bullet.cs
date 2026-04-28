@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class Bullet : Area2D {
     [Export] public float Speed = 400f;
     public Vector2 Direction = Vector2.Right;

@@ -1,6 +1,7 @@
 using System;
 using Godot;
 
+[GlobalClass]
 public partial class WaveManager : Node {
     [Export] public PackedScene EnemyScene;
     [Export] public int EnemiesPerWave = 5;

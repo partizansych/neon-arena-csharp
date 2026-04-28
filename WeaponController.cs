@@ -2,6 +2,7 @@ using Godot;
 
 namespace NeonArenaCsharp;
 
+[GlobalClass]
 public partial class WeaponController : Node2D {
     [Export] public WeaponData Data;
 

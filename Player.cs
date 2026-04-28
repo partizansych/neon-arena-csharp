@@ -1,6 +1,7 @@
 using Godot;
 using NeonArenaCsharp;
 
+[GlobalClass]
 public partial class Player : CharacterBody2D {
     [Export] public float Speed = 200f;
     [Export] public WeaponController WeaponController;

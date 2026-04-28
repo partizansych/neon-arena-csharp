@@ -31,7 +31,7 @@ public partial class WaveManager : Node {
     private void SpawnEnemy() {
         var enemy = EnemyData.Scene.Instantiate<Enemy>();
         enemy.Setup(EnemyData);
-        enemy.GlobalPosition = GetRandomPos();
+        enemy.GlobalPosition = GetRandomPos(Vector2.Zero);
         AddChild(enemy);
 
         enemiesAlive++;
@@ -49,11 +49,11 @@ public partial class WaveManager : Node {
         }
     }
 
-    private Vector2 GetRandomPos() {
-        var viewportSize = GetViewport().GetVisibleRect().Size;
+    private Vector2 GetRandomPos(Vector2 origin) {
+        var viewportHalf = GetViewport().GetVisibleRect().Size / 2;
         return new Vector2(
-            (float)GD.RandRange(50f, viewportSize.X - 50f),
-            (float)GD.RandRange(50f, viewportSize.Y - 50f)
+            (float)GD.RandRange(origin.X - viewportHalf.X, origin.X + viewportHalf.X),
+            (float)GD.RandRange(origin.Y - viewportHalf.Y, origin.Y + viewportHalf.Y)
         );
     }
 }

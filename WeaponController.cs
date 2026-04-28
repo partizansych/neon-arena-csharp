@@ -20,11 +20,13 @@ public partial class WeaponController : Node2D {
     public override void _Process(double delta) {
         if (timeSinceShot < Data.FireRate)
             timeSinceShot += (float)delta;
-        if (isShooting) DoShot();
+
+        if (isShooting)
+            DoShot();
     }
 
     public bool CanDoShot() {
-        return timeSinceShot >= Data.FireRate && ammo > 0;
+        return !isReloading && timeSinceShot >= Data.FireRate && ammo > 0;
     }
 
     public void DoShot() {

@@ -2,3 +2,27 @@ root = true
 
 [*]
 charset = utf-8
+
+[*.cs]
+
+# Скобки методов и типов на той же строке
+csharp_new_line_before_open_brace = none
+
+# Или более детально:
+dotnet_style_qualification_for_field = false
+csharp_prefer_braces = true
+
+# Конкретные правила переноса строк перед скобками
+csharp_new_line_before_open_brace_for_types = true
+csharp_new_line_before_open_brace_for_methods = false
+csharp_new_line_before_open_brace_for_properties = false
+csharp_new_line_before_open_brace_for_constructors = false
+csharp_new_line_before_open_brace_for_events = false
+csharp_new_line_before_open_brace_for_control_blocks = false # if, for, etc.
+csharp_new_line_before_open_brace_for_anonymous_methods = false
+csharp_new_line_before_open_brace_for_anonymous_types = false
+csharp_new_line_before_open_brace_for_lock_statements = false
+csharp_new_line_before_open_brace_for_object_initializers = false
+csharp_new_line_before_open_brace_for_array_initializers = false
+csharp_new_line_before_open_brace_for_collection_initializers = false
+csharp_new_line_before_open_brace_for_lambda_expressions = false

@@ -4,16 +4,18 @@ using Godot;
 public partial class Enemy : CharacterBody2D {
     [Signal] public delegate void DiedEventHandler();
 
-    [Export] public float Hp = 100f;
+    [Export] StatsContainer stats;
+    [Export] Health health;
 
-    public void TakeDamage(float amount) {
-        Hp -= amount;
-        if (Hp <= 0f)
-            Die();
+    public void Setup(EnemyData data) {
+        stats.Setup(data.Stats);
     }
 
-    public void Die() {
-        QueueFree();
-        EmitSignal(SignalName.Died);
+    public override void _Ready() {
+        health.Died += () => EmitSignal(SignalName.Died);
+    }
+
+    public void TakeDamage(float amount) {
+        health.Current -= amount;
     }
 }

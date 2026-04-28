@@ -2,6 +2,7 @@ using Godot;
 using NeonArenaCsharp.stats;
 using System.Collections.Generic;
 
+[GlobalClass]
 public partial class StatManager : Node {
     // [Signal] public delegate void ChangedEventHandler(StatType type, float oldValue, float newValue);
 

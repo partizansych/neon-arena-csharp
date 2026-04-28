@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class WeaponData : Resource {
     [Export] public float FireRate = 1f / 3; // N выстрелов за секунду

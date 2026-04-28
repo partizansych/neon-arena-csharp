@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
+using Godot;
 
 namespace NeonArenaCsharp.stats;
 
 public class Stat(float baseValue) {
+    public event Action<float, float> Changed;
+
     float baseValue = baseValue;
     float cachedResult;
     bool isDirty = true;
@@ -44,6 +48,7 @@ public class Stat(float baseValue) {
     }
 
     private void Recalculate() {
+        float old = cachedResult;
         float flatSum = 0f;
         float additiveSum = 0f;
         float multiplicativeMult = 1f;
@@ -65,6 +70,9 @@ public class Stat(float baseValue) {
         // Формула: (База + Плоские) * (1 + Сумма Аддитивных) * (Мультипликативный множитель)
         cachedResult = (baseValue + flatSum) * (1f + additiveSum) * multiplicativeMult;
         isDirty = false;
+
+        if (!Mathf.IsEqualApprox(old, cachedResult))
+            Changed?.Invoke(old, cachedResult);
     }
 
     public override string ToString() {

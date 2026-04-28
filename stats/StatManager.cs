@@ -1,5 +1,4 @@
 using Godot;
-using NeonArenaCsharp;
 using NeonArenaCsharp.stats;
 using System.Collections.Generic;
 

@@ -30,7 +30,7 @@ public class Stat(float baseValue) {
         // Проверка на дубликаты от одного источника одного типа
         // (Например, нельзя иметь два плоских бонуса от одного меча)
         foreach (var mod in mods)
-            if (mod.SourceId == modifier.SourceId && mod.Type == modifier.Type)
+            if (mod.Source == modifier.Source && mod.Type == modifier.Type)
                 return false;
 
         mods.Add(modifier);
@@ -38,8 +38,8 @@ public class Stat(float baseValue) {
         return true;
     }
 
-    public void RemoveModifiersBySource(string sourceId) {
-        int removedCount = mods.RemoveAll(m => m.SourceId == sourceId);
+    public void RemoveModifiersBySource(object source) {
+        int removedCount = mods.RemoveAll(m => m.Source == source);
         if (removedCount > 0) isDirty = true;
     }
 

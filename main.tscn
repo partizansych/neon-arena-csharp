@@ -3,12 +3,18 @@
 [ext_resource type="Script" uid="uid://dt34pl6qcluji" path="res://WaveManager.cs" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://1fw2wt0bx1jt" path="res://enemy.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1244132720]
 
 [node name="WaveManager" type="Node" parent="." unique_id=1195476094]
 script = ExtResource("1_h2yge")
 EnemyScene = ExtResource("2_h2yge")
+
+[node name="DamagePopupManager" type="Node" parent="." unique_id=529290758]
+script = ExtResource("3_lquwl")
+PopupScene = ExtResource("3_1bvp3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
 

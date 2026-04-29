@@ -25,6 +25,9 @@ public partial class Health : Node2D {
 
     public override void _Ready() {
         current = MaxHp;
+
+        if (!IsInGroup("healths"))
+            AddToGroup("healths");
     }
 
     public void Die() {

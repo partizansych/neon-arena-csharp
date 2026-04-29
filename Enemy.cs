@@ -7,10 +7,6 @@ public partial class Enemy : CharacterBody2D {
     [Export] StatsContainer stats;
     [Export] Health health;
 
-    public void Setup(EnemyData data) {
-        stats.Setup(data.Stats);
-    }
-
     public override void _Ready() {
         health.Died += () => EmitSignal(SignalName.Died);
     }

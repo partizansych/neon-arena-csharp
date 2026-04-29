@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dt34pl6qcluji" path="res://WaveManager.cs" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Resource" uid="uid://rokh27peddb7" path="res://enemy.tres" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://1fw2wt0bx1jt" path="res://enemy.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=1244132720]
 
 [node name="WaveManager" type="Node" parent="." unique_id=1195476094]
 script = ExtResource("1_h2yge")
-EnemyData = ExtResource("2_1bvp3")
+EnemyScene = ExtResource("2_h2yge")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
 

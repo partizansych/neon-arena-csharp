@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://Bullet.cs" id="1_v7oki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
-size = Vector2(64, 64)
+size = Vector2(16, 16)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t4vbm"]
-size = Vector2(64, 64)
+size = Vector2(16, 16)
 
 [node name="Bullet" type="Area2D" unique_id=1895759607]
 script = ExtResource("1_v7oki")

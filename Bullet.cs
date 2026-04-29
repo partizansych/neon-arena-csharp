@@ -1,4 +1,5 @@
 using Godot;
+using NeonArenaCsharp;
 
 [GlobalClass]
 public partial class Bullet : Area2D {
@@ -17,8 +18,8 @@ public partial class Bullet : Area2D {
     private void OnBodyEntered(Node2D body) {
         if (body is Player)
             return;
-        else if (body is Enemy enemy)
-            enemy.TakeDamage(50f);
+        else if (body is IDamageable damageable)
+            damageable.TakeDamage(50f);
 
         QueueFree();
     }

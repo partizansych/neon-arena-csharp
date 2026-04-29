@@ -1,7 +1,8 @@
 using Godot;
+using NeonArenaCsharp;
 
 [GlobalClass]
-public partial class Enemy : CharacterBody2D {
+public partial class Enemy : CharacterBody2D, IDamageable {
     [Signal] public delegate void DiedEventHandler();
 
     [Export] StatsContainer stats;

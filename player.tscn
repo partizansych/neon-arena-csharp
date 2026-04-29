@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwwpawwnocksd"]
 
 [ext_resource type="Script" uid="uid://bygr6bbtsgxxe" path="res://Player.cs" id="1_onrkg"]
-[ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://pistol.tres" id="3_hqtel"]
+[ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://balance/pistol.tres" id="3_hqtel"]
 [ext_resource type="Script" uid="uid://duxqfm2sgscvy" path="res://WeaponController.cs" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]

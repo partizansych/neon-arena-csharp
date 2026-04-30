@@ -12,11 +12,11 @@ public partial class Player : CharacterBody2D {
         MoveAndSlide();
 
         if (Input.IsActionPressed("attack")) {
-            WeaponController.isShooting = true;
+            WeaponController.IsShooting = true;
             WeaponController.ShootDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition());
         }
         else {
-            WeaponController.isShooting = false;
+            WeaponController.IsShooting = false;
         }
 
         if (Input.IsActionJustPressed("reload")) {

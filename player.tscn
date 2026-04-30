@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dwwpawwnocksd"]
 
 [ext_resource type="Script" uid="uid://bygr6bbtsgxxe" path="res://Player.cs" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://4rs45jdjl2ee" path="res://stats/StatsContainer.cs" id="2_hqtel"]
 [ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://balance/pistol.tres" id="3_hqtel"]
 [ext_resource type="Script" uid="uid://duxqfm2sgscvy" path="res://WeaponController.cs" id="3_i3pqv"]
+[ext_resource type="Resource" uid="uid://6p56hwax14d8" path="res://balance/player_stats.tres" id="3_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(64, 64)
@@ -10,9 +12,10 @@ size = Vector2(64, 64)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4flbx"]
 size = Vector2(64, 65)
 
-[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("WeaponController")]
+[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("statsContainer", "weaponController")]
 script = ExtResource("1_onrkg")
-WeaponController = NodePath("WeaponController")
+statsContainer = NodePath("StatsContainer")
+weaponController = NodePath("WeaponController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
 shape = SubResource("RectangleShape2D_onrkg")
@@ -20,6 +23,11 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=913147544]
 modulate = Color(0, 0.5, 1, 1)
 texture = SubResource("PlaceholderTexture2D_4flbx")
+
+[node name="StatsContainer" type="Node" parent="." unique_id=1516085870]
+script = ExtResource("2_hqtel")
+data = ExtResource("3_sweqy")
+metadata/_custom_type_script = "uid://4rs45jdjl2ee"
 
 [node name="WeaponController" type="Node2D" parent="." unique_id=1663299536]
 script = ExtResource("3_i3pqv")

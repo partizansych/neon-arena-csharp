@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatsData" format=3 uid="uid://6p56hwax14d8"]
+
+[ext_resource type="Script" uid="uid://ebmpoqg8yfqn" path="res://stats/StatsData.cs" id="1_og43g"]
+
+[resource]
+script = ExtResource("1_og43g")
+Speed = 300.0
+MaxHp = 100.0
+metadata/_custom_type_script = "uid://ebmpoqg8yfqn"

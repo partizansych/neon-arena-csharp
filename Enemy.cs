@@ -5,6 +5,10 @@ using NeonArenaCsharp;
 public partial class Enemy : CharacterBody2D, IDamageable {
     [Signal] public delegate void DiedEventHandler();
 
+    [ExportGroup("Ассеты")]
+    [Export] AudioStreamWav DeathSound;
+
+    [ExportGroup("Компоненты")]
     [Export] StatsContainer stats;
     [Export] Health health;
 
@@ -14,5 +18,6 @@ public partial class Enemy : CharacterBody2D, IDamageable {
 
     public void TakeDamage(float amount) {
         health.Current -= amount;
+        Audio.Instance.Play(DeathSound);
     }
 }

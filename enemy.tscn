@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1fw2wt0bx1jt"]
 
 [ext_resource type="Script" uid="uid://dp5h5ryqh1xdx" path="res://Enemy.cs" id="1_7k104"]
+[ext_resource type="AudioStream" uid="uid://tfdplahf0kbe" path="res://assets/SWSH_MOVEMENT-Bamboo Whip_HY_PC-001.wav" id="2_epg4t"]
 [ext_resource type="Script" uid="uid://4rs45jdjl2ee" path="res://stats/StatsContainer.cs" id="2_qi2p4"]
 [ext_resource type="Script" uid="uid://ebmpoqg8yfqn" path="res://stats/StatsData.cs" id="3_iifgy"]
 [ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="3_qi2p4"]
@@ -19,6 +20,7 @@ metadata/_custom_type_script = "uid://ebmpoqg8yfqn"
 
 [node name="Enemy" type="CharacterBody2D" unique_id=239775939 node_paths=PackedStringArray("stats", "health")]
 script = ExtResource("1_7k104")
+DeathSound = ExtResource("2_epg4t")
 stats = NodePath("StatsContainer")
 health = NodePath("Health")
 

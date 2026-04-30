@@ -19,11 +19,11 @@ public partial class Enemy : CharacterBody2D, IDamageable {
 
     public void TakeDamage(float amount) {
         health.Current -= amount;
-        Audio.Instance.Play(HitSound);
+        Audio.Instance.Play(HitSound, Audio.BUS_SFX);
     }
 
     private void OnDied() {
-        Audio.Instance.Play(DeathSound);
+        Audio.Instance.Play(DeathSound, Audio.BUS_SFX);
         EmitSignal(SignalName.Died);
     }
 }

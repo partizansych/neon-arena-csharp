@@ -34,6 +34,7 @@ public partial class WeaponController : Node2D {
         if (!CanDoShot()) return;
         timeSinceShot = 0f;
         ammo--;
+        PlaySound(Data.ShotSound);
         SpawnBullet();
     }
 
@@ -44,9 +45,11 @@ public partial class WeaponController : Node2D {
     public async void Reload() {
         if (!CanReload()) return;
         isReloading = true;
+        PlaySound(Data.ReloadStartSound);
         await ToSignal(GetTree().CreateTimer(Data.ReloadTime), "timeout");
         isReloading = false;
         ammo = Data.MaxAmmo;
+        PlaySound(Data.ReloadEndSound);
     }
 
     private void SpawnBullet() {
@@ -54,5 +57,10 @@ public partial class WeaponController : Node2D {
         bullet.GlobalPosition = GlobalPosition;
         bullet.Direction = ShootDirection;
         GetTree().CurrentScene.AddChild(bullet);
+    }
+
+    private void PlaySound(AudioStreamWav sound) {
+        if (sound == null) return;
+        Audio.Instance.Play(sound, Audio.BUS_SFX);
     }
 }

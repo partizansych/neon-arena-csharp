@@ -4,10 +4,10 @@ namespace NeonArenaCsharp;
 
 [GlobalClass]
 public partial class WeaponController : Node2D {
-    [Export] public WeaponData Data;
+    [Export] public WeaponData Data { get; set; }
 
-    public Vector2 ShootDirection = Vector2.Right;
-    public bool isShooting;
+    public Vector2 ShootDirection { get; set; } = Vector2.Right;
+    public bool IsShooting { get; set; }
 
     float timeSinceShot;
     int ammo;
@@ -22,7 +22,7 @@ public partial class WeaponController : Node2D {
         if (timeSinceShot < Data.FireRate)
             timeSinceShot += (float)delta;
 
-        if (isShooting)
+        if (IsShooting)
             DoShot();
     }
 

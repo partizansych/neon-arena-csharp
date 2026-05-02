@@ -1,4 +1,7 @@
+using System;
 using Godot;
+
+namespace NeonArenaCsharp;
 
 public partial class Audio : Node {
     public static Audio Instance { get; private set; }
@@ -12,11 +15,12 @@ public partial class Audio : Node {
         Instance = this;
     }
 
-    public void Play(AudioStreamWav sound, string busName = BUS_MASTER) {
+    public void Play(AudioStreamWav sound, string busName = BUS_MASTER, Action<AudioStreamPlayer2D> configure = null) {
         var player = new AudioStreamPlayer2D {
             Stream = sound,
             Bus = busName
         };
+        configure?.Invoke(player);
         player.Finished += player.QueueFree;
         AddChild(player);
         player.Play();

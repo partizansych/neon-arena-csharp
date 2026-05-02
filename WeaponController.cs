@@ -61,6 +61,8 @@ public partial class WeaponController : Node2D {
 
     private void PlaySound(AudioStreamWav sound) {
         if (sound == null) return;
-        Audio.Instance.Play(sound, Audio.BUS_SFX);
+        Audio.Instance.Play(sound, Audio.BUS_SFX, (player) => {
+            player.PitchScale = (float)GD.RandRange(0.75, 1.25);
+        });
     }
 }

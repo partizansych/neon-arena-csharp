@@ -54,6 +54,7 @@ public partial class WeaponController : Node2D {
 
     private void SpawnBullet() {
         var bullet = Data.BulletScene.Instantiate<Bullet>();
+        bullet.Damage = Data.Damage;
         bullet.GlobalPosition = GlobalPosition;
         bullet.Direction = ShootDirection;
         GetTree().CurrentScene.AddChild(bullet);

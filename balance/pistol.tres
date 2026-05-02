@@ -8,6 +8,7 @@
 
 [resource]
 script = ExtResource("1_6u0yd")
+Damage = 50.0
 FireRate = 0.2
 BulletScene = ExtResource("1_52pn7")
 ShotSound = ExtResource("3_tt6ru")

@@ -4,6 +4,7 @@ using NeonArenaCsharp;
 [GlobalClass]
 public partial class Bullet : Area2D {
     [Export] public float Speed = 400f;
+    public float Damage;
     public Vector2 Direction = Vector2.Right;
 
     public override void _Ready() {
@@ -19,7 +20,7 @@ public partial class Bullet : Area2D {
         if (body is Player)
             return;
         else if (body is IDamageable damageable)
-            damageable.TakeDamage(50f);
+            damageable.TakeDamage(Damage);
 
         QueueFree();
     }

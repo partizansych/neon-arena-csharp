@@ -17,9 +17,7 @@ public partial class Bullet : Area2D {
     }
 
     private void OnBodyEntered(Node2D body) {
-        if (body is Player)
-            return;
-        else if (body is IDamageable damageable)
+        if (body is IDamageable damageable)
             damageable.TakeDamage(Damage);
 
         QueueFree();

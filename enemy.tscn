@@ -20,6 +20,8 @@ MaxHp = 100.0
 metadata/_custom_type_script = "uid://ebmpoqg8yfqn"
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1966027548 node_paths=PackedStringArray("Stats", "Health")]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_iifgy")
 Stats = NodePath("StatsContainer")
 Health = NodePath("Health")

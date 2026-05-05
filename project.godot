@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Audio="*uid://deulxb5to6foo"
+Combat="*uid://dx04y0ghimrht"
 
 [display]
 

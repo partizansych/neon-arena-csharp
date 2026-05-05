@@ -1,5 +1,7 @@
 using Godot;
 
+namespace NeonArenaCsharp;
+
 [GlobalClass]
 public partial class WaveManager : Node {
     [Export] public PackedScene EnemyScene;
@@ -29,7 +31,7 @@ public partial class WaveManager : Node {
     }
 
     private void SpawnEnemy() {
-        var enemy = EnemyScene.Instantiate<Enemy>();
+        var enemy = EnemyScene.Instantiate<Character>();
         enemy.GlobalPosition = GetRandomPos(Vector2.Zero);
         AddChild(enemy);
 

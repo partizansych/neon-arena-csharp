@@ -1,5 +1,7 @@
 using Godot;
 
+namespace NeonArenaCsharp;
+
 [GlobalClass]
 public partial class Health : Node2D {
     [Signal] public delegate void CurrentChangedEventHandler(float oldValue, float newValue);
@@ -31,7 +33,6 @@ public partial class Health : Node2D {
     }
 
     public void Die() {
-        Owner.QueueFree();
         EmitSignal(SignalName.Died);
     }
 }

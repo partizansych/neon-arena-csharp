@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://balance/pistol.tres" id="3_hqtel"]
 [ext_resource type="Script" uid="uid://duxqfm2sgscvy" path="res://WeaponController.cs" id="3_i3pqv"]
 [ext_resource type="Resource" uid="uid://6p56hwax14d8" path="res://balance/player_stats.tres" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="4_2hs0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(64, 64)
@@ -12,10 +13,11 @@ size = Vector2(64, 64)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4flbx"]
 size = Vector2(64, 65)
 
-[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("statsContainer", "weaponController")]
+[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("weaponController", "Stats", "Health")]
 script = ExtResource("1_onrkg")
-statsContainer = NodePath("StatsContainer")
 weaponController = NodePath("WeaponController")
+Stats = NodePath("StatsContainer")
+Health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
 shape = SubResource("RectangleShape2D_onrkg")
@@ -28,6 +30,11 @@ texture = SubResource("PlaceholderTexture2D_4flbx")
 script = ExtResource("2_hqtel")
 data = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://4rs45jdjl2ee"
+
+[node name="Health" type="Node2D" parent="." unique_id=469614932 node_paths=PackedStringArray("stats")]
+script = ExtResource("4_2hs0m")
+stats = NodePath("../StatsContainer")
+metadata/_custom_type_script = "uid://cq633itpqdt5k"
 
 [node name="WeaponController" type="Node2D" parent="." unique_id=1663299536]
 script = ExtResource("3_i3pqv")

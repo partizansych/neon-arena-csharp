@@ -1,29 +1,31 @@
 using Godot;
-using NeonArenaCsharp;
+
+namespace NeonArenaCsharp;
 
 [GlobalClass]
-public partial class Enemy : CharacterBody2D, IDamageable {
+public partial class Character : CharacterBody2D, IDamageable {
     [Signal] public delegate void DiedEventHandler();
 
-    [ExportGroup("Ассеты")]
+    [ExportGroup("Компоненты")]
+    [Export] public StatsContainer Stats;
+    [Export] public Health Health;
+
+    [ExportGroup("Звуки")]
     [Export] AudioStreamWav HitSound;
     [Export] AudioStreamWav DeathSound;
 
-    [ExportGroup("Компоненты")]
-    [Export] StatsContainer stats;
-    [Export] Health health;
-
     public override void _Ready() {
-        health.Died += OnDied;
+        Health.Died += OnDied;
     }
 
     public void TakeDamage(float amount) {
-        health.Current -= amount;
+        Health.Current -= amount;
         Audio.Instance.Play(HitSound, Audio.BUS_SFX);
     }
 
     private void OnDied() {
         Audio.Instance.Play(DeathSound, Audio.BUS_SFX);
         EmitSignal(SignalName.Died);
+        QueueFree();
     }
 }

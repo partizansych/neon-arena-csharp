@@ -5,6 +5,9 @@ charset = utf-8
 
 [*.cs]
 
+dotnet_diagnostic.CA1050.severity = none
+dotnet_diagnostic.IDE0290.severity = none
+
 # Скобки методов и типов на той же строке
 csharp_new_line_before_open_brace = none
 

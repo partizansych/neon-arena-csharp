@@ -17,7 +17,7 @@ public partial class Health : Node2D {
             float old = current;
             current = value;
             EmitSignal(SignalName.CurrentChanged, old, current);
-            if (current == 0f) Die();
+            if (current <= 0f) Die();
         }
     }
 

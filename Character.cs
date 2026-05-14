@@ -19,7 +19,7 @@ public partial class Character : CharacterBody2D, IDamageable {
     }
 
     public void TakeDamage(float amount) {
-        Health.Current -= amount;
+        Health.Reduce(amount);
         Audio.Instance.Play(HitSound, Audio.BUS_SFX);
     }
 

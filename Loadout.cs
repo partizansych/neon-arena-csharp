@@ -11,12 +11,20 @@ public partial class Loadout : Node {
         Heavy
     }
 
+    [Export] WeaponData? initialPrimaryData = null;
+    [Export] WeaponData? initialHeavyData = null;
+
     public event Action<Slot, Weapon>? Equipped;
     public event Action<Slot, Slot>? Switched;
     public event Action<Slot, Weapon>? Replaced;
 
     readonly Dictionary<Slot, Weapon?> slots = [];
     Slot current;
+
+    public override void _Ready() {
+        if (initialPrimaryData != null) Equip(Slot.Primary, initialPrimaryData);
+        if (initialHeavyData != null) Equip(Slot.Heavy, initialHeavyData);
+    }
 
     public override void _Process(double delta) {
         foreach (var weapon in slots.Values) {

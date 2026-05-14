@@ -1,69 +1,59 @@
 using Godot;
+using NeonArenaCsharp;
 
-namespace NeonArenaCsharp;
-
+// Может быть у игрока и врагов
 [GlobalClass]
 public partial class WeaponController : Node2D {
-    [Export] public WeaponData Data { get; set; }
+    [Export] Loadout loadout;
 
-    public Vector2 ShootDirection { get; set; } = Vector2.Right;
-    public bool IsShooting { get; set; }
-
-    float timeSinceShot;
-    int ammo;
-    bool isReloading;
+    public Node2D Source { get; set; }
 
     public override void _Ready() {
-        timeSinceShot = Data.FireRate;
-        ammo = Data.MaxAmmo;
-    }
-
-    public override void _Process(double delta) {
-        if (timeSinceShot < Data.FireRate)
-            timeSinceShot += (float)delta;
-
-        if (IsShooting)
-            DoShot();
-    }
-
-    public bool CanDoShot() {
-        return !isReloading && timeSinceShot >= Data.FireRate && ammo > 0;
+        loadout.Equipped += OnLoadoutEquipped;
     }
 
     public void DoShot() {
-        if (!CanDoShot()) return;
-        timeSinceShot = 0f;
-        ammo--;
-        PlaySound(Data.ShotSound);
-        SpawnBullet();
+        var weapon = loadout.GetCurrent();
+        weapon?.DoShot();
     }
 
-    public bool CanReload() {
-        return !isReloading && ammo < Data.MaxAmmo;
+    public void StartReload() {
+        var weapon = loadout.GetCurrent();
+        weapon?.StartReload();
     }
 
-    public async void Reload() {
-        if (!CanReload()) return;
-        isReloading = true;
-        PlaySound(Data.ReloadStartSound);
-        await ToSignal(GetTree().CreateTimer(Data.ReloadTime), "timeout");
-        isReloading = false;
-        ammo = Data.MaxAmmo;
-        PlaySound(Data.ReloadEndSound);
+    private void OnLoadoutEquipped(Loadout.Slot slot, Weapon weapon) {
+        weapon.Shot += () => {
+            SpawnSound(WeaponSound.Shot, weapon);
+            SpawnBullet(weapon);
+        };
+        weapon.ReloadStarted += () => {
+            SpawnSound(WeaponSound.ReloadStart, weapon);
+        };
+        weapon.ReloadEnded += () => {
+            SpawnSound(WeaponSound.ReloadEnd, weapon);
+        };
     }
 
-    private void SpawnBullet() {
-        var bullet = Data.BulletScene.Instantiate<Bullet>();
-        bullet.Damage = Data.Damage;
+    private void SpawnBullet(Weapon weapon) {
+        var data = weapon.GetData();
+        var bullet = data.BulletScene.Instantiate<Bullet>();
+
         bullet.GlobalPosition = GlobalPosition;
-        bullet.Direction = ShootDirection;
+        bullet.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        bullet.Source = Source;
+
+        bullet.Lifetime = weapon.Get(AttributeType.BulletLifetime);
+        bullet.Speed = weapon.Get(AttributeType.BulletSpeed);
+        bullet.Damage = weapon.Get(AttributeType.Damage);
+
         GetTree().CurrentScene.AddChild(bullet);
     }
 
-    private void PlaySound(AudioStreamWav sound) {
-        if (sound == null) return;
-        Audio.Instance.Play(sound, Audio.BUS_SFX, (player) => {
-            player.PitchScale = (float)GD.RandRange(0.75, 1.25);
-        });
+    private static void SpawnSound(WeaponSound type, Weapon weapon) {
+        var data = weapon.GetData();
+        if (data.Sounds.TryGetValue(type, out var sound)) {
+            Audio.Instance.Play(sound, Audio.BUS_SFX);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace NeonArenaCsharp;
 
 [GlobalClass]
 public partial class Player : Character {
+    [Export] Loadout loadout;
     [Export] WeaponController weaponController;
 
     public override void _PhysicsProcess(double delta) {
@@ -11,16 +12,19 @@ public partial class Player : Character {
         Velocity = direction * Stats.Speed.Value;
         MoveAndSlide();
 
-        if (Input.IsActionPressed("attack")) {
-            weaponController.IsShooting = true;
-            weaponController.ShootDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        if (Input.IsKeyPressed(Key.Key1)) {
+            loadout.SwitchTo(Loadout.Slot.Primary);
         }
-        else {
-            weaponController.IsShooting = false;
+        else if (Input.IsKeyPressed(Key.Key2)) {
+            loadout.SwitchTo(Loadout.Slot.Heavy);
         }
 
-        if (Input.IsActionJustPressed("reload")) {
-            weaponController.Reload();
+        if (Input.IsActionPressed("attack")) {
+            weaponController.DoShot();
         }
+    }
+
+    public void Equip(Loadout.Slot slot, WeaponData data) {
+        loadout.Equip(slot, data);
     }
 }

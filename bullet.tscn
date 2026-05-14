@@ -2,20 +2,26 @@
 
 [ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://Bullet.cs" id="1_v7oki"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
-size = Vector2(16, 16)
-
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t4vbm"]
 size = Vector2(16, 16)
 
-[node name="Bullet" type="Area2D" unique_id=1895759607]
-collision_layer = 0
-collision_mask = 5
-script = ExtResource("1_v7oki")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1663089976]
-shape = SubResource("RectangleShape2D_v8qja")
+[node name="Bullet" type="Node2D" unique_id=1376562654 node_paths=PackedStringArray("hitbox", "lifetimer")]
+script = ExtResource("1_v7oki")
+hitbox = NodePath("Hitbox")
+lifetimer = NodePath("Lifetimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=277815617]
 self_modulate = Color(0.4499998, 0, 1, 1)
 texture = SubResource("PlaceholderTexture2D_t4vbm")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1895759607]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1663089976]
+shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="Lifetimer" type="Timer" parent="." unique_id=1866565218]

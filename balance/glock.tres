@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dbtobb16a85x6"]
+
+[ext_resource type="Script" uid="uid://be1t78naca5k0" path="res://WeaponData.cs" id="1_6u0yd"]
+[ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://bullet.tscn" id="1_52pn7"]
+
+[resource]
+script = ExtResource("1_6u0yd")
+BulletScene = ExtResource("1_52pn7")
+Sounds = null
+Damage = 50.0
+FireRate = 0.2

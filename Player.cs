@@ -9,7 +9,7 @@ public partial class Player : Character {
 
     public override void _PhysicsProcess(double delta) {
         var direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-        Velocity = direction * Stats.Speed.Value;
+        Velocity = direction * Get(StatType.Speed);
         MoveAndSlide();
 
         if (Input.IsKeyPressed(Key.Key1)) {

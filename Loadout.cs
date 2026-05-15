@@ -19,7 +19,7 @@ public partial class Loadout : Node {
     public event Action<Slot, Weapon>? Replaced;
 
     readonly Dictionary<Slot, Weapon?> slots = [];
-    Slot current;
+    Slot current = Slot.Primary;
 
     public override void _Ready() {
         if (initialPrimaryData != null) Equip(Slot.Primary, initialPrimaryData);
@@ -55,6 +55,10 @@ public partial class Loadout : Node {
         if (slots.TryGetValue(current, out var weapon))
             return weapon;
         return null;
+    }
+
+    public (Weapon?, Weapon?) GetBoth() {
+        return (slots[Slot.Primary], slots[Slot.Heavy]);
     }
 }
 #nullable disable

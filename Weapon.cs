@@ -58,4 +58,8 @@ public class Weapon {
             ReloadStarted?.Invoke();
         }
     }
+
+    public override string ToString() {
+        return $"ammo: {ammo}";
+    }
 }

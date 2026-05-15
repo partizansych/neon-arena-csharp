@@ -9,7 +9,13 @@ public partial class WeaponController : Node2D {
     public Node2D Source { get; set; }
 
     public override void _Ready() {
-        loadout.Equipped += OnLoadoutEquipped;
+        loadout.Equipped += (slot, weapon) => {
+            Observe(weapon);
+        };
+
+        var both = loadout.GetBoth();
+        if (both.Item1 != null) Observe(both.Item1);
+        if (both.Item2 != null) Observe(both.Item2);
     }
 
     public void DoShot() {
@@ -22,7 +28,7 @@ public partial class WeaponController : Node2D {
         weapon?.StartReload();
     }
 
-    private void OnLoadoutEquipped(Loadout.Slot slot, Weapon weapon) {
+    private void Observe(Weapon weapon) {
         weapon.Shot += () => {
             SpawnSound(WeaponSound.Shot, weapon);
             SpawnBullet(weapon);

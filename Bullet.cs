@@ -3,7 +3,7 @@ using Godot;
 namespace NeonArenaCsharp;
 
 [GlobalClass]
-public partial class Bullet : Node2D, IProjectile {
+public partial class Bullet : Node2D {
     [Export] Area2D hitbox;
     [Export] Timer lifetimer;
 

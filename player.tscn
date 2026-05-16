@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://dwwpawwnocksd"]
 
 [ext_resource type="Script" uid="uid://bygr6bbtsgxxe" path="res://Player.cs" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://4rs45jdjl2ee" path="res://stats/StatsContainer.cs" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://djd0xs1nmkql4" path="res://CharacterData.cs" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dl78kkfudkc0n" path="res://WeaponController.cs" id="3_i3pqv"]
-[ext_resource type="Resource" uid="uid://6p56hwax14d8" path="res://balance/player_stats.tres" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="4_2hs0m"]
+[ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://balance/glock.tres" id="5_1jxqw"]
 [ext_resource type="Script" uid="uid://xfiw3wfk8omp" path="res://Loadout.cs" id="5_2hs0m"]
+[ext_resource type="Resource" uid="uid://16uxfpu7yw85" path="res://balance/m4a11.tres" id="6_dw050"]
+
+[sub_resource type="Resource" id="Resource_2hs0m"]
+script = ExtResource("2_sweqy")
+Speed = 100.0
+MaxHp = 100.0
+metadata/_custom_type_script = "uid://djd0xs1nmkql4"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(64, 64)
@@ -13,13 +20,13 @@ size = Vector2(64, 64)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4flbx"]
 size = Vector2(64, 65)
 
-[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("loadout", "weaponController", "Stats", "Health")]
+[node name="Player" type="CharacterBody2D" unique_id=1451236496 node_paths=PackedStringArray("loadout", "weaponController", "Health")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_onrkg")
 loadout = NodePath("Loadout")
 weaponController = NodePath("WeaponController")
-Stats = NodePath("StatsContainer")
+initialData = SubResource("Resource_2hs0m")
 Health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
@@ -29,18 +36,14 @@ shape = SubResource("RectangleShape2D_onrkg")
 modulate = Color(0, 0.5, 1, 1)
 texture = SubResource("PlaceholderTexture2D_4flbx")
 
-[node name="StatsContainer" type="Node" parent="." unique_id=1516085870]
-script = ExtResource("2_hqtel")
-data = ExtResource("3_sweqy")
-metadata/_custom_type_script = "uid://4rs45jdjl2ee"
-
-[node name="Health" type="Node2D" parent="." unique_id=469614932 node_paths=PackedStringArray("stats")]
+[node name="Health" type="Node2D" parent="." unique_id=469614932]
 script = ExtResource("4_2hs0m")
-stats = NodePath("../StatsContainer")
 metadata/_custom_type_script = "uid://cq633itpqdt5k"
 
 [node name="Loadout" type="Node" parent="." unique_id=1738476595]
 script = ExtResource("5_2hs0m")
+initialPrimaryData = ExtResource("5_1jxqw")
+initialHeavyData = ExtResource("6_dw050")
 metadata/_custom_type_script = "uid://xfiw3wfk8omp"
 
 [node name="WeaponController" type="Node2D" parent="." unique_id=1663299536 node_paths=PackedStringArray("loadout")]

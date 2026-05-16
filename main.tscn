@@ -1,23 +1,10 @@
 [gd_scene format=3 uid="uid://b1yajk7qxv0ep"]
 
-[ext_resource type="Script" uid="uid://dgmpjf216gnqx" path="res://Main.cs" id="1_7mycd"]
-[ext_resource type="Script" uid="uid://dt34pl6qcluji" path="res://WaveManager.cs" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Resource" uid="uid://dbtobb16a85x6" path="res://balance/glock.tres" id="2_5vw27"]
-[ext_resource type="PackedScene" uid="uid://1fw2wt0bx1jt" path="res://enemy.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
-[ext_resource type="Resource" uid="uid://16uxfpu7yw85" path="res://balance/m4a11.tres" id="3_kek77"]
 [ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 
-[node name="Main" type="Node2D" unique_id=1244132720 node_paths=PackedStringArray("player")]
-script = ExtResource("1_7mycd")
-player = NodePath("Player")
-primary = ExtResource("2_5vw27")
-heavy = ExtResource("3_kek77")
-
-[node name="WaveManager" type="Node" parent="." unique_id=1195476094]
-script = ExtResource("1_h2yge")
-EnemyScene = ExtResource("2_h2yge")
+[node name="Main" type="Node2D" unique_id=1244132720]
 
 [node name="DamagePopupManager" type="Node" parent="." unique_id=529290758]
 script = ExtResource("3_lquwl")

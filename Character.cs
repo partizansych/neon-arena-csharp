@@ -6,16 +6,28 @@ namespace NeonArenaCsharp;
 public partial class Character : CharacterBody2D, IDamageable {
     [Signal] public delegate void DiedEventHandler();
 
+    [Export] CharacterData initialData;
+
     [ExportGroup("Компоненты")]
-    [Export] public StatsContainer Stats;
-    [Export] public Health Health;
+    [Export] Health Health;
 
     [ExportGroup("Звуки")]
     [Export] AudioStreamWav HitSound;
     [Export] AudioStreamWav DeathSound;
 
+    StatSheet<StatType> stats;
+
     public override void _Ready() {
         Health.Died += OnDied;
+        if (initialData != null) Setup(initialData);
+    }
+
+    public void Setup(CharacterData data) {
+        stats = new CharacterStatSheet(data);
+    }
+
+    public float Get(StatType type) {
+        return stats.GetValue(type);
     }
 
     public void TakeDamage(float amount) {

@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1r461rw20vhe" path="res://Character.cs" id="1_iifgy"]
 [ext_resource type="AudioStream" uid="uid://tfdplahf0kbe" path="res://assets/SWSH_MOVEMENT-Bamboo Whip_HY_PC-001.wav" id="2_epg4t"]
-[ext_resource type="Script" uid="uid://4rs45jdjl2ee" path="res://stats/StatsContainer.cs" id="2_qi2p4"]
 [ext_resource type="AudioStream" uid="uid://owfucdlrehxc" path="res://assets/DSGNImpt_EXPLOSION-Cruncher_HY_PC-001.wav" id="3_3yqyl"]
-[ext_resource type="Script" uid="uid://ebmpoqg8yfqn" path="res://stats/StatsData.cs" id="3_iifgy"]
 [ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="3_qi2p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
@@ -13,17 +11,10 @@ size = Vector2(64, 64)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7k104"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_epg4t"]
-script = ExtResource("3_iifgy")
-Speed = 100.0
-MaxHp = 100.0
-metadata/_custom_type_script = "uid://ebmpoqg8yfqn"
-
-[node name="Enemy" type="CharacterBody2D" unique_id=1966027548 node_paths=PackedStringArray("Stats", "Health")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1966027548 node_paths=PackedStringArray("Health")]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_iifgy")
-Stats = NodePath("StatsContainer")
 Health = NodePath("Health")
 HitSound = ExtResource("2_epg4t")
 DeathSound = ExtResource("3_3yqyl")
@@ -36,12 +27,6 @@ shape = SubResource("RectangleShape2D_7k104")
 self_modulate = Color(1, 0.37799093, 0.31005007, 1)
 texture = SubResource("PlaceholderTexture2D_7k104")
 
-[node name="StatsContainer" type="Node" parent="." unique_id=1327436437]
-script = ExtResource("2_qi2p4")
-data = SubResource("Resource_epg4t")
-metadata/_custom_type_script = "uid://4rs45jdjl2ee"
-
-[node name="Health" type="Node2D" parent="." unique_id=462497150 node_paths=PackedStringArray("stats")]
+[node name="Health" type="Node2D" parent="." unique_id=462497150]
 script = ExtResource("3_qi2p4")
-stats = NodePath("../StatsContainer")
 metadata/_custom_type_script = "uid://cq633itpqdt5k"

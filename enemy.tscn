@@ -1,8 +1,5 @@
-[gd_scene format=3 uid="uid://1fw2wt0bx1jt"]
+[gd_scene format=3 uid="uid://00ypqly7knae"]
 
-[ext_resource type="Script" uid="uid://1r461rw20vhe" path="res://Character.cs" id="1_iifgy"]
-[ext_resource type="AudioStream" uid="uid://tfdplahf0kbe" path="res://assets/SWSH_MOVEMENT-Bamboo Whip_HY_PC-001.wav" id="2_epg4t"]
-[ext_resource type="AudioStream" uid="uid://owfucdlrehxc" path="res://assets/DSGNImpt_EXPLOSION-Cruncher_HY_PC-001.wav" id="3_3yqyl"]
 [ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="3_qi2p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
@@ -11,14 +8,9 @@ size = Vector2(64, 64)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7k104"]
 size = Vector2(64, 64)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1966027548 node_paths=PackedStringArray("Health")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1966027548]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_iifgy")
-Health = NodePath("Health")
-HitSound = ExtResource("2_epg4t")
-DeathSound = ExtResource("3_3yqyl")
-metadata/_custom_type_script = "uid://1r461rw20vhe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1146426790]
 shape = SubResource("RectangleShape2D_7k104")

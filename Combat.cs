@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace NeonArenaCsharp;
-
 public struct DamageContext {
     public Node Source;
     public Node Target;

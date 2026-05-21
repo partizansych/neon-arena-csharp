@@ -1,7 +1,5 @@
 using Godot;
 
-namespace NeonArenaCsharp;
-
 public enum GunSound {
     Shot,
     ReloadStart,

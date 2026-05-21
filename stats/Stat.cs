@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-namespace NeonArenaCsharp.stats;
-
 public class Stat(float baseValue) {
     public event Action<float, float> Changed;
 

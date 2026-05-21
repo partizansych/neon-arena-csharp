@@ -1,7 +1,5 @@
 using Godot;
 
-namespace NeonArenaCsharp;
-
 public partial class DamagePopupManager : Node {
     [Export] PackedScene PopupScene;
 

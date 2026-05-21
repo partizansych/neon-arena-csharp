@@ -1,8 +1,6 @@
 using System;
 using Godot;
 
-namespace NeonArenaCsharp;
-
 public partial class Audio : Node {
     public static Audio Instance { get; private set; }
 

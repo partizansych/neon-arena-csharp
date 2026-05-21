@@ -1,7 +1,5 @@
 using System;
 
-namespace NeonArenaCsharp.stats;
-
 // Final = (Base + Flat) * (1 + Sum(Additive)) * (1 + Sum(Multiplicative))
 public enum ModifierType {
     Flat,           // +10 урона
@@ -15,7 +13,7 @@ public readonly struct Modifier(float value, ModifierType type, object source) :
     public readonly object Source = source;
 
     public bool Equals(Modifier other) {
-        // Сравниваем Источник и Тип. 
+        // Сравниваем Источник и Тип.
         // Значение (Value) не сравниваем, так как мы можем захотеть заменить старый модификатор на новый с другим значением от того же источника.
         // Но в логике добавления мы обычно запрещаем дубликаты Источник+Тип.
         return Source == other.Source && Type == other.Type;
@@ -28,7 +26,7 @@ public readonly struct Modifier(float value, ModifierType type, object source) :
 
     // Обязательно для работы в HashSet, Dictionary и других коллекциях
     public override int GetHashCode() {
-        // Комбинируем хеш-коды полей. 
+        // Комбинируем хеш-коды полей.
         // В .NET Core / .NET 5+ HashCode.Combine работает отлично.
         return HashCode.Combine(Source, Type);
     }

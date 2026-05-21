@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://b1yajk7qxv0ep"]
 
+[ext_resource type="Script" uid="uid://rw2h3q4mm5gq" path="res://Main.cs" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://balance/glock.tres" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
+[ext_resource type="Resource" uid="uid://bshnmtd7161yh" path="res://balance/ak47.tres" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
+[ext_resource type="Resource" uid="uid://c48kjg6cf4v2i" path="res://balance/player.tres" id="5_272bh"]
 
-[node name="Main" type="Node2D" unique_id=1244132720]
+[node name="Main" type="Node2D" unique_id=490296911]
+script = ExtResource("1_1bvp3")
+primary = ExtResource("2_7mycd")
+heavy = ExtResource("3_7mycd")
+playerScene = ExtResource("1_ig7tw")
+playerData = ExtResource("5_272bh")
+metadata/_custom_type_script = "uid://rw2h3q4mm5gq"
 
 [node name="DamagePopupManager" type="Node" parent="." unique_id=529290758]
 script = ExtResource("3_lquwl")

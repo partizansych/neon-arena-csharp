@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bshnmtd7161yh"]
+
+[ext_resource type="Script" uid="uid://bl72wor8pslvu" path="res://GunData.cs" id="1_aucng"]
+
+[resource]
+script = ExtResource("1_aucng")
+Id = "ak47"
+Damage = 26.0
+FireRate = 0.2
+ReloadTime = 1.4
+MaxAmmo = 30
+BulletSpeed = 500.0
+sounds = null
+metadata/_custom_type_script = "uid://bl72wor8pslvu"

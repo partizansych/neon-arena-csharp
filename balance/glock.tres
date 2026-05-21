@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dbtobb16a85x6"]
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bnq7g506ckpn6"]
 
-[ext_resource type="Script" uid="uid://be1t78naca5k0" path="res://WeaponData.cs" id="1_6u0yd"]
+[ext_resource type="Script" uid="uid://bl72wor8pslvu" path="res://GunData.cs" id="1_ohxq3"]
 
 [resource]
-script = ExtResource("1_6u0yd")
-Sounds = null
-Damage = 50.0
-FireRate = 0.2
+script = ExtResource("1_ohxq3")
+Id = "glock"
+Damage = 33.0
+FireRate = 0.3
+MaxAmmo = 10
+BulletSpeed = 400.0
+sounds = null
+metadata/_custom_type_script = "uid://bl72wor8pslvu"

@@ -13,7 +13,6 @@ public partial class Main : Node2D {
 
     public override void _Ready() {
         var player = CreatePlayer();
-        player.EquipGun(CreateGun());
     }
 
     private Player CreatePlayer() {
@@ -21,11 +20,5 @@ public partial class Main : Node2D {
         player.Setup(playerData);
         AddChild(player);
         return player;
-    }
-
-    private Gun CreateGun() {
-        var gun = gunScene.Instantiate<Gun>();
-        gun.Setup(primary);
-        return gun;
     }
 }

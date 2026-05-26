@@ -11,6 +11,10 @@ public enum GunStat {
     FireRate,
     MaxAmmo,
     ReloadTime,
+    SpreadBase,
+    SpreadMax,
+    SpreadPerShot,
+    SpreadRecoveryRate,
     BulletSpeed,
     BulletLifetime
 }

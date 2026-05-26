@@ -1,29 +1,32 @@
+using System.Collections.Generic;
 using Godot;
 
 [GlobalClass]
 public partial class Player : CharacterBody2D, IDamageable {
-    [Export] PlayerStatSheet stats;
     [Export] Health health;
 
     PlayerData data;
-    Gun gun;
+
+    readonly Dictionary<PlayerStat, Stat> stats = [];
 
     public override void _Process(double delta) {
-        if (gun != null && Input.IsActionPressed("attack")) {
-            var mousePos = GetGlobalMousePosition();
-            var direction = GlobalPosition.DirectionTo(mousePos);
-            gun.DoShot(direction);
-        }
+        // if (gun != null && Input.IsActionPressed("attack")) {
+        //     var mousePos = GetGlobalMousePosition();
+        //     var direction = GlobalPosition.DirectionTo(mousePos);
+        //     gun.DoShot(direction);
+        // }
     }
 
     public void Setup(PlayerData data) {
         this.data = data;
-        stats.Setup(data);
+        stats[PlayerStat.Speed] = new Stat(data.Speed);
+        stats[PlayerStat.MaxHp] = new Stat(data.MaxHp);
     }
 
-    public void EquipGun(Gun gun) {
-        this.gun = gun;
-        AddChild(gun);
+    public float Get(PlayerStat stat) {
+        if (stats.TryGetValue(stat, out var statInstance))
+            return statInstance.Value;
+        return 0f;
     }
 
     public void TakeDamage(float amount) {

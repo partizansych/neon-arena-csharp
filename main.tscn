@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bch835h810wpm" path="res://gun.tscn" id="2_5vw27"]
 [ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://balance/glock.tres" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
-[ext_resource type="Resource" uid="uid://bshnmtd7161yh" path="res://balance/ak47.tres" id="3_7mycd"]
+[ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://balance/ak47.tres" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 [ext_resource type="Resource" uid="uid://c48kjg6cf4v2i" path="res://balance/player.tres" id="5_272bh"]
 

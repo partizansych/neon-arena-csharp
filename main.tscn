@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://rw2h3q4mm5gq" path="res://Main.cs" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://balance/glock.tres" id="2_7mycd"]
-[ext_resource type="Script" path="res://Gun.cs" id="2_kek77"]
+[ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://Gun.cs" id="2_kek77"]
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
-[ext_resource type="Script" path="res://GunStatSheet.cs" id="3_4c57u"]
 [ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://balance/ak47.tres" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 [ext_resource type="Resource" uid="uid://c48kjg6cf4v2i" path="res://balance/player.tres" id="5_272bh"]
+
+[sub_resource type="Resource" id="Resource_5vw27"]
+metadata/__load_path__ = "res://GunStatSheet.cs"
 
 [sub_resource type="PackedScene" id="PackedScene_efxa6"]
 _bundled = {
@@ -21,7 +23,7 @@ _bundled = {
 "node_ids": PackedInt32Array(877367424, 1286849823, 837701773, 2130351776, 973813015),
 "node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 1073741827, 1, 1073741828, 2, 1073741829, 3, 1073741830, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 0, 0, 1073741825, 0, 11, 10, -1, 0, 0, 1073741826, 0, 13, 12, -1, 0, 0, 1073741827, 0, 15, 14, -1, 2, 16, 6, 17, 7, 0),
-"variants": [ExtResource("2_kek77"), NodePath("Muzzle"), NodePath("ShotTimer"), NodePath("ReloadTimer"), NodePath("GunStatSheet"), "uid://cwsyjxyo6aj82", ExtResource("3_4c57u"), "uid://b46nkl3ssbbul"],
+"variants": [ExtResource("2_kek77"), NodePath("Muzzle"), NodePath("ShotTimer"), NodePath("ReloadTimer"), NodePath("GunStatSheet"), "uid://cwsyjxyo6aj82", SubResource("Resource_5vw27"), "uid://b46nkl3ssbbul"],
 "version": 3
 }
 

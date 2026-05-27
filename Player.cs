@@ -4,21 +4,23 @@ using Godot;
 [GlobalClass]
 public partial class Player : CharacterBody2D, IDamageable {
     [Export] Health health;
+    [Export] GunController gunController;
 
-    PlayerData data;
+    PlayerData playerData;
 
     readonly Dictionary<PlayerStat, Stat> stats = [];
 
     public override void _Process(double delta) {
-        // if (gun != null && Input.IsActionPressed("attack")) {
-        //     var mousePos = GetGlobalMousePosition();
-        //     var direction = GlobalPosition.DirectionTo(mousePos);
-        //     gun.DoShot(direction);
-        // }
+        if (Input.IsActionPressed("attack")) {
+            gunController.DoShot();
+        }
+        if (Input.IsKeyPressed(Key.R)) {
+            gunController.StartReload();
+        }
     }
 
     public void Setup(PlayerData data) {
-        this.data = data;
+        playerData = data;
         stats[PlayerStat.Speed] = new Stat(data.Speed);
         stats[PlayerStat.MaxHp] = new Stat(data.MaxHp);
     }
@@ -31,8 +33,12 @@ public partial class Player : CharacterBody2D, IDamageable {
 
     public void TakeDamage(float amount) {
         health.Reduce(amount);
-        if (data.TryGetSound(PlayerSound.Hit, out var sound)) {
+        if (playerData.TryGetSound(PlayerSound.Hit, out var sound)) {
             Audio.Instance.Play(sound, Audio.BUS_SFX);
         }
+    }
+
+    public void EquipGun(GunData data) {
+        gunController.Equip(data);
     }
 }

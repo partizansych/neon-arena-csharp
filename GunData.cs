@@ -31,6 +31,10 @@ public partial class GunData : Resource {
     [Export] public int MaxAmmo = 20;
     [Export] public float BulletSpeed = 300f;
     [Export] public float BulletLifetime = 3f;
+    [Export] public float SpreadMin = 0.5f;
+    [Export] public float SpreadMax = 5f;
+    [Export] public float SpreadPerShot = 0.8f;
+    [Export] public float SpreadRecoveryRate = 2f; // не за кадр! за секунду.
 
     [ExportGroup("")]
     [Export] PackedScene bulletScene;

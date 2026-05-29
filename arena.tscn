@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://mws62oa1fvuc" path="res://assets/Interiors_free_32x32.png" id="3_cs5tf"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/palette.png" id="4_6fd1r"]
 [ext_resource type="Texture2D" uid="uid://qa0hj6l17xgt" path="res://assets/neo_zero_tileset_02.png" id="4_h402b"]
-[ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="5_fu4bq"]
-[ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://bullet.tscn" id="6_sbb53"]
-[ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://enemy.tscn" id="7_pbtuc"]
 
 [sub_resource type="Environment" id="Environment_h0wof"]
 background_mode = 3
@@ -4668,16 +4665,3 @@ energy = 0.45
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fu4bq")
 texture_scale = 4.0
-
-[node name="Player" parent="." unique_id=1901776121 instance=ExtResource("5_fu4bq")]
-position = Vector2(-389, -206)
-
-[node name="Player2" parent="." unique_id=351125366 instance=ExtResource("5_fu4bq")]
-position = Vector2(-42, -215)
-
-[node name="Bullet" parent="." unique_id=1376562654 instance=ExtResource("6_sbb53")]
-position = Vector2(-474, -260)
-
-[node name="Enemy" parent="." unique_id=876110535 instance=ExtResource("7_pbtuc")]
-position = Vector2(-470.99997, -175)
-rotation = 0.04970199

@@ -8,9 +8,9 @@
 script = ExtResource("1_ohxq3")
 Id = "glock"
 Damage = 33.0
-FireRate = 0.3
-MaxAmmo = 10
+FireRate = 0.08
 BulletSpeed = 400.0
+SpreadPerShot = 0.3
 bulletScene = ExtResource("1_52pn7")
 sounds = Dictionary[int, AudioStreamWAV]({
 0: ExtResource("2_13fmx")

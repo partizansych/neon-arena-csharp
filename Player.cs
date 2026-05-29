@@ -11,6 +11,10 @@ public partial class Player : CharacterBody2D, IDamageable {
     readonly Dictionary<PlayerStat, Stat> stats = [];
 
     public override void _Process(double delta) {
+        var direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+        Velocity = direction * Get(PlayerStat.Speed);
+        MoveAndSlide();
+
         if (Input.IsActionPressed("attack")) {
             gunController.DoShot();
         }

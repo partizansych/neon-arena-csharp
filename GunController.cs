@@ -4,8 +4,19 @@ using Godot;
 public partial class GunController : Node2D {
     Gun gun;
 
+    float currentSpreadDegrees;
+
     public override void _Process(double delta) {
-        gun?.Tick((float)delta);
+        if (gun != null) {
+            gun.Tick((float)delta);
+
+            var data = gun.Data;
+            currentSpreadDegrees -= data.SpreadRecoveryRate * (float)delta;
+            currentSpreadDegrees = Mathf.Max(currentSpreadDegrees, data.SpreadMin);
+        }
+        else {
+            currentSpreadDegrees = 0f;
+        }
     }
 
     public void Equip(GunData data) {
@@ -21,6 +32,10 @@ public partial class GunController : Node2D {
         if (gun != null && gun.TryDoShot()) {
             SpawnSound(GunSound.Shot);
             SpawnBullet();
+
+            var data = gun.Data;
+            currentSpreadDegrees += data.SpreadPerShot;
+            currentSpreadDegrees = Mathf.Min(currentSpreadDegrees, data.SpreadMax);
         }
     }
 
@@ -41,7 +56,7 @@ public partial class GunController : Node2D {
         }
 
         bullet.GlobalPosition = GlobalPosition;
-        bullet.Direction = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        bullet.Direction = GetSpreadDirection();
         bullet.Source = this;
 
         bullet.Lifetime = data.BulletLifetime;
@@ -56,5 +71,18 @@ public partial class GunController : Node2D {
         if (data.TryGetSound(type, out var sound)) {
             Audio.Instance.Play(sound, Audio.BUS_SFX);
         }
+    }
+
+    private Vector2 GetSpreadDirection() {
+        var startDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        var maxAngleRad = Mathf.DegToRad(currentSpreadDegrees);
+
+        float offset;
+
+        do {
+            offset = (float)GD.Randfn(0f, maxAngleRad);
+        } while (offset > maxAngleRad || offset < -maxAngleRad);
+
+        return startDirection.Rotated(offset);
     }
 }

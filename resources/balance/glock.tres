@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bnq7g506ckpn6"]
+
+[ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://bullet.tscn" id="1_k37c7"]
+[ext_resource type="Script" uid="uid://bl72wor8pslvu" path="res://GunData.cs" id="2_kfl20"]
+[ext_resource type="AudioStream" uid="uid://biyl3moj5tgui" path="res://assets/audio/DSGNTonl_USABLE-Magic Swipe_HY_PC-001.wav" id="3_7wy2b"]
+
+[resource]
+script = ExtResource("2_kfl20")
+Id = "glock"
+Damage = 33.0
+FireRate = 0.08
+BulletSpeed = 400.0
+SpreadPerShot = 0.5
+bulletScene = ExtResource("1_k37c7")
+sounds = Dictionary[int, AudioStreamWAV]({
+0: ExtResource("3_7wy2b")
+})
+metadata/_custom_type_script = "uid://bl72wor8pslvu"

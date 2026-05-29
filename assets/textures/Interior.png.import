@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://del3u5grmca5l"
-path="res://.godot/imported/furniture pack coloured outline.png-25127c151a819a16cdfc73b8b40e0cb5.ctex"
+uid="uid://djc0mx5yfrvwd"
+path="res://.godot/imported/Interior.png-527aed05aa922bfada71fc9921062fac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/furniture pack coloured outline.png"
-dest_files=["res://.godot/imported/furniture pack coloured outline.png-25127c151a819a16cdfc73b8b40e0cb5.ctex"]
+source_file="res://assets/textures/Interior.png"
+dest_files=["res://.godot/imported/Interior.png-527aed05aa922bfada71fc9921062fac.ctex"]
 
 [params]
 

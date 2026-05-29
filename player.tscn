@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwwpawwnocksd"]
 
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://Player.cs" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/palette.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://GunController.cs" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="4_2hs0m"]
 

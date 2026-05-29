@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qa0hj6l17xgt"
-path="res://.godot/imported/neo_zero_tileset_02.png-9664e7089eb9d8f0e0f853d1e14ea8f2.ctex"
+uid="uid://dumbcp4t8gifn"
+path="res://.godot/imported/Room_Builder_free_32x32.png-f7fb7a259a33c2559dcf98618823cae7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/neo_zero_tileset_02.png"
-dest_files=["res://.godot/imported/neo_zero_tileset_02.png-9664e7089eb9d8f0e0f853d1e14ea8f2.ctex"]
+source_file="res://assets/textures/Room_Builder_free_32x32.png"
+dest_files=["res://.godot/imported/Room_Builder_free_32x32.png-f7fb7a259a33c2559dcf98618823cae7.ctex"]
 
 [params]
 

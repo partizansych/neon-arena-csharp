@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dumbcp4t8gifn"
-path="res://.godot/imported/Room_Builder_free_32x32.png-e148d4016260692ce8e6a9aa57088707.ctex"
+uid="uid://del3u5grmca5l"
+path="res://.godot/imported/furniture pack coloured outline.png-e745273335b8ab78eb127efbcef99479.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Room_Builder_free_32x32.png"
-dest_files=["res://.godot/imported/Room_Builder_free_32x32.png-e148d4016260692ce8e6a9aa57088707.ctex"]
+source_file="res://assets/textures/furniture pack coloured outline.png"
+dest_files=["res://.godot/imported/furniture pack coloured outline.png-e745273335b8ab78eb127efbcef99479.ctex"]
 
 [params]
 

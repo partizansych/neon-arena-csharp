@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djc0mx5yfrvwd"
-path="res://.godot/imported/Interior.png-60dca749c00cb52ec29a1b412a15155d.ctex"
+uid="uid://qa0hj6l17xgt"
+path="res://.godot/imported/neo_zero_tileset_02.png-ff83a617f5fdb7a5bc9d9489c8f3f3a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Interior.png"
-dest_files=["res://.godot/imported/Interior.png-60dca749c00cb52ec29a1b412a15155d.ctex"]
+source_file="res://assets/textures/neo_zero_tileset_02.png"
+dest_files=["res://.godot/imported/neo_zero_tileset_02.png-ff83a617f5fdb7a5bc9d9489c8f3f3a3.ctex"]
 
 [params]
 

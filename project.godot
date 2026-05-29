@@ -24,6 +24,7 @@ Combat="*uid://dx04y0ghimrht"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -78,4 +79,5 @@ common/physics_interpolation=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

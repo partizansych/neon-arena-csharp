@@ -1,24 +1,32 @@
 [gd_scene format=3 uid="uid://00ypqly7knae"]
 
-[ext_resource type="Script" uid="uid://cq633itpqdt5k" path="res://Health.cs" id="3_qi2p4"]
+[ext_resource type="Script" uid="uid://bksww64nu6i2b" path="res://Enemy.cs" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/palette.png" id="2_qi2p4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7k104"]
-size = Vector2(64, 64)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4gyqm"]
+polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1966027548]
-collision_layer = 4
-collision_mask = 7
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(64, 32, 48, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1146426790]
-shape = SubResource("RectangleShape2D_7k104")
+[node name="Enemy" type="CharacterBody2D" unique_id=876110535]
+script = ExtResource("1_4gyqm")
+metadata/_custom_type_script = "uid://bksww64nu6i2b"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2012600144]
-self_modulate = Color(1, 0.37799093, 0.31005007, 1)
-texture = SubResource("PlaceholderTexture2D_7k104")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
+shape = SubResource("CircleShape2D_iifgy")
 
-[node name="Health" type="Node2D" parent="." unique_id=462497150]
-script = ExtResource("3_qi2p4")
-metadata/_custom_type_script = "uid://cq633itpqdt5k"
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=853394030]
+visible = false
+polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1195056931]
+occluder = SubResource("OccluderPolygon2D_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469454976]
+modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
+position = Vector2(4, 0)
+texture = SubResource("AtlasTexture_epg4t")

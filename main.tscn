@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://balance/ak47.tres" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 [ext_resource type="Resource" uid="uid://c48kjg6cf4v2i" path="res://balance/player.tres" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://cn8csvm0p4o6d" path="res://arena.tscn" id="9_kek77"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 metadata/__load_path__ = "res://GunStatSheet.cs"
@@ -42,4 +43,4 @@ PopupScene = ExtResource("3_1bvp3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
 
-[node name="Player" parent="." unique_id=1451236496 instance=ExtResource("1_ig7tw")]
+[node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("9_kek77")]

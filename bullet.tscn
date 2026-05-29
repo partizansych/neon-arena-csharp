@@ -1,27 +1,29 @@
 [gd_scene format=3 uid="uid://dhnlp48firub"]
 
 [ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://Bullet.cs" id="1_v7oki"]
+[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/palette.png" id="2_v8qja"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t4vbm"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
+radius = 7.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
-size = Vector2(16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(32, 32, 16, 16)
 
 [node name="Bullet" type="Node2D" unique_id=1376562654 node_paths=PackedStringArray("hitbox", "lifetimer")]
 script = ExtResource("1_v7oki")
 hitbox = NodePath("Hitbox")
 lifetimer = NodePath("Lifetimer")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=277815617]
-self_modulate = Color(0.4499998, 0, 1, 1)
-texture = SubResource("PlaceholderTexture2D_t4vbm")
-
 [node name="Hitbox" type="Area2D" parent="." unique_id=1895759607]
 collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1663089976]
-shape = SubResource("RectangleShape2D_v8qja")
+shape = SubResource("CircleShape2D_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=277815617]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+texture = SubResource("AtlasTexture_t4vbm")
 
 [node name="Lifetimer" type="Timer" parent="." unique_id=1866565218]

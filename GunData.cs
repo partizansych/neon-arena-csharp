@@ -24,7 +24,6 @@ public partial class GunData : Resource {
     [Export] public string Id;
     [Export] public Texture2D Icon;
 
-    [ExportGroup("Базовые значения аттрибутов")]
     [Export] public float Damage = 1f;
     [Export] public float FireRate = 1f / 3; // N выстрелов за секунду
     [Export] public float ReloadTime = 1f;
@@ -36,7 +35,6 @@ public partial class GunData : Resource {
     [Export] public float SpreadPerShot = 0.8f;
     [Export] public float SpreadRecoveryRate = 2f; // не за кадр! за секунду.
 
-    [ExportGroup("")]
     [Export] PackedScene bulletScene;
     [Export] Godot.Collections.Dictionary<GunSound, AudioStreamWav> sounds;
 

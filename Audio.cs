@@ -13,7 +13,7 @@ public partial class Audio : Node {
         Instance = this;
     }
 
-    public void Play(AudioStreamWav sound, string busName = BUS_MASTER, Action<AudioStreamPlayer2D> configure = null) {
+    public void Play(AudioStream sound, string busName = BUS_MASTER, Action<AudioStreamPlayer2D> configure = null) {
         var player = new AudioStreamPlayer2D {
             Stream = sound,
             Bus = busName

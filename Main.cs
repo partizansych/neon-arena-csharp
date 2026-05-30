@@ -9,7 +9,7 @@ public partial class Main : Node2D {
 
     [ExportGroup("Настройка игрока")]
     [Export] PackedScene playerScene;
-    [Export] PlayerData playerData;
+    [Export] CharacterData playerData;
 
     public override void _Ready() {
         var player = CreatePlayer();

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://c48kjg6cf4v2i"]
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://vd1aceblq4cw"]
 
-[ext_resource type="Script" uid="uid://cjqno6y2urdeh" path="res://PlayerData.cs" id="1_aihw4"]
+[ext_resource type="Script" uid="uid://pbel12e8xb7m" path="res://CharacterData.cs" id="1_vmhb5"]
 
 [resource]
-script = ExtResource("1_aihw4")
-sounds = null
-metadata/_custom_type_script = "uid://cjqno6y2urdeh"
+script = ExtResource("1_vmhb5")
+metadata/_custom_type_script = "uid://pbel12e8xb7m"

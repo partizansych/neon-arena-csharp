@@ -4,47 +4,47 @@ using System;
 public class Gun {
     public event Action ReloadEnded;
 
-    float timeSinceShot;
-    int ammo;
-    float reloadTimer;
-    bool isReloading;
+    public float TimeSinceShot { get; private set; }
+    public int Ammo { get; private set; }
+    public float ReloadTimer { get; private set; }
+    public bool IsReloading { get; private set; }
 
     public GunData Data { get; private set; }
 
     public Gun(GunData data) {
         Data = data;
-        timeSinceShot = data.FireRate;
-        ammo = data.MaxAmmo;
+        TimeSinceShot = data.FireRate;
+        Ammo = data.MaxAmmo;
     }
 
     public void Tick(float delta) {
-        if (timeSinceShot < Data.FireRate) {
-            timeSinceShot += delta;
+        if (TimeSinceShot < Data.FireRate) {
+            TimeSinceShot += delta;
         }
 
-        if (isReloading) {
-            reloadTimer -= delta;
-            if (reloadTimer <= 0f) {
-                isReloading = false;
-                ammo = Data.MaxAmmo;
+        if (IsReloading) {
+            ReloadTimer -= delta;
+            if (ReloadTimer <= 0f) {
+                IsReloading = false;
+                Ammo = Data.MaxAmmo;
                 ReloadEnded?.Invoke();
             }
         }
     }
 
     public bool TryDoShot() {
-        if (!isReloading && timeSinceShot >= Data.FireRate && ammo > 0) {
-            timeSinceShot = 0f;
-            ammo--;
+        if (!IsReloading && TimeSinceShot >= Data.FireRate && Ammo > 0) {
+            TimeSinceShot = 0f;
+            Ammo--;
             return true;
         }
         return false;
     }
 
     public bool TryStartReload() {
-        if (!isReloading && ammo < Data.MaxAmmo) {
-            isReloading = true;
-            reloadTimer = Data.ReloadTime;
+        if (!IsReloading && Ammo < Data.MaxAmmo) {
+            IsReloading = true;
+            ReloadTimer = Data.ReloadTime;
             return true;
         }
         return false;

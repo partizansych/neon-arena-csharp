@@ -5,9 +5,8 @@ public partial class Bullet : Node2D {
     [Export] Area2D hitbox;
     [Export] Timer lifetimer;
 
-    float speed;
-    float lifetime;
-    float damage;
+    float speed = 0f;
+    float damage = 1f;
     Vector2 direction = Vector2.Right;
 
     public Node2D Source { get; set; }
@@ -18,8 +17,8 @@ public partial class Bullet : Node2D {
     }
 
     public float Lifetime {
-        get => lifetime;
-        set => lifetime = Mathf.Max(0f, value);
+        get => (float)lifetimer.WaitTime;
+        set => lifetimer.WaitTime = Mathf.Max(0f, value);
     }
 
     public float Damage {
@@ -38,8 +37,6 @@ public partial class Bullet : Node2D {
 
     public override void _Ready() {
         hitbox.BodyEntered += OnBodyEntered;
-
-        lifetimer.WaitTime = lifetime;
         lifetimer.Timeout += QueueFree;
         lifetimer.Start();
     }

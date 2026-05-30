@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
 [GlobalClass]
 public abstract partial class Character : CharacterBody2D, IDamageable {
+    public event Action Died;
 
     readonly Dictionary<CharacterStat, Stat> stats = [];
     Health health;
@@ -12,7 +14,9 @@ public abstract partial class Character : CharacterBody2D, IDamageable {
         this.data = data;
         stats[CharacterStat.Speed] = new Stat(data.Speed);
         stats[CharacterStat.MaxHp] = new Stat(data.MaxHp);
+
         health = new Health(stats[CharacterStat.MaxHp]);
+        health.Died += Die;
     }
 
     public float Get(CharacterStat stat) {
@@ -26,5 +30,10 @@ public abstract partial class Character : CharacterBody2D, IDamageable {
         if (data.HitSFX != null) {
             Audio.Instance.Play(data.HitSFX, Audio.BUS_SFX);
         }
+    }
+
+    public void Die() {
+        Died?.Invoke();
+        QueueFree();
     }
 }

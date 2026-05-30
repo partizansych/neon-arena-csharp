@@ -11,9 +11,15 @@ public partial class Main : Node2D {
     [Export] PackedScene playerScene;
     [Export] CharacterData playerData;
 
+    [ExportGroup("")]
+    [Export] WaveManager waveManager;
+
     public override void _Ready() {
         var player = CreatePlayer();
         player.EquipGun(primary);
+
+        waveManager.Player = player;
+        waveManager.StartWave();
     }
 
     private Player CreatePlayer() {

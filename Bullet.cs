@@ -46,11 +46,14 @@ public partial class Bullet : Node2D {
     }
 
     private void OnBodyEntered(Node2D body) {
-        Combat.Instance.Request(new DamageContext() {
-            Source = Source,
-            Target = body,
-            Damage = damage
-        });
+        if (body is IDamageable damageable) {
+            damageable.TakeDamage(Damage);
+        }
+        // Combat.Instance.Request(new DamageContext() {
+        //     Source = Source,
+        //     Target = body,
+        //     Damage = damage
+        // });
 
         QueueFree();
     }

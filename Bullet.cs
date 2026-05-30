@@ -42,6 +42,7 @@ public partial class Bullet : Node2D {
     }
 
     public override void _PhysicsProcess(double delta) {
+        Rotate(0.25f);
         GlobalPosition += direction * speed * (float)delta;
     }
 

@@ -3,15 +3,16 @@ using Godot;
 
 [GlobalClass]
 public abstract partial class Character : CharacterBody2D, IDamageable {
-    [Export] Health health;
 
     readonly Dictionary<CharacterStat, Stat> stats = [];
+    Health health;
     CharacterData data;
 
     public void Setup(CharacterData data) {
         this.data = data;
         stats[CharacterStat.Speed] = new Stat(data.Speed);
         stats[CharacterStat.MaxHp] = new Stat(data.MaxHp);
+        health = new Health(stats[CharacterStat.MaxHp]);
     }
 
     public float Get(CharacterStat stat) {

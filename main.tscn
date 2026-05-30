@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/glock.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://Gun.cs" id="2_kek77"]
-[ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://damage_popup.tscn" id="3_1bvp3"]
 [ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://resources/balance/ak47.tres" id="3_7mycd"]
-[ext_resource type="Script" uid="uid://cpydjbup06o1s" path="res://DamagePopupManager.cs" id="3_lquwl"]
 [ext_resource type="Resource" uid="uid://vd1aceblq4cw" path="res://resources/balance/player.tres" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://cn8csvm0p4o6d" path="res://arena.tscn" id="9_kek77"]
 
@@ -36,10 +34,6 @@ heavy = ExtResource("3_7mycd")
 playerScene = ExtResource("1_ig7tw")
 playerData = ExtResource("5_272bh")
 metadata/_custom_type_script = "uid://rw2h3q4mm5gq"
-
-[node name="DamagePopupManager" type="Node" parent="." unique_id=529290758]
-script = ExtResource("3_lquwl")
-PopupScene = ExtResource("3_1bvp3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
 zoom = Vector2(0.98, 0.98)

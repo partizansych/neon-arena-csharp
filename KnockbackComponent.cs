@@ -1,7 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class KnockbackHandler : Node2D {
+public partial class KnockbackComponent : Node2D {
     [Export] public float Friction = 100f;
 
     public Vector2 Velocity { get; private set; } = Vector2.Zero;

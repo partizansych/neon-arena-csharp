@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://GunController.cs" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="3_sweqy"]
-[ext_resource type="Script" uid="uid://c3d4q6paxuhmv" path="res://KnockbackHandler.cs" id="4_hqtel"]
+[ext_resource type="Script" path="res://KnockbackHandler.cs" id="4_hqtel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 16.0
@@ -21,7 +21,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_onrkg")
 health = NodePath("SimpleHealth")
-knockback = NodePath("KnockbackHandler")
+knockback = NodePath("KnockbackComponent")
 gunController = NodePath("GunController")
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
@@ -39,7 +39,7 @@ texture = SubResource("AtlasTexture_2hs0m")
 script = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="KnockbackHandler" type="Node2D" parent="." unique_id=2066918720]
+[node name="KnockbackComponent" type="Node2D" parent="." unique_id=2066918720]
 script = ExtResource("4_hqtel")
 metadata/_custom_type_script = "uid://c3d4q6paxuhmv"
 

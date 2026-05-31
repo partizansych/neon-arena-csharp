@@ -3,7 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Player : CharacterBody2D {
     [Export] SimpleHealth health;
-    [Export] KnockbackHandler knockback;
+    [Export] KnockbackComponent knockback;
     [Export] GunController gunController;
     [Export] public float Speed = 300f;
     [Export] public float MaxHp = 100f;

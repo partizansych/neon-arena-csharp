@@ -33,6 +33,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Neon Arena Csharp"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 move_left={

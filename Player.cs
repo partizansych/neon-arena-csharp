@@ -2,6 +2,7 @@ using Godot;
 
 [GlobalClass]
 public partial class Player : CharacterBody2D {
+    [Export] SimpleHealth health;
     [Export] KnockbackHandler knockback;
     [Export] GunController gunController;
     [Export] public float Speed = 300f;
@@ -9,10 +10,7 @@ public partial class Player : CharacterBody2D {
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
 
-    SimpleHealth health;
-
     public override void _Ready() {
-        health = new SimpleHealth(MaxHp);
         health.Died += OnDied;
     }
 

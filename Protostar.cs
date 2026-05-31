@@ -3,8 +3,8 @@ using Godot;
 
 [GlobalClass]
 public partial class Protostar : CharacterBody2D, IHittable {
+    [Export] SimpleHealth health;
     [Export] KnockbackHandler knockback;
-
     [Export] public float Speed = 150f;
     [Export] public float MaxHp = 100f;
     [Export] public AudioStream HitSFX;
@@ -12,12 +12,9 @@ public partial class Protostar : CharacterBody2D, IHittable {
 
     public event Action Died;
 
-    SimpleHealth health;
-
     public Node2D Target;
 
     public override void _Ready() {
-        health = new SimpleHealth(MaxHp);
         health.Died += OnDied;
     }
 

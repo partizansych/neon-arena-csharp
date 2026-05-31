@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GunData" format=3 uid="uid://cg40c3seu77lb"]
 
 [ext_resource type="Script" uid="uid://bl72wor8pslvu" path="res://GunData.cs" id="1_aucng"]
-[ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://bullet.tscn" id="1_g5i5h"]
+[ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://scenes/bullet.tscn" id="1_g5i5h"]
 
 [resource]
 script = ExtResource("1_aucng")

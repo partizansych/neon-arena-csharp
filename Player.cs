@@ -6,7 +6,9 @@ public partial class Player : Character {
 
     public override void _PhysicsProcess(double delta) {
         var direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-        Velocity = direction * Get(CharacterStat.Speed);
+        var inputVelocity = direction * Get(CharacterStat.Speed);
+        UpdateKnockback((float)delta);
+        Velocity = inputVelocity + Knockback;
         MoveAndSlide();
 
         if (Input.IsActionPressed("attack")) {

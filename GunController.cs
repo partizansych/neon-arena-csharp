@@ -61,7 +61,7 @@ public partial class GunController : Node2D {
 
         bullet.Lifetime = data.BulletLifetime;
         bullet.Speed = data.BulletSpeed;
-        bullet.Damage = data.Damage;
+        bullet.Gun = gun;
 
         GetTree().CurrentScene.AddChild(bullet);
     }

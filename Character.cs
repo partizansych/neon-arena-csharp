@@ -10,6 +10,9 @@ public abstract partial class Character : CharacterBody2D, IDamageable {
     Health health;
     CharacterData data;
 
+    [Export] public float KnockbackFriction = 100f;
+    public Vector2 Knockback { get; private set; } = Vector2.Zero;
+
     public void Setup(CharacterData data) {
         this.data = data;
         stats[CharacterStat.Speed] = new Stat(data.Speed);
@@ -35,5 +38,16 @@ public abstract partial class Character : CharacterBody2D, IDamageable {
     public void Die() {
         Died?.Invoke();
         QueueFree();
+    }
+
+    public void ApplyKnockback(Vector2 direction, float force) {
+        Knockback = direction.Normalized() * force;
+    }
+
+    protected void UpdateKnockback(float delta) {
+        Knockback = Knockback.MoveToward(
+            Vector2.Zero,
+            delta * KnockbackFriction
+        );
     }
 }

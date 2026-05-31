@@ -10,6 +10,7 @@ public partial class Bullet : Node2D {
     Vector2 direction = Vector2.Right;
 
     public Node2D Source { get; set; }
+    public Gun Gun { get; set; }
 
     public float Speed {
         get => speed;
@@ -19,11 +20,6 @@ public partial class Bullet : Node2D {
     public float Lifetime {
         get => (float)lifetimer.WaitTime;
         set => lifetimer.WaitTime = Mathf.Max(0f, value);
-    }
-
-    public float Damage {
-        get => damage;
-        set => damage = Mathf.Max(0f, value);
     }
 
     public Vector2 Direction {
@@ -47,14 +43,14 @@ public partial class Bullet : Node2D {
     }
 
     private void OnBodyEntered(Node2D body) {
-        if (body is IDamageable damageable) {
-            damageable.TakeDamage(Damage);
+        if (body is IDamageable) {
+            Combat.Instance.Request(new DamageContext() {
+                Source = Source,
+                Target = body,
+                HitPos = GlobalPosition,
+                Weapon = Gun,
+            });
         }
-        // Combat.Instance.Request(new DamageContext() {
-        //     Source = Source,
-        //     Target = body,
-        //     Damage = damage
-        // });
 
         QueueFree();
     }

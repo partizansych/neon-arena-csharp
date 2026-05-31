@@ -16,7 +16,7 @@ polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15,
 atlas = ExtResource("2_qi2p4")
 region = Rect2(64, 32, 48, 48)
 
-[node name="Protostar" type="CharacterBody2D" unique_id=1428730141 node_paths=PackedStringArray("health", "knockback")]
+[node name="Protostar" type="CharacterBody2D" unique_id=1428730141 node_paths=PackedStringArray("health", "knockback") groups=["enemies"]]
 script = ExtResource("1_qi2p4")
 health = NodePath("SimpleHealth")
 knockback = NodePath("KnockbackComponent")
@@ -44,4 +44,5 @@ metadata/_custom_type_script = "uid://dr27bvglteqf"
 
 [node name="KnockbackComponent" type="Node" parent="." unique_id=1750712706]
 script = ExtResource("5_wtloi")
+Friction = 150.0
 metadata/_custom_type_script = "uid://4mtebsodo65x"

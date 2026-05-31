@@ -14,6 +14,8 @@ public partial class Main : Node2D {
     [Export] WaveManager waveManager;
 
     public override void _Ready() {
+        // Engine.TimeScale = 0.2f;
+
         var player = CreatePlayer();
         player.EquipGun(primary);
 

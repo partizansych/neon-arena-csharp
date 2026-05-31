@@ -96,7 +96,7 @@ public partial class Player : CharacterBody2D {
             var data = gun.Data;
             currentSpreadDegrees += data.SpreadPerShot;
             currentSpreadDegrees = Mathf.Min(currentSpreadDegrees, data.SpreadMax);
-            knockback.Add(GetGlobalMousePosition().DirectionTo(GlobalPosition), 1000f);
+            knockback.Add(GetGlobalMousePosition().DirectionTo(GlobalPosition), 100f);
         }
     }
 

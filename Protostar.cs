@@ -31,16 +31,16 @@ public partial class Protostar : CharacterBody2D, IHittable {
             var chaseVelocity = direction * Speed;
 
             Velocity = chaseVelocity + knockback.Velocity;
-            MoveAndSlide();
+            Velocity *= (float)delta;
 
-            // var collision = MoveAndCollide(Velocity);
-            // if (collision != null) {
-            //     var node = collision.GetCollider() as Node2D;
-            //     if (node.IsInGroup("enemies")) {
-            //         var knockDir = node.GlobalPosition.DirectionTo(myPos);
-            //         knockback.Add(knockDir, 1f);
-            //     }
-            // }
+            var collision = MoveAndCollide(Velocity);
+            if (collision != null) {
+                var node = collision.GetCollider() as Node2D;
+                if (node.IsInGroup("enemies")) {
+                    var knockDir = node.GlobalPosition.DirectionTo(myPos);
+                    knockback.Add(knockDir, 10f);
+                }
+            }
         }
     }
 

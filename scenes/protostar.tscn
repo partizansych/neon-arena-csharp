@@ -42,7 +42,8 @@ texture = SubResource("AtlasTexture_epg4t")
 script = ExtResource("5_naxks")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="KnockbackComponent" type="Node" parent="." unique_id=1750712706]
+[node name="KnockbackComponent" type="Node2D" parent="." unique_id=724950002]
 script = ExtResource("5_wtloi")
-Friction = 150.0
+Damping = 8.0
+Debug = true
 metadata/_custom_type_script = "uid://4mtebsodo65x"

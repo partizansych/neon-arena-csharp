@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://6j37l73vl4tl" path="res://InputMovement.cs" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://4mtebsodo65x" path="res://KnockbackComponent.cs" id="4_sweqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
@@ -15,12 +16,14 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 atlas = ExtResource("2_hqtel")
 region = Rect2(0, 32, 32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "knockback")]
+[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "input", "knockback")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_onrkg")
 health = NodePath("SimpleHealth")
+input = NodePath("InputMovement")
 knockback = NodePath("KnockbackComponent")
+Debug = true
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
@@ -37,6 +40,13 @@ texture = SubResource("AtlasTexture_2hs0m")
 script = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="KnockbackComponent" type="Node" parent="." unique_id=894916813]
+[node name="InputMovement" type="Node2D" parent="." unique_id=696170450]
+script = ExtResource("4_qlg0r")
+Debug = true
+metadata/_custom_type_script = "uid://6j37l73vl4tl"
+
+[node name="KnockbackComponent" type="Node2D" parent="." unique_id=828526559]
 script = ExtResource("4_sweqy")
+Damping = 8.0
+Debug = true
 metadata/_custom_type_script = "uid://4mtebsodo65x"

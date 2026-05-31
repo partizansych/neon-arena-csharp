@@ -3,6 +3,8 @@ using Godot;
 
 [GlobalClass]
 public partial class Protostar : CharacterBody2D, IHittable {
+    public event Action Died;
+
     [Export] SimpleHealth health;
     [Export] KnockbackComponent knockback;
     [Export] public float Speed = 150f;
@@ -10,7 +12,10 @@ public partial class Protostar : CharacterBody2D, IHittable {
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
 
-    public event Action Died;
+    [ExportGroup("Debug")]
+    [Export] public bool Debug;
+    [Export] public float DebugCircleRadius = 2f;
+    [Export] public bool DebugLineMax;
 
     public Node2D Target;
 

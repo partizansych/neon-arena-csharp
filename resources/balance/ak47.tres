@@ -11,6 +11,5 @@ FireRate = 0.2
 ReloadTime = 1.4
 MaxAmmo = 30
 BulletSpeed = 500.0
-bulletScene = ExtResource("1_g5i5h")
-sounds = null
+BulletScene = ExtResource("1_g5i5h")
 metadata/_custom_type_script = "uid://bl72wor8pslvu"

@@ -4,7 +4,6 @@ using Godot;
 public partial class Player : CharacterBody2D {
     [Export] SimpleHealth health;
     [Export] KnockbackComponent knockback;
-    [Export] GunController gunController;
     [Export] public float Speed = 300f;
     [Export] public float MaxHp = 100f;
     [Export] public AudioStream HitSFX;
@@ -21,16 +20,23 @@ public partial class Player : CharacterBody2D {
         Velocity = inputVelocity + knockback.Velocity;
         MoveAndSlide();
 
+        if (gun != null) {
+            gun.Tick((float)delta);
+
+            var data = gun.Data;
+            currentSpreadDegrees -= data.SpreadRecoveryRate * (float)delta;
+            currentSpreadDegrees = Mathf.Max(currentSpreadDegrees, data.SpreadMin);
+        }
+        else {
+            currentSpreadDegrees = 0f;
+        }
+
         if (Input.IsActionPressed("attack")) {
-            gunController.DoShot();
+            DoShot();
         }
         if (Input.IsKeyPressed(Key.R)) {
-            gunController.StartReload();
+            StartReload();
         }
-    }
-
-    public void EquipGun(GunData data) {
-        gunController.Equip(data);
     }
 
     public void TakeDamage(float amount) {
@@ -45,5 +51,79 @@ public partial class Player : CharacterBody2D {
         if (DeathSFX != null) {
             Audio.Instance.Play(HitSFX, Audio.BUS_SFX);
         }
+    }
+
+    Gun gun;
+    float currentSpreadDegrees;
+
+    public void EquipGun(GunData data) {
+        if (gun != null) {
+            gun.ReloadEnded -= OnReloadEnded;
+        }
+
+        gun = new Gun(data);
+        gun.ReloadEnded += OnReloadEnded;
+    }
+
+    public void DoShot() {
+        if (gun != null && gun.TryDoShot()) {
+            SpawnBullet();
+
+            var sfx = gun.Data.ShotSFX;
+            if (sfx != null) {
+                Audio.Instance.Play(sfx, Audio.BUS_SFX);
+            }
+
+            var data = gun.Data;
+            currentSpreadDegrees += data.SpreadPerShot;
+            currentSpreadDegrees = Mathf.Min(currentSpreadDegrees, data.SpreadMax);
+        }
+    }
+
+    public void StartReload() {
+        if (gun != null && gun.TryStartReload()) {
+            var sfx = gun.Data.ReloadStartSFX;
+            if (sfx != null) {
+                Audio.Instance.Play(sfx, Audio.BUS_SFX);
+            }
+        }
+    }
+
+    private void OnReloadEnded() {
+        var sfx = gun.Data.ReloadEndSFX;
+        if (sfx != null) {
+            Audio.Instance.Play(sfx, Audio.BUS_SFX);
+        }
+    }
+
+    private void SpawnBullet() {
+        if (gun.Data.BulletScene == null) {
+            return;
+        }
+
+        var bullet = gun.Data.BulletScene.Instantiate<Bullet>();
+        bullet.GlobalPosition = GlobalPosition;
+
+        bullet.Direction = GetSpreadDirection();
+        bullet.Source = this;
+        bullet.Damage = gun.Data.Damage;
+        bullet.Lifetime = gun.Data.BulletLifetime;
+        bullet.Speed = gun.Data.BulletSpeed;
+        bullet.KnockbackForce = 100f; //TODO: заменить на статы
+
+        GetTree().CurrentScene.AddChild(bullet);
+    }
+
+    private Vector2 GetSpreadDirection() {
+        var startDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        var maxAngleRad = Mathf.DegToRad(currentSpreadDegrees);
+
+        float offset;
+
+        do {
+            offset = (float)GD.Randfn(0f, maxAngleRad);
+        } while (offset > maxAngleRad || offset < -maxAngleRad);
+
+        return startDirection.Rotated(offset);
     }
 }

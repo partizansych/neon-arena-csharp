@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
-[ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://GunController.cs" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://4mtebsodo65x" path="res://KnockbackComponent.cs" id="4_sweqy"]
 
@@ -16,13 +15,12 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 atlas = ExtResource("2_hqtel")
 region = Rect2(0, 32, 32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "knockback", "gunController")]
+[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "knockback")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_onrkg")
 health = NodePath("SimpleHealth")
 knockback = NodePath("KnockbackComponent")
-gunController = NodePath("GunController")
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
@@ -42,7 +40,3 @@ metadata/_custom_type_script = "uid://dr27bvglteqf"
 [node name="KnockbackComponent" type="Node" parent="." unique_id=894916813]
 script = ExtResource("4_sweqy")
 metadata/_custom_type_script = "uid://4mtebsodo65x"
-
-[node name="GunController" type="Node2D" parent="." unique_id=1996256321]
-script = ExtResource("3_i3pqv")
-metadata/_custom_type_script = "uid://7slvm27ryipw"

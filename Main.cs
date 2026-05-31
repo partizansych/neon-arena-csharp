@@ -9,7 +9,6 @@ public partial class Main : Node2D {
 
     [ExportGroup("Настройка игрока")]
     [Export] PackedScene playerScene;
-    [Export] CharacterData playerData;
 
     [ExportGroup("")]
     [Export] WaveManager waveManager;
@@ -24,7 +23,6 @@ public partial class Main : Node2D {
 
     private Player CreatePlayer() {
         var player = playerScene.Instantiate<Player>();
-        player.Setup(playerData);
         AddChild(player);
         return player;
     }

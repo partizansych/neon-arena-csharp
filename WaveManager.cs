@@ -3,7 +3,6 @@ using Godot;
 [GlobalClass]
 public partial class WaveManager : Node {
     [Export] public PackedScene EnemyScene;
-    [Export] public CharacterData EnemyData;
     [Export] public int EnemiesPerWave = 5;
     [Export] public float SpawnDelay = 1f;
 
@@ -27,10 +26,9 @@ public partial class WaveManager : Node {
     }
 
     private void SpawnEnemy() {
-        var enemy = EnemyScene.Instantiate<Enemy>();
+        var enemy = EnemyScene.Instantiate<Protostar>();
         enemy.GlobalPosition = GetRandomPos(Vector2.Zero);
         enemy.Target = Player;
-        enemy.Setup(EnemyData);
         AddChild(enemy);
 
         enemiesAlive++;

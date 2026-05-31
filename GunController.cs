@@ -58,10 +58,10 @@ public partial class GunController : Node2D {
         bullet.GlobalPosition = GlobalPosition;
         bullet.Direction = GetSpreadDirection();
         bullet.Source = this;
-
+        bullet.Damage = data.Damage;
         bullet.Lifetime = data.BulletLifetime;
         bullet.Speed = data.BulletSpeed;
-        bullet.Gun = gun;
+        bullet.KnockbackForce = 100f; //TODO: заменить на статы
 
         GetTree().CurrentScene.AddChild(bullet);
     }

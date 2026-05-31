@@ -5,10 +5,8 @@
 [ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/glock.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://Gun.cs" id="2_kek77"]
 [ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://resources/balance/ak47.tres" id="3_7mycd"]
-[ext_resource type="Resource" uid="uid://vd1aceblq4cw" path="res://resources/balance/player.tres" id="5_272bh"]
 [ext_resource type="Script" uid="uid://dxfrnxc2b5mjn" path="res://WaveManager.cs" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://enemy.tscn" id="8_kek77"]
-[ext_resource type="Script" uid="uid://pbel12e8xb7m" path="res://CharacterData.cs" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://protostar.tscn" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://cn8csvm0p4o6d" path="res://arena.tscn" id="9_kek77"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
@@ -29,25 +27,18 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_efxa6"]
-script = ExtResource("9_4c57u")
-Speed = 150.0
-metadata/_custom_type_script = "uid://pbel12e8xb7m"
-
 [node name="Main" type="Node2D" unique_id=490296911 node_paths=PackedStringArray("waveManager")]
 script = ExtResource("1_1bvp3")
 gunScene = SubResource("PackedScene_efxa6")
 primary = ExtResource("2_7mycd")
 heavy = ExtResource("3_7mycd")
 playerScene = ExtResource("1_ig7tw")
-playerData = ExtResource("5_272bh")
 waveManager = NodePath("WaveManager")
 metadata/_custom_type_script = "uid://rw2h3q4mm5gq"
 
 [node name="WaveManager" type="Node" parent="." unique_id=1263288687]
 script = ExtResource("8_5vw27")
 EnemyScene = ExtResource("8_kek77")
-EnemyData = SubResource("Resource_efxa6")
 metadata/_custom_type_script = "uid://dxfrnxc2b5mjn"
 
 [node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("9_kek77")]

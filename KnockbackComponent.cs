@@ -18,8 +18,8 @@ public partial class KnockbackComponent : Node2D {
 
     public override void _PhysicsProcess(double delta) {
         if (!Velocity.IsZeroApprox()) {
-            // Velocity = Velocity.Lerp(Vector2.Zero, 1f - Mathf.Exp(-Damping * (float)delta));
-            Velocity *= Mathf.Max(0f, 1f - Damping * (float)delta);
+            Velocity = Velocity.Lerp(Vector2.Zero, 1f - Mathf.Exp(-Damping * (float)delta));
+            // Velocity *= Mathf.Max(0f, 1f - Damping * (float)delta);
         }
 
         if (Debug)

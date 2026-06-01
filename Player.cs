@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Player : CharacterBody2D {
     [Export] SimpleHealth health;
+    [Export] GunController gun;
     [Export] InputMovement input;
     [Export] KnockbackComponent knockback;
     [Export] VelocityDebugger debugger;
@@ -11,6 +12,7 @@ public partial class Player : CharacterBody2D {
 
     public override void _Ready() {
         health.Died += OnDied;
+        gun.Shot += OnGunShot;
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -21,23 +23,17 @@ public partial class Player : CharacterBody2D {
             debugger.CurrentVelocity = Velocity;
         }
 
-        if (gun != null) {
-            gun.Tick((float)delta);
-
-            var data = gun.Data;
-            currentSpreadDegrees -= data.SpreadRecoveryRate * (float)delta;
-            currentSpreadDegrees = Mathf.Max(currentSpreadDegrees, data.SpreadMin);
-        }
-        else {
-            currentSpreadDegrees = 0f;
-        }
-
         if (Input.IsActionPressed("attack")) {
-            DoShot();
+            var direction = GetDirectionToMouse();
+            gun.DoShot(direction);
         }
         if (Input.IsKeyPressed(Key.R)) {
-            StartReload();
+            gun.StartReload();
         }
+    }
+
+    public void EquipGun(GunData data) {
+        gun.Equip(data);
     }
 
     public void TakeDamage(float amount) {
@@ -47,6 +43,11 @@ public partial class Player : CharacterBody2D {
         }
     }
 
+    private void OnGunShot() {
+        var direction = -GetDirectionToMouse();
+        knockback.Add(direction, 100f);
+    }
+
     private void OnDied() {
         QueueFree();
         if (DeathSFX != null) {
@@ -54,78 +55,8 @@ public partial class Player : CharacterBody2D {
         }
     }
 
-    Gun gun;
-    float currentSpreadDegrees;
-
-    public void EquipGun(GunData data) {
-        if (gun != null) {
-            gun.ReloadEnded -= OnReloadEnded;
-        }
-
-        gun = new Gun(data);
-        gun.ReloadEnded += OnReloadEnded;
-    }
-
-    public void DoShot() {
-        if (gun != null && gun.TryDoShot()) {
-            SpawnBullet();
-
-            var sfx = gun.Data.ShotSFX;
-            if (sfx != null) {
-                Audio.Instance.Play(sfx, Audio.BUS_SFX);
-            }
-
-            var data = gun.Data;
-            currentSpreadDegrees += data.SpreadPerShot;
-            currentSpreadDegrees = Mathf.Min(currentSpreadDegrees, data.SpreadMax);
-            knockback.Add(GetGlobalMousePosition().DirectionTo(GlobalPosition), 100f);
-        }
-    }
-
-    public void StartReload() {
-        if (gun != null && gun.TryStartReload()) {
-            var sfx = gun.Data.ReloadStartSFX;
-            if (sfx != null) {
-                Audio.Instance.Play(sfx, Audio.BUS_SFX);
-            }
-        }
-    }
-
-    private void OnReloadEnded() {
-        var sfx = gun.Data.ReloadEndSFX;
-        if (sfx != null) {
-            Audio.Instance.Play(sfx, Audio.BUS_SFX);
-        }
-    }
-
-    private void SpawnBullet() {
-        if (gun.Data.BulletScene == null) {
-            return;
-        }
-
-        var bullet = gun.Data.BulletScene.Instantiate<Bullet>();
-        bullet.GlobalPosition = GlobalPosition;
-
-        bullet.Direction = GetSpreadDirection();
-        bullet.Source = this;
-        bullet.Damage = gun.Data.Damage;
-        bullet.Lifetime = gun.Data.BulletLifetime;
-        bullet.Speed = gun.Data.BulletSpeed;
-        bullet.KnockbackForce = 100f; //TODO: заменить на статы
-
-        GetTree().CurrentScene.AddChild(bullet);
-    }
-
-    private Vector2 GetSpreadDirection() {
-        var startDirection = GlobalPosition.DirectionTo(GetGlobalMousePosition());
-        var maxAngleRad = Mathf.DegToRad(currentSpreadDegrees);
-
-        float offset;
-
-        do {
-            offset = (float)GD.Randfn(0f, maxAngleRad);
-        } while (offset > maxAngleRad || offset < -maxAngleRad);
-
-        return startDirection.Rotated(offset);
+    private Vector2 GetDirectionToMouse() {
+        var mousePos = GetGlobalMousePosition();
+        return GlobalPosition.DirectionTo(mousePos);
     }
 }

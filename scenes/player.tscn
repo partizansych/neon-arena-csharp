@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="3_sweqy"]
+[ext_resource type="PackedScene" uid="uid://iroqhiw1a75m" path="res://scenes/components/gun_controller.tscn" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ddl4ahdfmsmmh" path="res://scenes/components/input_movement.tscn" id="4_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://VelocityDebugger.cs" id="6_tuyoq"]
@@ -17,10 +18,11 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 atlas = ExtResource("2_hqtel")
 region = Rect2(0, 32, 32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "input", "knockback", "debugger")]
+[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "gun", "input", "knockback", "debugger")]
 collision_layer = 2
 script = ExtResource("1_onrkg")
 health = NodePath("SimpleHealth")
+gun = NodePath("GunController")
 input = NodePath("InputMovement")
 knockback = NodePath("KnockbackComponent")
 debugger = NodePath("VelocityDebugger")
@@ -39,6 +41,8 @@ texture = SubResource("AtlasTexture_2hs0m")
 [node name="SimpleHealth" type="Node" parent="." unique_id=246919758]
 script = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
+
+[node name="GunController" parent="." unique_id=3852226 instance=ExtResource("4_fjrip")]
 
 [node name="InputMovement" parent="." unique_id=1053472044 instance=ExtResource("4_tuyoq")]
 

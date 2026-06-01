@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://iroqhiw1a75m"]
+
+[ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://GunController.cs" id="1_p12n5"]
+
+[node name="GunController" type="Node2D" unique_id=3852226 node_paths=PackedStringArray("shotTimer", "reloadTimer")]
+script = ExtResource("1_p12n5")
+shotTimer = NodePath("ShotTimer")
+reloadTimer = NodePath("ReloadTimer")
+metadata/_custom_type_script = "uid://7slvm27ryipw"
+
+[node name="ShotTimer" type="Timer" parent="." unique_id=1814084484]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=575103378]
+one_shot = true

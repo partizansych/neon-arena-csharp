@@ -19,6 +19,7 @@ public partial class GunController : Node2D {
     }
 
     public override void _Process(double delta) {
+        // Чтобы если что видеть debug линию нормально
         spread.LookAt(GetGlobalMousePosition());
     }
 

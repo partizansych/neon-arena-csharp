@@ -45,5 +45,4 @@ metadata/_custom_type_script = "uid://dr27bvglteqf"
 [node name="KnockbackComponent" type="Node2D" parent="." unique_id=724950002]
 script = ExtResource("5_wtloi")
 Damping = 8.0
-Debug = true
 metadata/_custom_type_script = "uid://4mtebsodo65x"

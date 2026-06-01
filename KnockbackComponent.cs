@@ -27,6 +27,7 @@ public partial class KnockbackComponent : Node2D {
     }
 
     public override void _Draw() {
+        if (!Debug) return;
         DrawSetTransformMatrix(GlobalTransform.AffineInverse());
         var scaledVector = Velocity * (DebugMaxLineLength / 400f);
         var start = GlobalPosition;

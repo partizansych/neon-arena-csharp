@@ -7,8 +7,9 @@
 script = ExtResource("2_kfl20")
 Id = "glock"
 Damage = 33.0
-FireRate = 0.08
-BulletSpeed = 400.0
+FireRate = 0.02
+MaxAmmo = 100
+BulletSpeed = 800.0
 SpreadMax = 10.0
 BulletScene = ExtResource("1_k37c7")
 metadata/_custom_type_script = "uid://bl72wor8pslvu"

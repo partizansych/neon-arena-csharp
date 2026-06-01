@@ -5,16 +5,9 @@ public partial class Player : CharacterBody2D {
     [Export] SimpleHealth health;
     [Export] InputMovement input;
     [Export] KnockbackComponent knockback;
+    [Export] VelocityDebugger debugger;
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
-
-    [ExportGroup("Debug")]
-    [Export] public bool Debug;
-    [Export] public Color DebugColor = Colors.Red;
-    [Export] public float DebugCircleRadius = 2.5f;
-    [Export] public float DebugMaxLineLength = 100f;
-    [Export] public int DebugFontSize = 14;
-    [Export] public Vector2 DebugFontOffset = new(8, -5);
 
     public override void _Ready() {
         health.Died += OnDied;
@@ -24,8 +17,9 @@ public partial class Player : CharacterBody2D {
         Velocity = input.Velocity + knockback.Velocity;
         MoveAndSlide();
 
-        if (Debug)
-            QueueRedraw();
+        if (debugger != null) {
+            debugger.CurrentVelocity = Velocity;
+        }
 
         if (gun != null) {
             gun.Tick((float)delta);
@@ -44,19 +38,6 @@ public partial class Player : CharacterBody2D {
         if (Input.IsKeyPressed(Key.R)) {
             StartReload();
         }
-    }
-
-    public override void _Draw() {
-        if (!Debug) return;
-        DrawSetTransformMatrix(GlobalTransform.AffineInverse());
-        var scaledVector = Velocity * (DebugMaxLineLength / 400f);
-        var start = GlobalPosition;
-        var end = start + scaledVector;
-        DrawLine(start, end, DebugColor);
-        DrawCircle(end, DebugCircleRadius, DebugColor);
-        var font = ThemeDB.FallbackFont;
-        var text = Mathf.Round(Velocity.Length()).ToString();
-        DrawString(font, end + DebugFontOffset, text, fontSize: DebugFontSize);
     }
 
     public void TakeDamage(float amount) {

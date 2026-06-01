@@ -12,11 +12,6 @@ public partial class Protostar : CharacterBody2D, IHittable {
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
 
-    [ExportGroup("Debug")]
-    [Export] public bool Debug;
-    [Export] public float DebugCircleRadius = 2f;
-    [Export] public bool DebugLineMax;
-
     public Node2D Target;
 
     public override void _Ready() {

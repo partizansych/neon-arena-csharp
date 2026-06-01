@@ -5,6 +5,7 @@ using Godot;
 public partial class GunController : Node2D {
     [Export] Timer shotTimer;
     [Export] Timer reloadTimer;
+    [Export] SpreadComponent spread;
 
     public event Action Shot;
     public event Action ReloadStarted;
@@ -12,20 +13,13 @@ public partial class GunController : Node2D {
 
     GunData data;
     int ammo;
-    float currentSpreadDegrees;
 
     public override void _Ready() {
         reloadTimer.Timeout += OnReloadEnded;
     }
 
-    public override void _PhysicsProcess(double delta) {
-        if (data == null) {
-            currentSpreadDegrees = 0f;
-            return;
-        }
-
-        currentSpreadDegrees -= data.SpreadRecoveryRate * (float)delta;
-        currentSpreadDegrees = Mathf.Max(currentSpreadDegrees, data.SpreadMin);
+    public override void _Process(double delta) {
+        spread.LookAt(GetGlobalMousePosition());
     }
 
     public void Equip(GunData data) {
@@ -42,9 +36,9 @@ public partial class GunController : Node2D {
         ammo--;
 
         shotTimer.Start(data.FireRate);
+        spread.Apply(3f);
         SpawnBullet(direction);
         SpawnSFX(data.ShotSFX);
-        AddSpread();
         // AddKnockback(); это уже сделает сама сущность, та, которой действительно это нужно
         Shot?.Invoke();
     }
@@ -71,7 +65,7 @@ public partial class GunController : Node2D {
         var bullet = data.BulletScene.Instantiate<Bullet>();
         bullet.GlobalPosition = GlobalPosition;
 
-        bullet.Direction = GetSpreadDirection(direction);
+        bullet.Direction = spread.ModifyDirection(direction);
         bullet.Source = this;
         bullet.Damage = data.Damage;
         bullet.Lifetime = data.BulletLifetime;
@@ -85,22 +79,5 @@ public partial class GunController : Node2D {
         if (sfx != null) {
             Audio.Instance.Play(sfx, Audio.BUS_SFX);
         }
-    }
-
-    private void AddSpread() {
-        currentSpreadDegrees += data.SpreadPerShot;
-        currentSpreadDegrees = Mathf.Min(currentSpreadDegrees, data.SpreadMax);
-    }
-
-    private Vector2 GetSpreadDirection(Vector2 startDirection) {
-        var maxAngleRad = Mathf.DegToRad(currentSpreadDegrees);
-
-        float offset;
-
-        do {
-            offset = (float)GD.Randfn(0f, maxAngleRad);
-        } while (offset > maxAngleRad || offset < -maxAngleRad);
-
-        return startDirection.Rotated(offset);
     }
 }

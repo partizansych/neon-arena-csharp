@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://00ypqly7knae"]
 
 [ext_resource type="Script" uid="uid://d14x0dn34vbpt" path="res://Protostar.cs" id="1_qi2p4"]
-[ext_resource type="AudioStream" uid="uid://c1r4vkd6s7u4v" path="res://assets/audio/DSGNMisc_SKILL IMPACT-Highest Laser_HY_PC-001.wav" id="2_iifgy"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_qi2p4"]
-[ext_resource type="AudioStream" uid="uid://owfucdlrehxc" path="res://assets/audio/DSGNImpt_EXPLOSION-Cruncher_HY_PC-001.wav" id="3_epg4t"]
+[ext_resource type="AudioStream" uid="uid://cg171nyqajvun" path="res://assets/audio/STEP-Sandals on Ground-001.wav" id="2_ywnt3"]
+[ext_resource type="AudioStream" uid="uid://dnijcwn8pwve2" path="res://assets/audio/USABLE-Coin Spend-005.wav" id="3_1vkwb"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="5_naxks"]
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
 
@@ -22,8 +22,8 @@ collision_mask = 7
 script = ExtResource("1_qi2p4")
 health = NodePath("SimpleHealth")
 knockback = NodePath("KnockbackComponent")
-HitSFX = ExtResource("2_iifgy")
-DeathSFX = ExtResource("3_epg4t")
+HitSFX = ExtResource("2_ywnt3")
+DeathSFX = ExtResource("3_1vkwb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
 shape = SubResource("CircleShape2D_iifgy")

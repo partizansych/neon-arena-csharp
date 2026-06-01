@@ -46,7 +46,7 @@ public partial class Protostar : CharacterBody2D, IHittable {
     public void TakeDamage(float amount) {
         health.Reduce(amount);
         if (HitSFX != null) {
-            Audio.Instance.Play(HitSFX, Audio.BUS_SFX);
+            Audio.Instance.PlayJuicySFX(HitSFX);
         }
     }
 
@@ -60,10 +60,10 @@ public partial class Protostar : CharacterBody2D, IHittable {
     }
 
     private void OnDied() {
+        if (DeathSFX != null) {
+            Audio.Instance.PlayJuicySFX(DeathSFX);
+        }
         Died?.Invoke();
         QueueFree();
-        if (DeathSFX != null) {
-            Audio.Instance.Play(HitSFX, Audio.BUS_SFX);
-        }
     }
 }

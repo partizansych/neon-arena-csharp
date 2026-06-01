@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bnq7g506ckpn6"]
 
 [ext_resource type="PackedScene" uid="uid://dhnlp48firub" path="res://scenes/bullet.tscn" id="1_k37c7"]
+[ext_resource type="AudioStream" uid="uid://d3mui7dqtr78f" path="res://assets/audio/USABLE-Generic Item-005.wav" id="2_7wy2b"]
 [ext_resource type="Script" uid="uid://bl72wor8pslvu" path="res://GunData.cs" id="2_kfl20"]
+[ext_resource type="AudioStream" uid="uid://ds4lq1rlinxbi" path="res://assets/audio/USABLE-Magic Item-005.wav" id="3_77fjx"]
+[ext_resource type="AudioStream" uid="uid://bnx0r2v38hpyj" path="res://assets/audio/STEP-Bubblier Step-001.wav" id="4_j1yrw"]
 
 [resource]
 script = ExtResource("2_kfl20")
@@ -12,4 +15,7 @@ MaxAmmo = 100
 BulletSpeed = 800.0
 SpreadMax = 10.0
 BulletScene = ExtResource("1_k37c7")
+ShotSFX = ExtResource("4_j1yrw")
+ReloadStartSFX = ExtResource("3_77fjx")
+ReloadEndSFX = ExtResource("2_7wy2b")
 metadata/_custom_type_script = "uid://bl72wor8pslvu"

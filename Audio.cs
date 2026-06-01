@@ -13,14 +13,21 @@ public partial class Audio : Node {
         Instance = this;
     }
 
-    public void Play(AudioStream sound, string busName = BUS_MASTER, Action<AudioStreamPlayer2D> configure = null) {
+    public void Play(AudioStream sfx, string busName = BUS_MASTER, Action<AudioStreamPlayer2D> configure = null) {
         var player = new AudioStreamPlayer2D {
-            Stream = sound,
+            Stream = sfx,
             Bus = busName
         };
         configure?.Invoke(player);
         player.Finished += player.QueueFree;
         AddChild(player);
         player.Play();
+    }
+
+    public void PlayJuicySFX(AudioStream sfx) {
+        Play(sfx, BUS_SFX, (player) => {
+            player.PitchScale = (float)GD.RandRange(0.85f, 1.15f);
+            player.VolumeDb = (float)GD.RandRange(-1f, 2f);
+        });
     }
 }

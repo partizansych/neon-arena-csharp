@@ -78,7 +78,7 @@ public partial class GunController : Node2D {
 
     private static void SpawnSFX(AudioStream sfx) {
         if (sfx != null) {
-            Audio.Instance.Play(sfx, Audio.BUS_SFX);
+            Audio.Instance.PlayJuicySFX(sfx);
         }
     }
 }

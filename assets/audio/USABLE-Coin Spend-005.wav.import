@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnijcwn8pwve2"
+path="res://.godot/imported/USABLE-Coin Spend-005.wav-95ec79eb05fc7d33198dccc1432fbb4d.sample"
+
+[deps]
+
+source_file="res://assets/audio/USABLE-Coin Spend-005.wav"
+dest_files=["res://.godot/imported/USABLE-Coin Spend-005.wav-95ec79eb05fc7d33198dccc1432fbb4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

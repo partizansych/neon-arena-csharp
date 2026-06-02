@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
+radius = 12.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4gyqm"]
 polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
@@ -28,15 +29,11 @@ DeathSFX = ExtResource("3_1vkwb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
 shape = SubResource("CircleShape2D_iifgy")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=853394030]
-visible = false
-polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1195056931]
 occluder = SubResource("OccluderPolygon2D_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469454976]
-modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(4, 0)
 texture = SubResource("AtlasTexture_epg4t")
 

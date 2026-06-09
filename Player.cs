@@ -51,7 +51,7 @@ public partial class Player : CharacterBody2D {
     private void OnDied() {
         QueueFree();
         if (DeathSFX != null) {
-            Audio.Instance.Play(HitSFX, Audio.BUS_SFX);
+            Audio.Instance.Play(DeathSFX, Audio.BUS_SFX);
         }
     }
 

@@ -71,7 +71,7 @@ public partial class GunController : Node2D {
         bullet.Damage = data.Damage;
         bullet.Lifetime = data.BulletLifetime;
         bullet.Speed = data.BulletSpeed;
-        bullet.KnockbackForce = 100f; //TODO: заменить на статы
+        bullet.KnockbackForce = 300f; //TODO: заменить на статы
 
         GetTree().CurrentScene.AddChild(bullet); // TODO: заменить на сервис
     }

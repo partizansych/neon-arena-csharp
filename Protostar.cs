@@ -32,7 +32,9 @@ public partial class Protostar : CharacterBody2D, IHittable {
     }
 
     public override void _Process(double delta) {
-        LookAt(Target.GlobalPosition);
+        if (Target != null) {
+            LookAt(Target.GlobalPosition);
+        }
     }
 
     public void TakeDamage(float amount) {

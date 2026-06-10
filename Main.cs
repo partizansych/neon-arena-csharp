@@ -2,6 +2,8 @@ using Godot;
 
 [GlobalClass]
 public partial class Main : Node2D {
+    [Export] public float TimeScale = 1f;
+
     [ExportGroup("Первоначальные оружия")]
     [Export] PackedScene gunScene;
     [Export] GunData primary;
@@ -14,7 +16,7 @@ public partial class Main : Node2D {
     [Export] WaveManager waveManager;
 
     public override void _Ready() {
-        // Engine.TimeScale = 0.2f;
+        Engine.TimeScale = TimeScale;
 
         var player = CreatePlayer();
         player.EquipGun(primary);

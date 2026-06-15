@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://00ypqly7knae"]
 
 [ext_resource type="Script" uid="uid://d14x0dn34vbpt" path="res://Protostar.cs" id="1_qi2p4"]
-[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_qi2p4"]
 [ext_resource type="AudioStream" uid="uid://cg171nyqajvun" path="res://assets/audio/STEP-Sandals on Ground-001.wav" id="2_ywnt3"]
 [ext_resource type="AudioStream" uid="uid://dnijcwn8pwve2" path="res://assets/audio/USABLE-Coin Spend-005.wav" id="3_1vkwb"]
+[ext_resource type="Texture2D" uid="uid://0rtctif3i8ft" path="res://assets/textures/neon_arena_protostar.png" id="4_ywnt3"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="5_naxks"]
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
 
@@ -12,10 +12,6 @@ radius = 12.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4gyqm"]
 polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
-atlas = ExtResource("2_qi2p4")
-region = Rect2(64, 32, 48, 48)
 
 [node name="Protostar" type="CharacterBody2D" unique_id=1428730141 node_paths=PackedStringArray("health", "knockback") groups=["enemies"]]
 collision_layer = 4
@@ -35,7 +31,7 @@ occluder = SubResource("OccluderPolygon2D_4gyqm")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469454976]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(4, 0)
-texture = SubResource("AtlasTexture_epg4t")
+texture = ExtResource("4_ywnt3")
 
 [node name="SimpleHealth" type="Node" parent="." unique_id=470205701]
 script = ExtResource("5_naxks")

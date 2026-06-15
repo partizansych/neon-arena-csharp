@@ -29,7 +29,6 @@ _bundled = {
 
 [node name="Main" type="Node2D" unique_id=490296911 node_paths=PackedStringArray("waveManager")]
 script = ExtResource("1_1bvp3")
-TimeScale = 0.2
 gunScene = SubResource("PackedScene_efxa6")
 primary = ExtResource("2_7mycd")
 heavy = ExtResource("3_7mycd")

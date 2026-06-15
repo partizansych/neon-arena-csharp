@@ -11,6 +11,10 @@ public partial class DashComponent : Node2D {
     [Export] public float Steering = 8f;
     [Export] public float Cooldown = 1.0f;
 
+    // Вообще, я хотел вынести кулдаун из компонента,
+    // но, осознав, сколько мне нужно будет дублировать логику кулдауна
+    // в классах, которые пользуются компонентом, я передумал.
+
     public Vector2 Velocity { get; private set; }
     public bool IsDashing => dashTimer > 0f;
 

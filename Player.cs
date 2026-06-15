@@ -18,12 +18,7 @@ public partial class Player : CharacterBody2D {
     }
 
     public override void _PhysicsProcess(double delta) {
-        Velocity = input.Direction * Speed + knockback.Velocity;
-        MoveAndSlide();
-
-        if (debugger != null) {
-            debugger.CurrentVelocity = Velocity;
-        }
+        HandleMovement();
 
         if (Input.IsActionPressed("attack")) {
             var direction = GetDirectionToMouse();
@@ -45,6 +40,28 @@ public partial class Player : CharacterBody2D {
         }
     }
 
+    private void HandleMovement() {
+        if (Input.IsActionJustPressed("dash") && input.Direction != Vector2.Zero) {
+            dash.Start(input.Direction);
+        }
+
+        if (dash.IsDashing) {
+            dash.SetSteeringDirection(input.Direction);
+        }
+
+        Velocity = dash.IsDashing ? dash.Velocity : (input.Direction * Speed + knockback.Velocity);
+        MoveAndSlide();
+
+        if (debugger != null) {
+            debugger.CurrentVelocity = Velocity;
+        }
+    }
+
+    private Vector2 GetDirectionToMouse() {
+        var mousePos = GetGlobalMousePosition();
+        return GlobalPosition.DirectionTo(mousePos);
+    }
+
     private void OnGunShot() {
         var direction = -GetDirectionToMouse();
         knockback.Add(direction, 100f);
@@ -55,10 +72,5 @@ public partial class Player : CharacterBody2D {
         if (DeathSFX != null) {
             Audio.Instance.Play(DeathSFX, Audio.BUS_SFX);
         }
-    }
-
-    private Vector2 GetDirectionToMouse() {
-        var mousePos = GetGlobalMousePosition();
-        return GlobalPosition.DirectionTo(mousePos);
     }
 }

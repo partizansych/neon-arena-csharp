@@ -2,10 +2,12 @@ using Godot;
 
 [GlobalClass]
 public partial class Player : CharacterBody2D {
+    [Export] public float Speed = 300f;
     [Export] SimpleHealth health;
     [Export] GunController gun;
     [Export] InputMovement input;
     [Export] KnockbackComponent knockback;
+    [Export] DashComponent dash;
     [Export] VelocityDebugger debugger;
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
@@ -16,7 +18,7 @@ public partial class Player : CharacterBody2D {
     }
 
     public override void _PhysicsProcess(double delta) {
-        Velocity = input.Velocity + knockback.Velocity;
+        Velocity = input.Direction * Speed + knockback.Velocity;
         MoveAndSlide();
 
         if (debugger != null) {

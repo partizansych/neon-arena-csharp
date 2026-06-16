@@ -6,7 +6,7 @@ public partial class DashComponent : Node2D {
     public event Action Started;
     public event Action Finished;
 
-    [Export] public float Speed = 700f;
+    [Export] public float Speed = 700f; // если нужно скейлить скорость коэффициентом, делать в использующем классе
     [Export] public float Duration = 0.27f;
     [Export] public float Steering = 8f;
     [Export] public float Cooldown = 1.0f;

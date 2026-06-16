@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_hqtel"]
+[ext_resource type="AudioStream" uid="uid://bjl5nbacv2olf" path="res://assets/audio/SKILL RELEASE-Small Bark-001.wav" id="2_ur7pv"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://SimpleHealth.cs" id="3_sweqy"]
 [ext_resource type="PackedScene" uid="uid://iroqhiw1a75m" path="res://scenes/components/gun_controller.tscn" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ddl4ahdfmsmmh" path="res://scenes/components/input_movement.tscn" id="4_tuyoq"]
@@ -28,6 +29,7 @@ input = NodePath("InputMovement")
 knockback = NodePath("KnockbackComponent")
 dash = NodePath("DashComponent")
 debugger = NodePath("VelocityDebugger")
+DashStartSFX = ExtResource("2_ur7pv")
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]

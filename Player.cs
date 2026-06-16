@@ -2,19 +2,25 @@ using Godot;
 
 [GlobalClass]
 public partial class Player : CharacterBody2D {
-    [Export] public float Speed = 300f;
     [Export] SimpleHealth health;
     [Export] GunController gun;
     [Export] InputMovement input;
     [Export] KnockbackComponent knockback;
     [Export] DashComponent dash;
     [Export] VelocityDebugger debugger;
+
+    [Export] public float Speed = 300f;
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
+    [Export] public AudioStream DashStartSFX;
+    [Export] public AudioStream DashEndSFX;
 
     public override void _Ready() {
         health.Died += OnDied;
+        health.CurrentChanged += OnHpChanged;
         gun.Shot += OnGunShot;
+        dash.Started += OnDashStarted;
+        dash.Finished += OnDashFinished;
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -29,15 +35,16 @@ public partial class Player : CharacterBody2D {
         }
     }
 
-    public void EquipGun(GunData data) {
-        gun.Equip(data);
-    }
+    // Публичные методы интерфейса
 
     public void TakeDamage(float amount) {
         health.Reduce(amount);
-        if (HitSFX != null) {
-            Audio.Instance.Play(HitSFX, Audio.BUS_SFX);
-        }
+    }
+
+    // Публичные методы класса
+
+    public void EquipGun(GunData data) {
+        gun.Equip(data);
     }
 
     private void HandleMovement() {
@@ -67,10 +74,25 @@ public partial class Player : CharacterBody2D {
         knockback.Add(direction, 100f);
     }
 
+    private void OnHpChanged(float oldValue, float newValue) {
+        if (newValue >= oldValue || HitSFX == null) return;
+        Audio.Instance.PlayJuicySFX(HitSFX);
+    }
+
     private void OnDied() {
-        QueueFree();
         if (DeathSFX != null) {
-            Audio.Instance.Play(DeathSFX, Audio.BUS_SFX);
+            Audio.Instance.PlayJuicySFX(DeathSFX);
         }
+        QueueFree();
+    }
+
+    private void OnDashStarted() {
+        if (DashStartSFX == null) return;
+        Audio.Instance.PlayJuicySFX(DashStartSFX);
+    }
+
+    private void OnDashFinished() {
+        if (DashEndSFX == null) return;
+        Audio.Instance.PlayJuicySFX(DashEndSFX);
     }
 }

@@ -9,8 +9,6 @@ public partial class Protostar : CharacterBody2D, IHittable {
     [Export] KnockbackComponent knockback;
     [Export] public float Speed = 150f;
     [Export] public float MaxHp = 100f;
-    [Export] public AudioStream HitSFX;
-    [Export] public AudioStream DeathSFX;
 
     public Node2D Target;
 
@@ -39,9 +37,6 @@ public partial class Protostar : CharacterBody2D, IHittable {
 
     public void TakeDamage(float amount) {
         health.Reduce(amount);
-        if (HitSFX != null) {
-            Audio.Instance.PlayJuicySFX(HitSFX);
-        }
     }
 
     public void Hit(HitInfo info) {
@@ -54,9 +49,6 @@ public partial class Protostar : CharacterBody2D, IHittable {
     }
 
     private void OnDied() {
-        if (DeathSFX != null) {
-            Audio.Instance.PlayJuicySFX(DeathSFX);
-        }
         Died?.Invoke();
         QueueFree();
     }

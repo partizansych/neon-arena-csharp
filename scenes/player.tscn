@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://VelocityDebugger.cs" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://c34mqcn0a7j73" path="res://DashComponent.cs" id="8_smehm"]
+[ext_resource type="Script" uid="uid://c2qrpt8iudetb" path="res://DashSFX.cs" id="9_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 16.0
@@ -29,7 +30,6 @@ input = NodePath("InputMovement")
 knockback = NodePath("KnockbackComponent")
 dash = NodePath("DashComponent")
 debugger = NodePath("VelocityDebugger")
-DashStartSFX = ExtResource("2_ur7pv")
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
@@ -60,3 +60,9 @@ metadata/_custom_type_script = "uid://bk4ss5nrvo62m"
 [node name="DashComponent" type="Node2D" parent="." unique_id=313895366]
 script = ExtResource("8_smehm")
 metadata/_custom_type_script = "uid://c34mqcn0a7j73"
+
+[node name="DashSFX" type="Node2D" parent="DashComponent" unique_id=1535151122 node_paths=PackedStringArray("dash")]
+script = ExtResource("9_ur7pv")
+dash = NodePath("..")
+StartSFX = ExtResource("2_ur7pv")
+metadata/_custom_type_script = "uid://c2qrpt8iudetb"

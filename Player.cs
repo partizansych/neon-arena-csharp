@@ -12,15 +12,11 @@ public partial class Player : CharacterBody2D {
     [Export] public float Speed = 300f;
     [Export] public AudioStream HitSFX;
     [Export] public AudioStream DeathSFX;
-    [Export] public AudioStream DashStartSFX;
-    [Export] public AudioStream DashEndSFX;
 
     public override void _Ready() {
         health.Died += OnDied;
         health.CurrentChanged += OnHpChanged;
         gun.Shot += OnGunShot;
-        dash.Started += OnDashStarted;
-        dash.Finished += OnDashFinished;
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -84,15 +80,5 @@ public partial class Player : CharacterBody2D {
             Audio.Instance.PlayJuicySFX(DeathSFX);
         }
         QueueFree();
-    }
-
-    private void OnDashStarted() {
-        if (DashStartSFX == null) return;
-        Audio.Instance.PlayJuicySFX(DashStartSFX);
-    }
-
-    private void OnDashFinished() {
-        if (DashEndSFX == null) return;
-        Audio.Instance.PlayJuicySFX(DashEndSFX);
     }
 }

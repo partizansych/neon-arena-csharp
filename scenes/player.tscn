@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://VelocityDebugger.cs" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://c34mqcn0a7j73" path="res://DashComponent.cs" id="8_smehm"]
 [ext_resource type="Script" uid="uid://c2qrpt8iudetb" path="res://DashSFX.cs" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://dtclimdk2nytx" path="res://DashGhost.cs" id="11_d2wvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 16.0
@@ -66,3 +67,9 @@ script = ExtResource("9_ur7pv")
 dash = NodePath("..")
 StartSFX = ExtResource("2_ur7pv")
 metadata/_custom_type_script = "uid://c2qrpt8iudetb"
+
+[node name="DashGhost" type="Node2D" parent="DashComponent" unique_id=32703337 node_paths=PackedStringArray("dash", "sprite")]
+script = ExtResource("11_d2wvv")
+dash = NodePath("..")
+sprite = NodePath("../../Sprite2D")
+metadata/_custom_type_script = "uid://dtclimdk2nytx"

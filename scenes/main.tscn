@@ -45,3 +45,4 @@ metadata/_custom_type_script = "uid://dxfrnxc2b5mjn"
 [node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("9_kek77")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
+zoom = Vector2(1.385, 1.385)

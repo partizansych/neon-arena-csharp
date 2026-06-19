@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhlrftyc257p4"]
 
-[ext_resource type="Script" uid="uid://dm7ywtndr61ao" path="res://DamagePopup.cs" id="1_sprul"]
+[ext_resource type="Script" uid="uid://dm7ywtndr61ao" path="res://scripts/DamagePopup.cs" id="1_sprul"]
 
 [node name="DamagePopup" type="Control" unique_id=1298406306 node_paths=PackedStringArray("label")]
 layout_mode = 3

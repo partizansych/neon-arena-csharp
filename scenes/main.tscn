@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b1yajk7qxv0ep"]
 
-[ext_resource type="Script" uid="uid://rw2h3q4mm5gq" path="res://Main.cs" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://rw2h3q4mm5gq" path="res://scripts/Main.cs" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/pulsar.tres" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://Gun.cs" id="2_kek77"]
+[ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://scripts/Gun.cs" id="2_kek77"]
 [ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://resources/balance/quasar.tres" id="3_7mycd"]
-[ext_resource type="Script" uid="uid://dxfrnxc2b5mjn" path="res://WaveManager.cs" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://dxfrnxc2b5mjn" path="res://scripts/WaveManager.cs" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://scenes/protostar.tscn" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://cn8csvm0p4o6d" path="res://scenes/arena.tscn" id="9_kek77"]
 

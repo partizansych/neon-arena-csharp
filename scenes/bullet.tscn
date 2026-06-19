@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhnlp48firub"]
 
-[ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://Bullet.cs" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://scripts/Bullet.cs" id="1_v7oki"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_v8qja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddl4ahdfmsmmh"]
 
-[ext_resource type="Script" uid="uid://6j37l73vl4tl" path="res://InputMovement.cs" id="1_vvm2r"]
-[ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://VelocityDebugger.cs" id="2_brqd7"]
+[ext_resource type="Script" uid="uid://6j37l73vl4tl" path="res://scripts/InputMovement.cs" id="1_vvm2r"]
+[ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://scripts/VelocityDebugger.cs" id="2_brqd7"]
 
 [node name="InputMovement" type="Node2D" unique_id=1053472044 node_paths=PackedStringArray("debugger")]
 script = ExtResource("1_vvm2r")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://iroqhiw1a75m"]
 
-[ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://GunController.cs" id="1_p12n5"]
-[ext_resource type="Script" uid="uid://cums003ojinsh" path="res://SpreadComponent.cs" id="2_b4g62"]
+[ext_resource type="Script" uid="uid://7slvm27ryipw" path="res://scripts/GunController.cs" id="1_p12n5"]
+[ext_resource type="Script" uid="uid://cums003ojinsh" path="res://scripts/SpreadComponent.cs" id="2_b4g62"]
 
 [node name="GunController" type="Node2D" unique_id=3852226 node_paths=PackedStringArray("shotTimer", "reloadTimer", "spread")]
 script = ExtResource("1_p12n5")

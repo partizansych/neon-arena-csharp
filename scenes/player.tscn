@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://scripts/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dql5rvxqwg0ai" path="res://assets/textures/arena_atlas.png" id="2_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://bjl5nbacv2olf" path="res://assets/audio/SKILL RELEASE-Small Bark-001.wav" id="2_ur7pv"]
+[ext_resource type="Script" uid="uid://da5enl11nokjb" path="res://scripts/Eye.cs" id="3_3v2ag"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/SimpleHealth.cs" id="3_sweqy"]
 [ext_resource type="PackedScene" uid="uid://iroqhiw1a75m" path="res://scenes/components/gun_controller.tscn" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ddl4ahdfmsmmh" path="res://scenes/components/input_movement.tscn" id="4_tuyoq"]
@@ -21,6 +22,10 @@ polygon = PackedVector2Array(-12, -12, 0, -16, 12, -12, 16, 0, 13, 10, 0, 16, -1
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
 atlas = ExtResource("2_d2wvv")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("2_d2wvv")
+region = Rect2(64, 0, 16, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "gun", "input", "knockback", "dash", "debugger")]
 collision_layer = 2
@@ -41,6 +46,16 @@ occluder = SubResource("OccluderPolygon2D_hqtel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=913147544]
 texture = SubResource("AtlasTexture_3v2ag")
+
+[node name="Eye" type="Node2D" parent="." unique_id=83218697 node_paths=PackedStringArray("pupil")]
+script = ExtResource("3_3v2ag")
+pupil = NodePath("Pupil")
+MaxOffset = 2.745
+MaxCursorDistance = 50.0
+metadata/_custom_type_script = "uid://da5enl11nokjb"
+
+[node name="Pupil" type="Sprite2D" parent="Eye" unique_id=1431349427]
+texture = SubResource("AtlasTexture_jej6c")
 
 [node name="SimpleHealth" type="Node" parent="." unique_id=246919758]
 script = ExtResource("3_sweqy")

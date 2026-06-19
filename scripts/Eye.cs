@@ -1,5 +1,8 @@
 using Godot;
 
+// Можно сделать более уникальным, но пока незачем.
+// Если будет уникальный, сделать компонент EyeToMouse,
+// который будет следить за мышкой.
 [GlobalClass]
 public partial class Eye : Node2D {
     [Export] Node2D pupil;

@@ -9,20 +9,20 @@ public partial class HealthSFX : Node2D {
 
     public override void _Ready() {
         if (health == null) {
-            GD.PushError($"[{Name}]: Ссылка на SimpleHealth не установлена. Логика озвучки отключена");
+            GD.PushError($"Ссылка на 'SimpleHealth' не установлена.");
             return;
         }
 
         if (DamageSFX == null) {
-            GD.PushWarning($"[{Name}]: Предупреждение. Не назначен звук 'DamageSFX'.");
+            GD.PushWarning($"Не назначен звук 'DamageSFX'.");
         }
 
         if (HealSFX == null) {
-            GD.PushWarning($"[{Name}]: Предупреждение. Не назначен звук 'HealSFX'.");
+            GD.PushWarning($"Не назначен звук 'HealSFX'.");
         }
 
         if (DeathSFX == null) {
-            GD.PushWarning($"[{Name}]: Предупреждение. Не назначен звук 'DeathSFX'.");
+            GD.PushWarning($"Не назначен звук 'DeathSFX'.");
         }
 
         health.CurrentChanged += OnHpChanged;

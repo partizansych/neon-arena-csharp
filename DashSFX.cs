@@ -11,18 +11,18 @@ public partial class DashSFX : Node2D {
         // КРИТИЧЕСКАЯ ОШИБКА (Error)
         // Без компонента рывка скрипт полностью бесполезен. Выдаем ошибку и останавливаемся.
         if (dash == null) {
-            GD.PushError($"[{Name}]: Ссылка на DashComponent не установлена. Логика озвучки отключена");
+            GD.PushError($"Ссылка на DashComponent не установлена.");
             return;
         }
 
         // МЯГКИЕ ПРЕДУПРЕЖДЕНИЯ (Warnings)
         // Если звуков нет — это не сломает игру, но разработчик должен знать, что рывок будет «немым».
         if (StartSFX == null) {
-            GD.PushWarning($"[{Name}]: Предупреждение. Не назначен звук 'StartSFX'. Начало рывка будет беззвучным.");
+            GD.PushWarning($"Не назначен звук 'StartSFX'");
         }
 
         if (FinishSFX == null) {
-            GD.PushWarning($"[{Name}]: Предупреждение. Не назначен звук 'FinishSFX'. Конец рывка будет беззвучным.");
+            GD.PushWarning($"Не назначен звук 'FinishSFX'.");
         }
 
         dash.Started += OnDashStarted;

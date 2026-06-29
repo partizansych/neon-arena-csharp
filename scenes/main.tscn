@@ -1,48 +1,33 @@
 [gd_scene format=3 uid="uid://b1yajk7qxv0ep"]
 
 [ext_resource type="Script" uid="uid://rw2h3q4mm5gq" path="res://scripts/Main.cs" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dwwpawwnocksd" path="res://scenes/player.tscn" id="1_ig7tw"]
-[ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/pulsar.tres" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://dkcn26j56bqf1" path="res://scripts/Gun.cs" id="2_kek77"]
-[ext_resource type="Resource" uid="uid://cg40c3seu77lb" path="res://resources/balance/quasar.tres" id="3_7mycd"]
-[ext_resource type="Script" uid="uid://dxfrnxc2b5mjn" path="res://scripts/WaveManager.cs" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://scenes/protostar.tscn" id="8_kek77"]
-[ext_resource type="PackedScene" uid="uid://cn8csvm0p4o6d" path="res://scenes/arena.tscn" id="9_kek77"]
 
-[sub_resource type="Resource" id="Resource_5vw27"]
-metadata/__load_path__ = "res://GunStatSheet.cs"
-
-[sub_resource type="PackedScene" id="PackedScene_efxa6"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("Gun", "Node2D", "script", "muzzle", "shotTimer", "reloadTimer", "stats", "metadata/_custom_type_script", "Muzzle", "Node2D", "ShotTimer", "Timer", "ReloadTimer", "Timer", "GunStatSheet", "Node", "script", "metadata/_custom_type_script"),
-"node_count": 5,
-"node_ids": PackedInt32Array(877367424, 1286849823, 837701773, 2130351776, 973813015),
-"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 1073741827, 1, 1073741828, 2, 1073741829, 3, 1073741830, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 0, 0, 1073741825, 0, 11, 10, -1, 0, 0, 1073741826, 0, 13, 12, -1, 0, 0, 1073741827, 0, 15, 14, -1, 2, 16, 6, 17, 7, 0),
-"variants": [ExtResource("2_kek77"), NodePath("Muzzle"), NodePath("ShotTimer"), NodePath("ReloadTimer"), NodePath("GunStatSheet"), "uid://cwsyjxyo6aj82", SubResource("Resource_5vw27"), "uid://b46nkl3ssbbul"],
-"version": 3
-}
-
-[node name="Main" type="Node2D" unique_id=490296911 node_paths=PackedStringArray("waveManager")]
+[node name="Main" type="Node" unique_id=636528573 node_paths=PackedStringArray("worldRoot", "hudRoot")]
+process_mode = 3
 script = ExtResource("1_1bvp3")
-gunScene = SubResource("PackedScene_efxa6")
-primary = ExtResource("2_7mycd")
-heavy = ExtResource("3_7mycd")
-playerScene = ExtResource("1_ig7tw")
-waveManager = NodePath("WaveManager")
-metadata/_custom_type_script = "uid://rw2h3q4mm5gq"
+worldRoot = NodePath("World")
+hudRoot = NodePath("UI/HUD")
 
-[node name="WaveManager" type="Node" parent="." unique_id=1263288687]
-script = ExtResource("8_5vw27")
-EnemyScene = ExtResource("8_kek77")
-EnemiesPerWave = 20
-metadata/_custom_type_script = "uid://dxfrnxc2b5mjn"
+[node name="World" type="Node2D" parent="." unique_id=1237416778]
+unique_name_in_owner = true
+process_mode = 1
 
-[node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("9_kek77")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1747937884]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1383663802]
-zoom = Vector2(1.385, 1.385)
+[node name="HUD" type="Control" parent="UI" unique_id=1656209212]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screens" type="Control" parent="UI" unique_id=642644448]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

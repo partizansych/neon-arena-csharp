@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://cg171nyqajvun" path="res://assets/audio/STEP-Sandals on Ground-001.wav" id="2_ywnt3"]
 [ext_resource type="AudioStream" uid="uid://dnijcwn8pwve2" path="res://assets/audio/USABLE-Coin Spend-005.wav" id="3_1vkwb"]
 [ext_resource type="Texture2D" uid="uid://0rtctif3i8ft" path="res://assets/textures/neon_arena_protostar.png" id="4_ywnt3"]
-[ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/SimpleHealth.cs" id="5_naxks"]
-[ext_resource type="Script" uid="uid://c70tbkhr6neqv" path="res://scripts/HealthSFX.cs" id="6_1vkwb"]
+[ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/health/SimpleHealth.cs" id="5_naxks"]
+[ext_resource type="Script" uid="uid://c70tbkhr6neqv" path="res://scripts/health/HealthSFX.cs" id="6_1vkwb"]
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]

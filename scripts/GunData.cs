@@ -1,16 +1,7 @@
 using Godot;
 
-public enum GunSound {
-    Shot,
-    ReloadStart,
-    ReloadEnd
-}
-
 [GlobalClass]
-public partial class GunData : Resource {
-    [Export] public string Id;
-    [Export] public Texture2D Icon;
-
+public partial class GunData : ItemData {
     [Export] public float Damage = 1f;
     [Export] public float FireRate = 1f / 3; // N выстрелов за секунду
     [Export] public float ReloadTime = 1f;

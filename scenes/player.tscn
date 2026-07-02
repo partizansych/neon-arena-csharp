@@ -78,8 +78,8 @@ metadata/_custom_type_script = "uid://c34mqcn0a7j73"
 
 [node name="DashSFX" type="Node2D" parent="DashComponent" unique_id=1535151122 node_paths=PackedStringArray("dash")]
 script = ExtResource("9_ur7pv")
-StartSFX = ExtResource("2_ur7pv")
 dash = NodePath("..")
+StartSFX = ExtResource("2_ur7pv")
 metadata/_custom_type_script = "uid://c2qrpt8iudetb"
 
 [node name="DashGhost" type="Node2D" parent="DashComponent" unique_id=32703337 node_paths=PackedStringArray("dash", "sprite")]

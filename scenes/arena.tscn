@@ -1,12 +1,15 @@
 [gd_scene format=4 uid="uid://cn8csvm0p4o6d"]
 
 [ext_resource type="Script" uid="uid://46q1b11qabrr" path="res://scripts/Arena.cs" id="1_7ft05"]
+[ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/pulsar.tres" id="2_41jku"]
 [ext_resource type="Texture2D" uid="uid://dumbcp4t8gifn" path="res://assets/textures/Room_Builder_free_32x32.png" id="2_gqj5f"]
 [ext_resource type="Texture2D" uid="uid://mws62oa1fvuc" path="res://assets/textures/Interiors_free_32x32.png" id="3_cs5tf"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="4_6fd1r"]
 [ext_resource type="Texture2D" uid="uid://qa0hj6l17xgt" path="res://assets/textures/neo_zero_tileset_02.png" id="4_h402b"]
 [ext_resource type="Script" uid="uid://dno3p1yd6qcef" path="res://scripts/ProtostarSpawner.cs" id="6_4ag8t"]
 [ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://scenes/protostar.tscn" id="7_dpxgc"]
+[ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://scenes/damage_popup.tscn" id="7_naajo"]
+[ext_resource type="Script" uid="uid://ddw4fxgoevkch" path="res://scripts/DamagePopupManager.cs" id="8_oexds"]
 
 [sub_resource type="Environment" id="Environment_h0wof"]
 background_mode = 3
@@ -4636,6 +4639,7 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_7ft05")
 protostarSpawner = NodePath("ProtostarSpawner")
 playerSpawnpoint = NodePath("PlayerSpawnpoint")
+playerGun = ExtResource("2_41jku")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1147872775]
 environment = SubResource("Environment_h0wof")
@@ -4671,6 +4675,11 @@ energy = 0.45
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fu4bq")
 texture_scale = 4.0
+
+[node name="DamagePopupManager" type="Node2D" parent="." unique_id=667086441]
+script = ExtResource("8_oexds")
+DamagePopupScene = ExtResource("7_naajo")
+metadata/_custom_type_script = "uid://ddw4fxgoevkch"
 
 [node name="PlayerSpawnpoint" type="Marker2D" parent="." unique_id=1152233135]
 

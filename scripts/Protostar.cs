@@ -1,20 +1,13 @@
-using System;
 using Godot;
 
 [GlobalClass]
 public partial class Protostar : CharacterBody2D, IHittable {
-    public event Action Died;
-
     [Export] SimpleHealth health;
     [Export] KnockbackComponent knockback;
     [Export] public float Speed = 150f;
     [Export] public float MaxHp = 100f;
 
     public Node2D Target;
-
-    public override void _Ready() {
-        health.Died += OnDied;
-    }
 
     public override void _PhysicsProcess(double delta) {
         if (Target != null) {
@@ -35,21 +28,13 @@ public partial class Protostar : CharacterBody2D, IHittable {
         }
     }
 
-    public void TakeDamage(float amount) {
-        health.Reduce(amount);
-    }
-
     public void Hit(HitInfo info) {
         if (info.Type == HitType.Damage) {
-            TakeDamage(info.Value);
+            health.Reduce(info.Value);
+            Event.Instance.Damaged.Invoke(info.Value, GlobalPosition);
         }
 
         var direction = info.HitPoint.DirectionTo(GlobalPosition);
         knockback.Add(direction, info.KnockbackForce);
-    }
-
-    private void OnDied() {
-        Died?.Invoke();
-        QueueFree();
     }
 }

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/health/SimpleHealth.cs" id="5_naxks"]
 [ext_resource type="Script" uid="uid://c70tbkhr6neqv" path="res://scripts/health/HealthSFX.cs" id="6_1vkwb"]
 [ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
+[ext_resource type="Script" uid="uid://b6xgmb4v4m752" path="res://scripts/health/HealthDestroy.cs" id="8_5onnn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 12.0
@@ -18,7 +19,7 @@ polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15,
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qi2p4")
-health = NodePath("SimpleHealth")
+health = NodePath("Health/SimpleHealth")
 knockback = NodePath("KnockbackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
@@ -32,15 +33,23 @@ modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 position = Vector2(4, 0)
 texture = ExtResource("4_ywnt3")
 
-[node name="SimpleHealth" type="Node" parent="." unique_id=470205701]
+[node name="KnockbackComponent" parent="." unique_id=293408043 instance=ExtResource("6_ywnt3")]
+
+[node name="Health" type="Node" parent="." unique_id=533166789]
+
+[node name="SimpleHealth" type="Node" parent="Health" unique_id=470205701]
 script = ExtResource("5_naxks")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="HealthSFX" type="Node2D" parent="SimpleHealth" unique_id=2133007375 node_paths=PackedStringArray("health")]
+[node name="HealthSFX" type="Node2D" parent="Health" unique_id=2133007375 node_paths=PackedStringArray("health")]
 script = ExtResource("6_1vkwb")
-health = NodePath("..")
+health = NodePath("../SimpleHealth")
 DamageSFX = ExtResource("2_ywnt3")
 DeathSFX = ExtResource("3_1vkwb")
 metadata/_custom_type_script = "uid://c70tbkhr6neqv"
 
-[node name="KnockbackComponent" parent="." unique_id=293408043 instance=ExtResource("6_ywnt3")]
+[node name="HealthDestroy" type="Node" parent="Health" unique_id=37327220 node_paths=PackedStringArray("target", "health")]
+script = ExtResource("8_5onnn")
+target = NodePath("../..")
+health = NodePath("../SimpleHealth")
+metadata/_custom_type_script = "uid://b6xgmb4v4m752"

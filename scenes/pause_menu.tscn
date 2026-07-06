@@ -1,14 +1,21 @@
 [gd_scene format=3 uid="uid://yfp0fhs7qda7"]
 
+[ext_resource type="Script" uid="uid://dt0vryc7e1hm7" path="res://scripts/PauseMenu.cs" id="1_n87rw"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obquw"]
 
-[node name="PauseMenu" type="Control" unique_id=1455587066]
+[node name="PauseMenu" type="Control" unique_id=1042089227 node_paths=PackedStringArray("resumeButton", "settingsButton", "exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n87rw")
+resumeButton = NodePath("Background/MarginContainer/VBoxContainer/ResumeButton")
+settingsButton = NodePath("Background/MarginContainer/VBoxContainer/SettingsButton")
+exitButton = NodePath("Background/MarginContainer/VBoxContainer/ExitButton")
+metadata/_custom_type_script = "uid://dt0vryc7e1hm7"
 
 [node name="Background" type="ColorRect" parent="." unique_id=468247486]
 layout_mode = 1

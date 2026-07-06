@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://b1gkcqwjtl7uh"]
 
 [ext_resource type="Theme" uid="uid://cdjniumm087fo" path="res://resources/themes/main_menu_theme.tres" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://c54inbtgudmca" path="res://scripts/MainMenu.cs" id="1_wu84c"]
 [ext_resource type="LabelSettings" uid="uid://ceov1jkeljfpx" path="res://resources/label-settings/logo_label_settings.tres" id="2_ekxnf"]
 [ext_resource type="LabelSettings" uid="uid://drqbvr4g6q7ga" path="res://resources/label-settings/button_label_settings.tres" id="3_bqqt6"]
 
-[node name="MainMenu" type="Control" unique_id=688694080]
+[node name="MainMenu" type="Control" unique_id=1497621080 node_paths=PackedStringArray("StartButton", "ExitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wu84c")
+StartButton = NodePath("VBoxContainer2/VBoxContainer/StartGameButton")
+ExitButton = NodePath("VBoxContainer2/VBoxContainer/ExitButton")
+metadata/_custom_type_script = "uid://c54inbtgudmca"
 
 [node name="Panel" type="Panel" parent="." unique_id=132631179]
 layout_mode = 1

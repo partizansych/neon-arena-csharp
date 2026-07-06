@@ -4689,3 +4689,4 @@ ProtostarScene = ExtResource("7_dpxgc")
 metadata/_custom_type_script = "uid://dno3p1yd6qcef"
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1078408881]
+process_callback = 0

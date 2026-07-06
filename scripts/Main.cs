@@ -1,46 +1,60 @@
 using Godot;
 
 [GlobalClass]
-public partial class Main : Node {
+public partial class Main : Node, IAppContext, IAppNavigation {
     [Export] Node2D worldRoot;
     [Export] Control hudRoot;
     [Export] Control menuRoot;
 
-    const string ArenaLevelUID = "uid://cn8csvm0p4o6d";
-    const string PauseMenuUID = "uid://yfp0fhs7qda7";
+    [Export] PackedScene mainMenuScene;
+    [Export] PackedScene arenaScene;
+    [Export] PackedScene pauseMenuScene;
 
-    Arena arena;
-    Control pauseMenu;
+    GameStateMachine gameStateMachine;
 
     public override void _Ready() {
-        PlaceArena();
-        PlacePauseMenu();
+        gameStateMachine = new GameStateMachine();
+        GoToMainMenu();
     }
 
     public override void _Process(double delta) {
-        if (Input.IsActionJustPressed("ui_cancel")) {
-            if (pauseMenu.Visible) SetPauseMenuState(isVisible: false);
-            else SetPauseMenuState(isVisible: true);
+        gameStateMachine.Update((float)delta);
+    }
+
+    public void AddToLayer(Node node, GameLayer layer) {
+        Node container = GetLayer(layer);
+        container?.AddChild(node);
+    }
+
+    public void ClearLayer(GameLayer layer) {
+        Node container = GetLayer(layer);
+        if (container == null) return;
+
+        foreach (var child in container.GetChildren()) {
+            child.QueueFree();
         }
     }
 
-    private void PlaceArena() {
-        var arenaPacked = ResourceLoader.Load<PackedScene>(ArenaLevelUID);
-        arena = arenaPacked.Instantiate<Arena>();
-        worldRoot.AddChild(arena);
+    public void GoToMainMenu() {
+        var mainMenuState = new MainMenuState(this, this, mainMenuScene);
+        gameStateMachine.SwitchTo(mainMenuState);
     }
 
-    private void PlacePauseMenu() {
-        var menuPacked = ResourceLoader.Load<PackedScene>(PauseMenuUID);
-        pauseMenu = menuPacked.Instantiate<Control>();
-        menuRoot.AddChild(pauseMenu);
-
-        SetPauseMenuState(isVisible: false);
+    public void GoToArena() {
+        var arenaState = new ArenaState(this, this, arenaScene, pauseMenuScene);
+        gameStateMachine.SwitchTo(arenaState);
     }
 
-    private void SetPauseMenuState(bool isVisible) {
-        if (isVisible) pauseMenu.Show();
-        else pauseMenu.Hide();
-        pauseMenu.GetTree().Paused = isVisible;
+    public void ExitGame() {
+        GetTree().Quit();
+    }
+
+    Node GetLayer(GameLayer layer) {
+        return layer switch {
+            GameLayer.World => worldRoot,
+            GameLayer.Hud => hudRoot,
+            GameLayer.Menu => menuRoot,
+            _ => null
+        };
     }
 }

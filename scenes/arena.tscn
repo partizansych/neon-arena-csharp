@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cn8csvm0p4o6d"]
 
 [ext_resource type="Script" uid="uid://46q1b11qabrr" path="res://scripts/Arena.cs" id="1_7ft05"]
-[ext_resource type="Resource" uid="uid://bnq7g506ckpn6" path="res://resources/balance/pulsar.tres" id="2_41jku"]
 [ext_resource type="Texture2D" uid="uid://dumbcp4t8gifn" path="res://assets/textures/Room_Builder_free_32x32.png" id="2_gqj5f"]
 [ext_resource type="Texture2D" uid="uid://mws62oa1fvuc" path="res://assets/textures/Interiors_free_32x32.png" id="3_cs5tf"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="4_6fd1r"]
@@ -4639,7 +4638,6 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_7ft05")
 protostarSpawner = NodePath("ProtostarSpawner")
 playerSpawnpoint = NodePath("PlayerSpawnpoint")
-playerGun = ExtResource("2_41jku")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1147872775]
 environment = SubResource("Environment_h0wof")

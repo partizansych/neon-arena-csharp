@@ -8,6 +8,9 @@ charset = utf-8
 dotnet_diagnostic.CA1050.severity = none
 dotnet_diagnostic.IDE0290.severity = none
 
+indent_style = space
+indent_size = 2
+
 # Скобки методов и типов на той же строке
 csharp_new_line_before_open_brace = none
 

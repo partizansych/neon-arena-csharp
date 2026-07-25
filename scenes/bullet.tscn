@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://dhnlp48firub"]
 
-[ext_resource type="Script" uid="uid://bk03y8sl1a3yb" path="res://scripts/Bullet.cs" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://blhp3d63rc1c5" path="res://scripts/Bullet.cs" id="1_v7oki"]
 [ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_v8qja"]
+[ext_resource type="Script" uid="uid://rw74h6io3eq8" path="res://scripts/Rotator2D.cs" id="3_eoqba"]
+[ext_resource type="Script" uid="uid://bhfey50wiimto" path="res://scripts/Lifetimer.cs" id="3_l5glv"]
+[ext_resource type="Script" uid="uid://b065v8gwpbuw5" path="res://scripts/StraightMovement2D.cs" id="4_qncy5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
 radius = 7.0
@@ -13,16 +16,15 @@ polygon = PackedVector2Array(-2, -8, 2, -8, 8, -2, 8, 2, 2, 8, -2, 8, -8, 2, -8,
 atlas = ExtResource("2_v8qja")
 region = Rect2(32, 32, 16, 16)
 
-[node name="Bullet" type="Node2D" unique_id=1376562654 node_paths=PackedStringArray("hitbox", "lifetimer")]
-script = ExtResource("1_v7oki")
-hitbox = NodePath("Hitbox")
-lifetimer = NodePath("Lifetimer")
-
-[node name="Hitbox" type="Area2D" parent="." unique_id=1895759607]
+[node name="Bullet" type="Area2D" unique_id=832675249 node_paths=PackedStringArray("movement", "lifetimer")]
 collision_layer = 0
 collision_mask = 5
+script = ExtResource("1_v7oki")
+movement = NodePath("StraightMovement2D")
+lifetimer = NodePath("LifeTimer")
+metadata/_custom_type_script = "uid://blhp3d63rc1c5"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1663089976]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1663089976]
 shape = SubResource("CircleShape2D_v8qja")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1330863076]
@@ -33,4 +35,19 @@ occluder = SubResource("OccluderPolygon2D_v8qja")
 modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 texture = SubResource("AtlasTexture_t4vbm")
 
-[node name="Lifetimer" type="Timer" parent="." unique_id=1866565218]
+[node name="Rotator2D" type="Node" parent="." unique_id=933899173 node_paths=PackedStringArray("Target")]
+script = ExtResource("3_eoqba")
+Target = NodePath("..")
+metadata/_custom_type_script = "uid://rw74h6io3eq8"
+
+[node name="StraightMovement2D" type="Node" parent="." unique_id=112558011 node_paths=PackedStringArray("Target")]
+script = ExtResource("4_qncy5")
+Target = NodePath("..")
+metadata/_custom_type_script = "uid://b065v8gwpbuw5"
+
+[node name="LifeTimer" type="Node" parent="." unique_id=464162782 node_paths=PackedStringArray("Target")]
+script = ExtResource("3_l5glv")
+Target = NodePath("..")
+Lifetime = null
+AutoStart = null
+metadata/_custom_type_script = "uid://fjcor2xq0540"

@@ -1,7 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class Protostar : CharacterBody2D, IHittable {
+public partial class Protostar : CharacterBody2D {
     [Export] SimpleHealth health;
     [Export] KnockbackComponent knockback;
     [Export] public float Speed = 150f;
@@ -26,15 +26,5 @@ public partial class Protostar : CharacterBody2D, IHittable {
         if (Target != null) {
             LookAt(Target.GlobalPosition);
         }
-    }
-
-    public void Hit(HitInfo info) {
-        if (info.Type == HitType.Damage) {
-            health.Reduce(info.Value);
-            Event.Instance.Damaged.Invoke(info.Value, GlobalPosition);
-        }
-
-        var direction = info.HitPoint.DirectionTo(GlobalPosition);
-        knockback.Add(direction, info.KnockbackForce);
     }
 }

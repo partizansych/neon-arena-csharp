@@ -3,7 +3,6 @@ using Godot;
 [GlobalClass]
 public partial class Player : CharacterBody2D {
     [Export] SimpleHealth health;
-    [Export] GunController gun;
     [Export] InputMovement input;
     [Export] KnockbackComponent knockback;
     [Export] DashComponent dash;
@@ -16,19 +15,10 @@ public partial class Player : CharacterBody2D {
     public override void _Ready() {
         health.Died += OnDied;
         health.CurrentChanged += OnHpChanged;
-        gun.Shot += OnGunShot;
     }
 
     public override void _PhysicsProcess(double delta) {
         HandleMovement();
-
-        if (Input.IsActionPressed("attack")) {
-            var direction = GetDirectionToMouse();
-            gun.DoShot(direction);
-        }
-        if (Input.IsKeyPressed(Key.R)) {
-            gun.StartReload();
-        }
     }
 
     // Публичные методы интерфейса
@@ -37,11 +27,6 @@ public partial class Player : CharacterBody2D {
         health.Reduce(amount);
     }
 
-    // Публичные методы класса
-
-    public void EquipGun(GunData data) {
-        gun.Equip(data);
-    }
 
     private void HandleMovement() {
         if (Input.IsActionJustPressed("dash") && input.Direction != Vector2.Zero) {

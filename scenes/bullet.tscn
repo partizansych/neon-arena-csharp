@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bim3lqr3d6kbk"]
+
+[ext_resource type="Script" uid="uid://chn3w066np3le" path="res://scripts/combat-rework/Bullet.cs" id="1_eoqba"]
+[ext_resource type="Texture2D" uid="uid://g26lktalqbhm" path="res://assets/textures/palette.png" id="2_v8qja"]
+[ext_resource type="Script" uid="uid://b065v8gwpbuw5" path="res://scripts/StraightMovement2D.cs" id="3_eoqba"]
+[ext_resource type="Script" uid="uid://c4835lxy44cwq" path="res://scripts/Lifetimer.cs" id="4_qncy5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qtqr"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtqr"]
+atlas = ExtResource("2_v8qja")
+region = Rect2(32, 32, 16, 16)
+
+[node name="Bullet" type="Area2D" unique_id=2023890968 node_paths=PackedStringArray("movement", "lifetimer")]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_eoqba")
+movement = NodePath("StraightMovement2D")
+lifetimer = NodePath("Lifetimer")
+metadata/_custom_type_script = "uid://chn3w066np3le"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=528544764]
+shape = SubResource("CircleShape2D_8qtqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377979780]
+texture = SubResource("AtlasTexture_8qtqr")
+
+[node name="StraightMovement2D" type="Node" parent="." unique_id=479450201 node_paths=PackedStringArray("Target")]
+script = ExtResource("3_eoqba")
+Target = NodePath("..")
+metadata/_custom_type_script = "uid://b065v8gwpbuw5"
+
+[node name="Lifetimer" type="Node" parent="." unique_id=70469745 node_paths=PackedStringArray("Target")]
+script = ExtResource("4_qncy5")
+Target = NodePath("..")
+metadata/_custom_type_script = "uid://c4835lxy44cwq"

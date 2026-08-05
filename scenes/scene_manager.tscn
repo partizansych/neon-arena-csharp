@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://5v6p34jhxifa"]
+
+[ext_resource type="Script" uid="uid://c8c548hc81oak" path="res://scripts/SceneManager.cs" id="1_we8k5"]
+[ext_resource type="PackedScene" uid="uid://dcobxbhu53fed" path="res://scenes/ui/loading_curtain.tscn" id="2_65mdo"]
+
+[node name="SceneManager" type="Node" unique_id=1032668165 node_paths=PackedStringArray("curtain")]
+script = ExtResource("1_we8k5")
+curtain = NodePath("LoadingCurtain")
+
+[node name="LoadingCurtain" parent="." unique_id=1464294096 instance=ExtResource("2_65mdo")]
+visible = false

@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dcobxbhu53fed" path="res://scenes/ui/loading_curtain.tscn" id="2_65mdo"]
 
 [node name="SceneManager" type="Node" unique_id=1032668165 node_paths=PackedStringArray("curtain")]
+process_mode = 3
 script = ExtResource("1_we8k5")
-curtain = NodePath("LoadingCurtain")
+curtain = NodePath("CanvasLayer/LoadingCurtain")
 
-[node name="LoadingCurtain" parent="." unique_id=1464294096 instance=ExtResource("2_65mdo")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1622894734]
+layer = 1000
+
+[node name="LoadingCurtain" parent="CanvasLayer" unique_id=1464294096 instance=ExtResource("2_65mdo")]
 visible = false

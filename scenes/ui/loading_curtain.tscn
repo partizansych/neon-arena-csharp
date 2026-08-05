@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dcobxbhu53fed"]
+
+[ext_resource type="Script" uid="uid://csknc15v0e1uv" path="res://scripts/LoadingCurtain.cs" id="1_st0op"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_st0op"]
+font_size = 88
+
+[node name="LoadingCurtain" type="Control" unique_id=1464294096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_st0op")
+metadata/_custom_type_script = "uid://csknc15v0e1uv"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=698869610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=942630442]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -121.0
+offset_right = 409.0
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1166015541]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_st0op")

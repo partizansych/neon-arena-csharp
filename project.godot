@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Neon Arena Csharp"
-run/main_scene="uid://b1yajk7qxv0ep"
+run/main_scene="uid://b1gkcqwjtl7uh"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

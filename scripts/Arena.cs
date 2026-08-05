@@ -5,20 +5,13 @@ public partial class Arena : Node2D {
     [Export] ProtostarSpawner protostarSpawner;
     [Export] Marker2D playerSpawnpoint;
 
-    const string PlayerUID = "uid://dwwpawwnocksd";
+    public Vector2 PlayerSpawnpoint => playerSpawnpoint.GlobalPosition;
 
-    Player player;
-
-    public override void _Ready() {
-        PlacePlayer();
-
+    public void BindPlayerToSpawner(Node2D player) {
         protostarSpawner.Target = player;
-        protostarSpawner.Container = this;
     }
 
-    private void PlacePlayer() {
-        var playerPacked = ResourceLoader.Load<PackedScene>(PlayerUID);
-        player = playerPacked.Instantiate<Player>();
-        AddChild(player);
+    public void BindRootToSpawner(Node root) {
+        protostarSpawner.Container = root;
     }
 }

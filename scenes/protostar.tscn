@@ -19,7 +19,7 @@ polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15,
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qi2p4")
-health = NodePath("Health/SimpleHealth")
+health = NodePath("SimpleHealth")
 knockback = NodePath("KnockbackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
@@ -35,21 +35,19 @@ texture = ExtResource("4_ywnt3")
 
 [node name="KnockbackComponent" parent="." unique_id=293408043 instance=ExtResource("6_ywnt3")]
 
-[node name="Health" type="Node" parent="." unique_id=533166789]
-
-[node name="SimpleHealth" type="Node" parent="Health" unique_id=470205701]
+[node name="SimpleHealth" type="Node" parent="." unique_id=470205701]
 script = ExtResource("5_naxks")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="HealthSFX" type="Node2D" parent="Health" unique_id=2133007375 node_paths=PackedStringArray("health")]
+[node name="HealthSFX" type="Node2D" parent="." unique_id=2133007375 node_paths=PackedStringArray("health")]
 script = ExtResource("6_1vkwb")
 health = NodePath("../SimpleHealth")
 DamageSFX = ExtResource("2_ywnt3")
 DeathSFX = ExtResource("3_1vkwb")
 metadata/_custom_type_script = "uid://c70tbkhr6neqv"
 
-[node name="HealthDestroy" type="Node" parent="Health" unique_id=37327220 node_paths=PackedStringArray("target", "health")]
+[node name="HealthDestroy" type="Node" parent="." unique_id=37327220 node_paths=PackedStringArray("target", "health")]
 script = ExtResource("8_5onnn")
-target = NodePath("../..")
+target = NodePath("..")
 health = NodePath("../SimpleHealth")
 metadata/_custom_type_script = "uid://b6xgmb4v4m752"

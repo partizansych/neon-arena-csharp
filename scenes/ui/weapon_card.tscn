@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bdg70kquninbe"]
+
+[ext_resource type="Texture2D" uid="uid://dql5rvxqwg0ai" path="res://assets/textures/arena_atlas.png" id="1_ra7uv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtqr"]
+atlas = ExtResource("1_ra7uv")
+region = Rect2(64, 16, 16, 16)
+
+[node name="WeaponCard" type="PanelContainer" unique_id=2089357910]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -190.0
+offset_right = 160.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=517235722]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1703216680]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/PanelContainer" unique_id=1514503783]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8qtqr")
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer" unique_id=889101550]
+layout_mode = 2
+
+[node name="Titile" type="Label" parent="VBoxContainer/PanelContainer2" unique_id=1956380474]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Pulsor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer" unique_id=1778973761]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer3" unique_id=1126539066]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer3/MarginContainer" unique_id=1799091588]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=1710199353]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cooldown" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1571727434]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Cooldown"
+vertical_alignment = 1
+
+[node name="Power" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer" unique_id=812720229]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Power"
+vertical_alignment = 1
+
+[node name="Speed" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1408086168]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Speed"
+vertical_alignment = 1
+
+[node name="Duration" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1967132193]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Duration"
+vertical_alignment = 1
+
+[node name="MaxTargets" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer" unique_id=998625717]
+layout_mode = 2
+size_flags_vertical = 3
+text = "MaxTargets"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=720307255]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cooldown" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=356636883]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="Power" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1187698382]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="Speed" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1366448997]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="Duration" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1476016747]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="MaxTargets" type="Label" parent="VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1282645519]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+vertical_alignment = 1

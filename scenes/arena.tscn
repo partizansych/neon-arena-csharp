@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://qa0hj6l17xgt" path="res://assets/textures/neo_zero_tileset_02.png" id="4_h402b"]
 [ext_resource type="Script" uid="uid://dno3p1yd6qcef" path="res://scripts/ProtostarSpawner.cs" id="6_4ag8t"]
 [ext_resource type="PackedScene" uid="uid://00ypqly7knae" path="res://scenes/protostar.tscn" id="7_dpxgc"]
-[ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://scenes/damage_popup.tscn" id="7_naajo"]
-[ext_resource type="Script" uid="uid://ddw4fxgoevkch" path="res://scripts/DamagePopupManager.cs" id="8_oexds"]
 
 [sub_resource type="Environment" id="Environment_h0wof"]
 background_mode = 3
@@ -4673,11 +4671,6 @@ energy = 0.45
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fu4bq")
 texture_scale = 4.0
-
-[node name="DamagePopupManager" type="Node2D" parent="." unique_id=667086441]
-script = ExtResource("8_oexds")
-DamagePopupScene = ExtResource("7_naajo")
-metadata/_custom_type_script = "uid://ddw4fxgoevkch"
 
 [node name="PlayerSpawnpoint" type="Marker2D" parent="." unique_id=1152233135]
 

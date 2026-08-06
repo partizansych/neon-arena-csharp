@@ -8,6 +8,10 @@ public partial class DamagePopupManager : Node2D {
         Event.Instance.Damaged += OnDamaged;
     }
 
+    public override void _ExitTree() {
+        Event.Instance.Damaged -= OnDamaged;
+    }
+
     private void OnDamaged(float amount, Vector2 position) {
         var popup = DamagePopupScene.Instantiate<DamagePopup>();
         popup.BindDamage(amount);

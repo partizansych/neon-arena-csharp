@@ -3,7 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Gameplay : Node2D {
     [Export] PackedScene playerScene;
-    [Export] Node entityRoot;
+    [Export] Node pausableContainer;
     [Export] Camera2D mainCamera;
     [Export] PauseMenu pauseMenu;
     [Export] Arena arena;
@@ -13,7 +13,7 @@ public partial class Gameplay : Node2D {
     public override void _Ready() {
         PlacePlayer(arena.PlayerSpawnpoint);
         arena.BindPlayerToSpawner(player);
-        arena.BindRootToSpawner(entityRoot);
+        arena.BindRootToSpawner(pausableContainer);
 
         pauseMenu.ResumeRequested += () => SetPauseMenuState(false);
         pauseMenu.ExitRequested += OnPauseMenuExitRequested;
@@ -36,7 +36,7 @@ public partial class Gameplay : Node2D {
     private void PlacePlayer(Vector2 pos) {
         player = playerScene.Instantiate<CharacterBody2D>();
         player.GlobalPosition = pos;
-        entityRoot.AddChild(player);
+        pausableContainer.AddChild(player);
     }
 
     private void SetPauseMenuState(bool isVisible) {
@@ -51,6 +51,6 @@ public partial class Gameplay : Node2D {
     }
 
     private void OnNodeSpawned(Node node) {
-        entityRoot.AddChild(node);
+        pausableContainer.AddChild(node);
     }
 }

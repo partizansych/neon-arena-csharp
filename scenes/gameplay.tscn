@@ -7,27 +7,28 @@
 [ext_resource type="Script" uid="uid://ddw4fxgoevkch" path="res://scripts/DamagePopupManager.cs" id="5_din8e"]
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://scenes/damage_popup.tscn" id="6_4bh5q"]
 
-[node name="Gameplay" type="Node2D" unique_id=946969773 node_paths=PackedStringArray("entityRoot", "mainCamera", "pauseMenu", "arena")]
+[node name="Gameplay" type="Node2D" unique_id=946969773 node_paths=PackedStringArray("pausableContainer", "mainCamera", "pauseMenu", "arena")]
 process_mode = 3
 script = ExtResource("1_00tan")
 playerScene = ExtResource("2_l1v76")
-entityRoot = NodePath("EntityRoot")
+pausableContainer = NodePath("Pausable")
 mainCamera = NodePath("MainCamera")
 pauseMenu = NodePath("UI/PauseMenu")
 arena = NodePath("Arena")
 metadata/_custom_type_script = "uid://dgghq2xlwkunk"
 
+[node name="DamagePopupManager" type="Node2D" parent="." unique_id=1258654973 node_paths=PackedStringArray("Container")]
+script = ExtResource("5_din8e")
+DamagePopupScene = ExtResource("6_4bh5q")
+Container = NodePath("../Pausable")
+metadata/_custom_type_script = "uid://ddw4fxgoevkch"
+
 [node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("1_7biu0")]
 process_mode = 1
 
-[node name="EntityRoot" type="Node2D" parent="." unique_id=1441643527]
+[node name="Pausable" type="Node2D" parent="." unique_id=1336454946]
 process_mode = 1
 y_sort_enabled = true
-
-[node name="DamagePopupManager" type="Node2D" parent="." unique_id=1258654973]
-script = ExtResource("5_din8e")
-DamagePopupScene = ExtResource("6_4bh5q")
-metadata/_custom_type_script = "uid://ddw4fxgoevkch"
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1372586914]
 process_mode = 1

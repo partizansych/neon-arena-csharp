@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class DamagePopupManager : Node2D {
     [Export] PackedScene DamagePopupScene;
+    [Export] Node Container;
 
     public override void _Ready() {
         Event.Instance.Damaged += OnDamaged;
@@ -16,6 +17,6 @@ public partial class DamagePopupManager : Node2D {
         var popup = DamagePopupScene.Instantiate<DamagePopup>();
         popup.BindDamage(amount);
         popup.GlobalPosition = position;
-        AddChild(popup);
+        Container.AddChild(popup);
     }
 }

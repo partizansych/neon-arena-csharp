@@ -37,6 +37,7 @@ public partial class HealthFeedback : Node2D {
         else if (newValue < oldValue) {
             if (DamageSFX == null) return;
             Audio.Instance.PlayJuicySFX(DamageSFX);
+            Event.Instance.Damaged.Invoke(oldValue - newValue, GlobalPosition);
         }
     }
 

@@ -17,6 +17,13 @@ pauseMenu = NodePath("UI/PauseMenu")
 arena = NodePath("Arena")
 metadata/_custom_type_script = "uid://dgghq2xlwkunk"
 
+[node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("1_7biu0")]
+process_mode = 1
+
+[node name="EntityRoot" type="Node2D" parent="." unique_id=1441643527]
+process_mode = 1
+y_sort_enabled = true
+
 [node name="DamagePopupManager" type="Node2D" parent="." unique_id=1258654973]
 script = ExtResource("5_din8e")
 DamagePopupScene = ExtResource("6_4bh5q")
@@ -25,12 +32,6 @@ metadata/_custom_type_script = "uid://ddw4fxgoevkch"
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1372586914]
 process_mode = 1
 process_callback = 0
-
-[node name="Arena" parent="." unique_id=1146782773 instance=ExtResource("1_7biu0")]
-process_mode = 1
-
-[node name="EntityRoot" type="Node2D" parent="." unique_id=1441643527]
-process_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=550381320]
 

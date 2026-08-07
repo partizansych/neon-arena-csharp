@@ -17,10 +17,13 @@ public partial class Gameplay : Node2D {
 
         pauseMenu.ResumeRequested += () => SetPauseMenuState(false);
         pauseMenu.ExitRequested += OnPauseMenuExitRequested;
+        Event.Instance.NodeSpawned += OnNodeSpawned;
     }
 
     public override void _ExitTree() {
         GetTree().Paused = false;
+
+        Event.Instance.NodeSpawned -= OnNodeSpawned;
     }
 
     public override void _UnhandledInput(InputEvent @event) {
@@ -45,5 +48,9 @@ public partial class Gameplay : Node2D {
     private void OnPauseMenuExitRequested() {
         // TODO: Save
         var _ = SceneManager.Instance.SwitchSceneAsync("res://scenes/main_menu.tscn");
+    }
+
+    private void OnNodeSpawned(Node node) {
+        entityRoot.AddChild(node);
     }
 }

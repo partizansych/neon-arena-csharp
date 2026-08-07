@@ -8,6 +8,6 @@ public partial class SpawnProjectileRule : WeaponRule {
         var projectile = ProjectileScene.Instantiate<Bullet>();
         projectile.GlobalPosition = ctx.StartPosition;
         projectile.Initialize(ctx);
-        ctx.Source.GetTree().CurrentScene.AddChild(projectile);
+        Event.Instance.NodeSpawned.Invoke(projectile);
     }
 }

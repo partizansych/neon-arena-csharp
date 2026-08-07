@@ -4,6 +4,7 @@ using Godot;
 public partial class Event : Node {
     public static Event Instance { get; private set; }
 
+    public Action<Node> NodeSpawned = delegate { };
     public Action<float, Vector2> Damaged = delegate { };
     public Action EnemyDied = delegate { };
     public Action PlayerDied = delegate { };

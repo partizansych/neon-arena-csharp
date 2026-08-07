@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhlrftyc257p4" path="res://scenes/damage_popup.tscn" id="6_4bh5q"]
 
 [node name="Gameplay" type="Node2D" unique_id=946969773 node_paths=PackedStringArray("entityRoot", "mainCamera", "pauseMenu", "arena")]
+process_mode = 3
 script = ExtResource("1_00tan")
 playerScene = ExtResource("2_l1v76")
 entityRoot = NodePath("EntityRoot")

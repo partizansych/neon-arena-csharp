@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dm7ywtndr61ao" path="res://scripts/DamagePopup.cs" id="1_sprul"]
 
-[node name="DamagePopup" type="Control" unique_id=1298406306 node_paths=PackedStringArray("label")]
-layout_mode = 3
-anchors_preset = 0
+[node name="DamagePopup" type="Node2D" unique_id=2071172737 node_paths=PackedStringArray("label")]
 script = ExtResource("1_sprul")
 label = NodePath("Label")
+metadata/_custom_type_script = "uid://dm7ywtndr61ao"
 
 [node name="Label" type="Label" parent="." unique_id=61771834]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

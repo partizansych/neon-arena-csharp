@@ -1,7 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class DamagePopup : Control {
+public partial class DamagePopup : Node2D {
     [Export] Label label;
 
     public void BindDamage(float damage) {

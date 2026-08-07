@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://d14x0dn34vbpt" path="res://scripts/Protostar.cs" id="1_qi2p4"]
 [ext_resource type="AudioStream" uid="uid://cg171nyqajvun" path="res://assets/audio/STEP-Sandals on Ground-001.wav" id="2_ywnt3"]
 [ext_resource type="AudioStream" uid="uid://dnijcwn8pwve2" path="res://assets/audio/USABLE-Coin Spend-005.wav" id="3_1vkwb"]
+[ext_resource type="Script" uid="uid://cmu461nx2d8yn" path="res://scripts/health/HealthFeedback.cs" id="4_10sem"]
 [ext_resource type="Texture2D" uid="uid://0rtctif3i8ft" path="res://assets/textures/neon_arena_protostar.png" id="4_ywnt3"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/health/SimpleHealth.cs" id="5_naxks"]
-[ext_resource type="Script" uid="uid://c70tbkhr6neqv" path="res://scripts/health/HealthSFX.cs" id="6_1vkwb"]
-[ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="6_ywnt3"]
-[ext_resource type="Script" uid="uid://b6xgmb4v4m752" path="res://scripts/health/HealthDestroy.cs" id="8_5onnn"]
+[ext_resource type="Script" uid="uid://cu7dnvi1qq26b" path="res://scripts/movement-rework/MovementComponent.cs" id="8_10sem"]
+[ext_resource type="Script" uid="uid://bjklydryw4nmt" path="res://scripts/movement-rework/ChaseMovementModifier.cs" id="9_vcg0a"]
+[ext_resource type="Script" uid="uid://buwstl66vgc0c" path="res://scripts/health/FreeOnDeath.cs" id="10_10sem"]
+[ext_resource type="Script" uid="uid://dyco5l42or8t3" path="res://scripts/movement-rework/ImpulseMovementModifier.cs" id="10_tldyj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 12.0
@@ -15,12 +17,11 @@ radius = 12.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4gyqm"]
 polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)
 
-[node name="Protostar" type="CharacterBody2D" unique_id=1428730141 node_paths=PackedStringArray("health", "knockback") groups=["enemies"]]
+[node name="Protostar" type="CharacterBody2D" unique_id=1428730141 node_paths=PackedStringArray("chase") groups=["enemies"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qi2p4")
-health = NodePath("SimpleHealth")
-knockback = NodePath("KnockbackComponent")
+chase = NodePath("ChaseMovementModifier")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
 shape = SubResource("CircleShape2D_iifgy")
@@ -33,21 +34,34 @@ modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 position = Vector2(4, 0)
 texture = ExtResource("4_ywnt3")
 
-[node name="KnockbackComponent" parent="." unique_id=293408043 instance=ExtResource("6_ywnt3")]
-
 [node name="SimpleHealth" type="Node" parent="." unique_id=470205701]
 script = ExtResource("5_naxks")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="HealthSFX" type="Node2D" parent="." unique_id=2133007375 node_paths=PackedStringArray("health")]
-script = ExtResource("6_1vkwb")
+[node name="HealthFeedback" type="Node2D" parent="." unique_id=1864916282 node_paths=PackedStringArray("health")]
+script = ExtResource("4_10sem")
 health = NodePath("../SimpleHealth")
 DamageSFX = ExtResource("2_ywnt3")
 DeathSFX = ExtResource("3_1vkwb")
-metadata/_custom_type_script = "uid://c70tbkhr6neqv"
+metadata/_custom_type_script = "uid://cmu461nx2d8yn"
 
-[node name="HealthDestroy" type="Node" parent="." unique_id=37327220 node_paths=PackedStringArray("target", "health")]
-script = ExtResource("8_5onnn")
+[node name="FreeOnDeath" type="Node" parent="." unique_id=517569580 node_paths=PackedStringArray("target", "health")]
+script = ExtResource("10_10sem")
 target = NodePath("..")
 health = NodePath("../SimpleHealth")
-metadata/_custom_type_script = "uid://b6xgmb4v4m752"
+metadata/_custom_type_script = "uid://buwstl66vgc0c"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=394343484 node_paths=PackedStringArray("body", "modifiers")]
+script = ExtResource("8_10sem")
+body = NodePath("..")
+modifiers = [NodePath("../ChaseMovementModifier"), NodePath("../ImpulseMovementModifier")]
+metadata/_custom_type_script = "uid://cu7dnvi1qq26b"
+
+[node name="ChaseMovementModifier" type="Node" parent="." unique_id=2041750598]
+script = ExtResource("9_vcg0a")
+Speed = 200.0
+metadata/_custom_type_script = "uid://bjklydryw4nmt"
+
+[node name="ImpulseMovementModifier" type="Node" parent="." unique_id=784142694]
+script = ExtResource("10_tldyj")
+metadata/_custom_type_script = "uid://dyco5l42or8t3"

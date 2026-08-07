@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://dwwpawwnocksd"]
 
-[ext_resource type="Script" uid="uid://kp32eau7o4r" path="res://scripts/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dql5rvxqwg0ai" path="res://assets/textures/arena_atlas.png" id="2_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://bjl5nbacv2olf" path="res://assets/audio/SKILL RELEASE-Small Bark-001.wav" id="2_ur7pv"]
 [ext_resource type="Script" uid="uid://da5enl11nokjb" path="res://scripts/Eye.cs" id="3_3v2ag"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/health/SimpleHealth.cs" id="3_sweqy"]
-[ext_resource type="PackedScene" uid="uid://ddl4ahdfmsmmh" path="res://scenes/components/input_movement.tscn" id="4_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://bepbvxxfgacwb" path="res://scenes/components/knockback_component.tscn" id="5_qlg0r"]
-[ext_resource type="Script" uid="uid://bk4ss5nrvo62m" path="res://scripts/VelocityDebugger.cs" id="6_tuyoq"]
-[ext_resource type="Script" uid="uid://c34mqcn0a7j73" path="res://scripts/dash/DashComponent.cs" id="8_smehm"]
+[ext_resource type="Script" uid="uid://cmu461nx2d8yn" path="res://scripts/health/HealthFeedback.cs" id="4_4r5pv"]
+[ext_resource type="Script" uid="uid://buwstl66vgc0c" path="res://scripts/health/FreeOnDeath.cs" id="5_60mlk"]
 [ext_resource type="Script" uid="uid://c2qrpt8iudetb" path="res://scripts/dash/DashSFX.cs" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://dtclimdk2nytx" path="res://scripts/dash/DashGhost.cs" id="11_d2wvv"]
 [ext_resource type="Script" uid="uid://djphbmi42r8an" path="res://scripts/combat-rework/WeaponTester.cs" id="12_qfm1y"]
 [ext_resource type="Script" uid="uid://by03p85l5gryq" path="res://scripts/combat-rework/impacts/DamageImpact.cs" id="13_fulsm"]
 [ext_resource type="Script" uid="uid://bnx1rr1mmdi2h" path="res://scripts/combat-rework/impacts/PushImpact.cs" id="14_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://bim3lqr3d6kbk" path="res://scenes/bullet.tscn" id="15_60mlk"]
+[ext_resource type="Script" uid="uid://cu7dnvi1qq26b" path="res://scripts/movement-rework/MovementComponent.cs" id="16_fulsm"]
 [ext_resource type="Script" uid="uid://wubpt1ktg0fk" path="res://scripts/combat-rework/rules/SpawnProjectileRule.cs" id="16_i4ail"]
+[ext_resource type="Script" uid="uid://dyco5l42or8t3" path="res://scripts/movement-rework/ImpulseMovementModifier.cs" id="17_4r5pv"]
 [ext_resource type="Script" uid="uid://dax06wx6uly62" path="res://scripts/combat-rework/WeaponData.cs" id="17_a38lo"]
 [ext_resource type="Script" uid="uid://ctse32myaaolq" path="res://scripts/combat-rework/rules/SelfPushRule.cs" id="17_fulsm"]
+[ext_resource type="Script" uid="uid://djor06lmqyk" path="res://scripts/movement-rework/PlayerInputMovementModifier.cs" id="18_60mlk"]
+[ext_resource type="Script" uid="uid://1ja7qnixq0sc" path="res://scripts/movement-rework/DashMovementModifier.cs" id="19_4r5pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 16.0
@@ -39,12 +40,12 @@ metadata/_custom_type_script = "uid://by03p85l5gryq"
 
 [sub_resource type="Resource" id="Resource_5mlg8"]
 script = ExtResource("14_4r5pv")
-Force = 500.0
+Force = 400.0
 metadata/_custom_type_script = "uid://bnx1rr1mmdi2h"
 
 [sub_resource type="Resource" id="Resource_qfm1y"]
 script = ExtResource("17_fulsm")
-Force = 100.0
+Force = 300.0
 metadata/_custom_type_script = "uid://ctse32myaaolq"
 
 [sub_resource type="Resource" id="Resource_guxcb"]
@@ -56,19 +57,12 @@ metadata/_custom_type_script = "uid://wubpt1ktg0fk"
 script = ExtResource("17_a38lo")
 BasePower = 25.0
 BaseSpeed = 500.0
-BaseMaxTargets = 3
 Impacts = Array[Object]([SubResource("Resource_ymmtx"), SubResource("Resource_5mlg8")])
 Rules = Array[Object]([SubResource("Resource_qfm1y"), SubResource("Resource_guxcb")])
 metadata/_custom_type_script = "uid://dax06wx6uly62"
 
-[node name="Player" type="CharacterBody2D" unique_id=1901776121 node_paths=PackedStringArray("health", "input", "knockback", "dash", "debugger")]
+[node name="Player" type="CharacterBody2D" unique_id=358580518]
 collision_layer = 2
-script = ExtResource("1_onrkg")
-health = NodePath("SimpleHealth")
-input = NodePath("InputMovement")
-knockback = NodePath("KnockbackComponent")
-dash = NodePath("DashComponent")
-debugger = NodePath("VelocityDebugger")
 metadata/_custom_type_script = "uid://kp32eau7o4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1095291703]
@@ -94,33 +88,50 @@ texture = SubResource("AtlasTexture_jej6c")
 script = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://dr27bvglteqf"
 
-[node name="InputMovement" parent="." unique_id=1053472044 instance=ExtResource("4_tuyoq")]
+[node name="HealthFeedback" type="Node2D" parent="." unique_id=428662848 node_paths=PackedStringArray("health")]
+script = ExtResource("4_4r5pv")
+health = NodePath("../SimpleHealth")
+metadata/_custom_type_script = "uid://cmu461nx2d8yn"
 
-[node name="KnockbackComponent" parent="." unique_id=293408043 instance=ExtResource("5_qlg0r")]
-
-[node name="VelocityDebugger" type="Node2D" parent="." unique_id=1360625372]
-script = ExtResource("6_tuyoq")
-Color = Color(1, 0, 0, 1)
-metadata/_custom_type_script = "uid://bk4ss5nrvo62m"
-
-[node name="DashComponent" type="Node2D" parent="." unique_id=313895366]
-script = ExtResource("8_smehm")
-metadata/_custom_type_script = "uid://c34mqcn0a7j73"
-
-[node name="DashSFX" type="Node2D" parent="DashComponent" unique_id=1535151122 node_paths=PackedStringArray("dash")]
-script = ExtResource("9_ur7pv")
-dash = NodePath("..")
-StartSFX = ExtResource("2_ur7pv")
-metadata/_custom_type_script = "uid://c2qrpt8iudetb"
-
-[node name="DashGhost" type="Node2D" parent="DashComponent" unique_id=32703337 node_paths=PackedStringArray("dash", "sprite")]
-script = ExtResource("11_d2wvv")
-dash = NodePath("..")
-sprite = NodePath("../../Sprite2D")
-metadata/_custom_type_script = "uid://dtclimdk2nytx"
+[node name="FreeOnDeath" type="Node" parent="." unique_id=1263272435 node_paths=PackedStringArray("target", "health")]
+script = ExtResource("5_60mlk")
+target = NodePath("..")
+health = NodePath("../SimpleHealth")
+metadata/_custom_type_script = "uid://buwstl66vgc0c"
 
 [node name="WeaponTester" type="Node2D" parent="." unique_id=603145055 node_paths=PackedStringArray("source")]
 script = ExtResource("12_qfm1y")
 source = NodePath("..")
 initialWeaponData = SubResource("Resource_8qtqr")
 metadata/_custom_type_script = "uid://djphbmi42r8an"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1557025144 node_paths=PackedStringArray("body", "modifiers")]
+script = ExtResource("16_fulsm")
+body = NodePath("..")
+modifiers = [NodePath("../ImpulseMovementModifier"), NodePath("../PlayerInputMovementModifier"), NodePath("../DashMovementModifier")]
+metadata/_custom_type_script = "uid://cu7dnvi1qq26b"
+
+[node name="PlayerInputMovementModifier" type="Node" parent="." unique_id=1867512435 node_paths=PackedStringArray("dash")]
+script = ExtResource("18_60mlk")
+dash = NodePath("../DashMovementModifier")
+metadata/_custom_type_script = "uid://djor06lmqyk"
+
+[node name="ImpulseMovementModifier" type="Node" parent="." unique_id=1347306673]
+script = ExtResource("17_4r5pv")
+metadata/_custom_type_script = "uid://dyco5l42or8t3"
+
+[node name="DashMovementModifier" type="Node" parent="." unique_id=26477925]
+script = ExtResource("19_4r5pv")
+metadata/_custom_type_script = "uid://1ja7qnixq0sc"
+
+[node name="DashSFX" type="Node2D" parent="." unique_id=1535151122 node_paths=PackedStringArray("dash")]
+script = ExtResource("9_ur7pv")
+dash = NodePath("../DashMovementModifier")
+StartSFX = ExtResource("2_ur7pv")
+metadata/_custom_type_script = "uid://c2qrpt8iudetb"
+
+[node name="DashGhost" type="Node2D" parent="." unique_id=32703337 node_paths=PackedStringArray("dash", "sprite")]
+script = ExtResource("11_d2wvv")
+dash = NodePath("../DashMovementModifier")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://dtclimdk2nytx"

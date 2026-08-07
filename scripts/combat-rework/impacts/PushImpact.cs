@@ -6,9 +6,9 @@ public partial class PushImpact : WeaponImpact {
     [Export] public float PowerToForceRatio { get; private set; } = 0f;
 
     public override void Apply(ImpactContext impact, AttackContext attack) {
-        if (impact.Victim.TryGetComponent<KnockbackComponent>(out var knockback)) {
+        if (impact.Victim.TryGetComponent<ImpulseMovementModifier>(out var component)) {
             var force = Force + attack.Power * PowerToForceRatio;
-            knockback.Add(-impact.HitNormal, force);
+            component.ApplyImpulse(-impact.HitNormal * force);
         }
     }
 }

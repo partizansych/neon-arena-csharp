@@ -8,7 +8,7 @@ public partial class Gameplay : Node2D {
     [Export] PauseMenu pauseMenu;
     [Export] Arena arena;
 
-    Player player;
+    CharacterBody2D player;
 
     public override void _Ready() {
         PlacePlayer(arena.PlayerSpawnpoint);
@@ -31,7 +31,7 @@ public partial class Gameplay : Node2D {
     }
 
     private void PlacePlayer(Vector2 pos) {
-        player = playerScene.Instantiate<Player>();
+        player = playerScene.Instantiate<CharacterBody2D>();
         player.GlobalPosition = pos;
         entityRoot.AddChild(player);
     }

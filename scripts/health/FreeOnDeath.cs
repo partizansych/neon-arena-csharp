@@ -1,7 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class HealthDestroy : Node {
+public partial class FreeOnDeath : Node {
     [Export] Node target;
     [Export] SimpleHealth health;
 
@@ -20,7 +20,6 @@ public partial class HealthDestroy : Node {
     }
 
     private void OnDied() {
-        if (target == null) return;
-        target.QueueFree();
+        target?.QueueFree();
     }
 }

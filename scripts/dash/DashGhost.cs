@@ -2,7 +2,7 @@ using Godot;
 
 [GlobalClass]
 public partial class DashGhost : Node2D {
-    [Export] DashComponent dash;
+    [Export] DashMovementModifier dash;
     [Export] Sprite2D sprite;
     [Export] public float SpawnInterval = 0.05f;
 

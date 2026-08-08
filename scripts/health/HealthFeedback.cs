@@ -31,12 +31,14 @@ public partial class HealthFeedback : Node2D {
 
     private void OnHpChanged(float oldValue, float newValue) {
         if (newValue > oldValue) {
-            if (HealSFX == null) return;
-            Audio.Instance.PlayJuicySFX(HealSFX);
+            if (HealSFX != null) {
+                Audio.Instance.PlayJuicySFX(HealSFX);
+            }
         }
         else if (newValue < oldValue) {
-            if (DamageSFX == null) return;
-            Audio.Instance.PlayJuicySFX(DamageSFX);
+            if (DamageSFX != null) {
+                Audio.Instance.PlayJuicySFX(DamageSFX);
+            }
             Event.Instance.Damaged.Invoke(oldValue - newValue, GlobalPosition);
         }
     }

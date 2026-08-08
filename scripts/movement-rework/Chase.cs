@@ -10,7 +10,7 @@ public partial class Chase : MoveMod {
     public Node2D Target { get; set; }
 
     public override Vector2 Modify(Vector2 vel) {
-        if (Target != null) {
+        if (Target != null && IsInstanceValid(Target)) {
             var direction = Source.GlobalPosition.DirectionTo(Target.GlobalPosition);
             return direction * Speed;
         }

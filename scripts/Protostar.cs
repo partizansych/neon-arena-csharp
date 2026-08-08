@@ -13,7 +13,7 @@ public partial class Protostar : CharacterBody2D {
     }
 
     public override void _Process(double delta) {
-        if (Target != null) {
+        if (Target != null && IsInstanceValid(Target)) {
             LookAt(Target.GlobalPosition);
         }
     }

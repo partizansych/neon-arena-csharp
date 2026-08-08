@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://di1gv4kqk3p7k" path="res://scripts/movement-rework/Impulse.cs" id="10_3fhth"]
 [ext_resource type="Script" uid="uid://buwstl66vgc0c" path="res://scripts/health/FreeOnDeath.cs" id="10_10sem"]
 [ext_resource type="Script" uid="uid://clwsfamb0a34m" path="res://scripts/movement-rework/Chase.cs" id="10_vcg0a"]
+[ext_resource type="Script" uid="uid://bieixtq3teoh0" path="res://scripts/Hitbox.cs" id="11_vcg0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 12.0
@@ -65,3 +66,12 @@ metadata/_custom_type_script = "uid://di1gv4kqk3p7k"
 script = ExtResource("10_vcg0a")
 Speed = 200.0
 metadata/_custom_type_script = "uid://clwsfamb0a34m"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=968324823]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("11_vcg0a")
+metadata/_custom_type_script = "uid://bieixtq3teoh0"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" unique_id=1683505812]
+polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15, -9, 0, -16, -15, -3, -10)

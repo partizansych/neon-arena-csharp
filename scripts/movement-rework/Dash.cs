@@ -1,8 +1,10 @@
+namespace Movement;
+
 using System;
 using Godot;
 
 [GlobalClass]
-public partial class DashMovementModifier : MovementModifier {
+public partial class Dash : MoveMod {
     public event Action Started;
     public event Action Finished;
 
@@ -19,7 +21,7 @@ public partial class DashMovementModifier : MovementModifier {
     Vector2 dashDirection;
     Vector2 targetSteeringDirection;
 
-    public override void _PhysicsProcess(double delta) {
+    public override void Update(float delta) {
         if (cooldownTimer > 0f) {
             cooldownTimer -= (float)delta;
         }
@@ -43,10 +45,8 @@ public partial class DashMovementModifier : MovementModifier {
         else Velocity = Vector2.Zero;
     }
 
-    public override void Modify(ref Vector2 velocity) {
-        if (IsDashing) {
-            velocity = Velocity;
-        }
+    public override Vector2 Modify(Vector2 vel) {
+        return IsDashing ? Velocity : vel;
     }
 
     // Если компонент нуждается во внешнем контексте (инпут игрока, движение врага к игроку),

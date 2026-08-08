@@ -1,8 +1,9 @@
 using Godot;
+using Movement;
 
 [GlobalClass]
 public partial class DashSFX : Node2D {
-    [Export] DashMovementModifier dash;
+    [Export] Dash dash;
     [Export] AudioStream StartSFX;
     [Export] AudioStream FinishSFX;
 

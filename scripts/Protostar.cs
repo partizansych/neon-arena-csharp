@@ -1,8 +1,9 @@
 using Godot;
+using Movement;
 
 [GlobalClass]
 public partial class Protostar : CharacterBody2D {
-    [Export] ChaseMovementModifier chase;
+    [Export] Chase chase;
 
     public Node2D Target;
 

@@ -1,20 +1,22 @@
+namespace Movement;
+
 using Godot;
 
 [GlobalClass]
-public partial class ImpulseMovementModifier : MovementModifier {
+public partial class Impulse : MoveMod {
     // Чем выше, тем резче остановка. 5-15 = "crunchy" импульс, 1-3 = плавное скольжение
     [Export] public float Damping = 12f;
 
     public Vector2 Velocity { get; private set; }
 
-    public override void _PhysicsProcess(double delta) {
+    public override void Update(float delta) {
         if (!Velocity.IsZeroApprox()) {
             Velocity = Velocity.Lerp(Vector2.Zero, 1f - Mathf.Exp(-Damping * (float)delta));
         }
     }
 
-    public override void Modify(ref Vector2 velocity) {
-        velocity += Velocity;
+    public override Vector2 Modify(Vector2 vel) {
+        return Velocity;
     }
 
     public void ApplyImpulse(Vector2 impulse) {

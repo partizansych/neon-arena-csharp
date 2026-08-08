@@ -21,7 +21,7 @@ public class AttackContext {
     // что именно он должен сделать.
     // Он просто берет список Impacts из своего AttackContext
     // и применяет каждый эффект к цели.
-    public IReadOnlyList<IImpactEffect> Impacts { get; init; }
+    public IReadOnlyList<WeaponImpact> Impacts { get; init; }
 
     public bool IsCrit;
 }

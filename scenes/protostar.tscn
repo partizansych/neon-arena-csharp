@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://cmu461nx2d8yn" path="res://scripts/health/HealthFeedback.cs" id="4_10sem"]
 [ext_resource type="Texture2D" uid="uid://0rtctif3i8ft" path="res://assets/textures/neon_arena_protostar.png" id="4_ywnt3"]
 [ext_resource type="Script" uid="uid://dr27bvglteqf" path="res://scripts/health/SimpleHealth.cs" id="5_naxks"]
-[ext_resource type="Script" uid="uid://cu7dnvi1qq26b" path="res://scripts/movement-rework/MovementComponent.cs" id="8_10sem"]
-[ext_resource type="Script" uid="uid://bjklydryw4nmt" path="res://scripts/movement-rework/ChaseMovementModifier.cs" id="9_vcg0a"]
+[ext_resource type="Script" uid="uid://bgvlvc0php8j5" path="res://scripts/movement-rework/Mover.cs" id="8_vcg0a"]
+[ext_resource type="Script" uid="uid://di1gv4kqk3p7k" path="res://scripts/movement-rework/Impulse.cs" id="10_3fhth"]
 [ext_resource type="Script" uid="uid://buwstl66vgc0c" path="res://scripts/health/FreeOnDeath.cs" id="10_10sem"]
-[ext_resource type="Script" uid="uid://dyco5l42or8t3" path="res://scripts/movement-rework/ImpulseMovementModifier.cs" id="10_tldyj"]
+[ext_resource type="Script" uid="uid://clwsfamb0a34m" path="res://scripts/movement-rework/Chase.cs" id="10_vcg0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 12.0
@@ -21,7 +21,7 @@ polygon = PackedVector2Array(7, -19, 7, -6, 26, 0, 7, 6, 7, 19, -3, 10, -16, 15,
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qi2p4")
-chase = NodePath("ChaseMovementModifier")
+chase = NodePath("Chase")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546575993]
 shape = SubResource("CircleShape2D_iifgy")
@@ -51,17 +51,17 @@ target = NodePath("..")
 health = NodePath("../SimpleHealth")
 metadata/_custom_type_script = "uid://buwstl66vgc0c"
 
-[node name="MovementComponent" type="Node" parent="." unique_id=394343484 node_paths=PackedStringArray("body", "modifiers")]
-script = ExtResource("8_10sem")
+[node name="Mover" type="Node" parent="." unique_id=441165155 node_paths=PackedStringArray("body", "modifiers")]
+script = ExtResource("8_vcg0a")
 body = NodePath("..")
-modifiers = [NodePath("../ChaseMovementModifier"), NodePath("../ImpulseMovementModifier")]
-metadata/_custom_type_script = "uid://cu7dnvi1qq26b"
+modifiers = [NodePath("../Impulse"), NodePath("../Chase")]
+metadata/_custom_type_script = "uid://bgvlvc0php8j5"
 
-[node name="ChaseMovementModifier" type="Node" parent="." unique_id=2041750598]
-script = ExtResource("9_vcg0a")
+[node name="Impulse" type="Node" parent="." unique_id=212785150]
+script = ExtResource("10_3fhth")
+metadata/_custom_type_script = "uid://di1gv4kqk3p7k"
+
+[node name="Chase" type="Node" parent="." unique_id=293696088]
+script = ExtResource("10_vcg0a")
 Speed = 200.0
-metadata/_custom_type_script = "uid://bjklydryw4nmt"
-
-[node name="ImpulseMovementModifier" type="Node" parent="." unique_id=784142694]
-script = ExtResource("10_tldyj")
-metadata/_custom_type_script = "uid://dyco5l42or8t3"
+metadata/_custom_type_script = "uid://clwsfamb0a34m"

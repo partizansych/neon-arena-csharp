@@ -1,19 +1,19 @@
-namespace Movement;
-
 using Godot;
 
+namespace Movement;
+
 [GlobalClass]
-public partial class Chase : MoveMod {
+public partial class ChaseMoveMod : MoveMod {
     [Export] public float Speed { get; set; }
 
     public Node2D Source { get; set; }
     public Node2D Target { get; set; }
 
-    public override Vector2 Modify(Vector2 vel) {
+    public override MoveOutput Modify(float speed) {
         if (Target != null && IsInstanceValid(Target)) {
             var direction = Source.GlobalPosition.DirectionTo(Target.GlobalPosition);
-            return direction * Speed;
+            return new MoveOutput(direction * speed);
         }
-        return vel;
+        return MoveOutput.Silenced;
     }
 }

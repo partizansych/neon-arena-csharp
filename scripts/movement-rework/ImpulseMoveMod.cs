@@ -1,9 +1,9 @@
-namespace Movement;
-
 using Godot;
 
+namespace Movement;
+
 [GlobalClass]
-public partial class Impulse : MoveMod {
+public partial class ImpulseMoveMod : MoveMod {
     // Чем выше, тем резче остановка. 5-15 = "crunchy" импульс, 1-3 = плавное скольжение
     [Export] public float Damping = 12f;
 
@@ -15,8 +15,8 @@ public partial class Impulse : MoveMod {
         }
     }
 
-    public override Vector2 Modify(Vector2 vel) {
-        return Velocity;
+    public override MoveOutput Modify(float speed) {
+        return new MoveOutput(Velocity);
     }
 
     public void ApplyImpulse(Vector2 impulse) {

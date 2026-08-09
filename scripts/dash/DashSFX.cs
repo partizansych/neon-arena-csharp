@@ -3,7 +3,7 @@ using Movement;
 
 [GlobalClass]
 public partial class DashSFX : Node2D {
-    [Export] Dash dash;
+    [Export] DashMoveMod dash;
     [Export] AudioStream StartSFX;
     [Export] AudioStream FinishSFX;
 

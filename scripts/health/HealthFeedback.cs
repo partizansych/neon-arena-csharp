@@ -2,7 +2,7 @@ using Godot;
 
 [GlobalClass]
 public partial class HealthFeedback : Node2D {
-    [Export] SimpleHealth health;
+    [Export] RpgHealth health;
     [Export] public AudioStream DamageSFX;
     [Export] public AudioStream HealSFX;
     [Export] public AudioStream DeathSFX;

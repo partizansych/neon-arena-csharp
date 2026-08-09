@@ -1,12 +1,12 @@
+using Godot;
+using System;
+
 namespace Movement;
 
-using System;
-using Godot;
-
 [GlobalClass]
-public partial class Dash : MoveMod {
-    public event Action Started;
-    public event Action Finished;
+public partial class DashMoveMod : MoveMod {
+    public event System.Action Started;
+    public event System.Action Finished;
 
     [Export] public float Speed = 700f;
     [Export] public float Duration = 0.27f;
@@ -23,11 +23,11 @@ public partial class Dash : MoveMod {
 
     public override void Update(float delta) {
         if (cooldownTimer > 0f) {
-            cooldownTimer -= (float)delta;
+            cooldownTimer -= delta;
         }
 
         if (IsDashing) {
-            dashTimer -= (float)delta;
+            dashTimer -= delta;
 
             if (dashTimer <= 0f) {
                 cooldownTimer = Cooldown;
@@ -45,8 +45,8 @@ public partial class Dash : MoveMod {
         else Velocity = Vector2.Zero;
     }
 
-    public override Vector2 Modify(Vector2 vel) {
-        return IsDashing ? Velocity : vel;
+    public override MoveOutput Modify(float speed) {
+        return IsDashing ? new MoveOutput(Velocity) : MoveOutput.Silenced;
     }
 
     // Если компонент нуждается во внешнем контексте (инпут игрока, движение врага к игроку),

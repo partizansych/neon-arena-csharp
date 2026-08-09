@@ -47,7 +47,7 @@ public partial class Hitbox : Area2D {
                 continue;
             }
 
-            if (target.TryGetComponent<SimpleHealth>(out var health)) {
+            if (target.TryGetComponent<RpgHealth>(out var health)) {
                 health.Reduce(Damage);
             }
         }

@@ -3,7 +3,7 @@ using Movement;
 
 [GlobalClass]
 public partial class Protostar : CharacterBody2D {
-    [Export] Chase chase;
+    [Export] ChaseMoveMod chase;
 
     public Node2D Target;
 

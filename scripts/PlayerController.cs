@@ -3,8 +3,8 @@ using Movement;
 
 [GlobalClass]
 public partial class PlayerController : Node {
-    [Export] InputVector input;
-    [Export] Dash dash;
+    [Export] InputMoveMod input;
+    [Export] DashMoveMod dash;
 
     public override void _PhysicsProcess(double delta) {
         dash.SetSteeringDirection(input.Vector);

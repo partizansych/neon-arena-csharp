@@ -3,7 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class FreeOnDeath : Node {
     [Export] Node target;
-    [Export] SimpleHealth health;
+    [Export] RpgHealth health;
 
     public override void _Ready() {
         if (target == null) {

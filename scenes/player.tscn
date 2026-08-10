@@ -10,7 +10,10 @@
 [ext_resource type="Script" uid="uid://d1i7vj6ry0wtw" path="res://scripts/health/RpgHealth.cs" id="6_i4ail"]
 [ext_resource type="Script" uid="uid://c2qrpt8iudetb" path="res://scripts/dash/DashSFX.cs" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://dtclimdk2nytx" path="res://scripts/dash/DashGhost.cs" id="11_d2wvv"]
+[ext_resource type="Resource" uid="uid://bqy5fi7nfylpf" path="res://resources/buffs/poison_debuff.tres" id="11_l71n6"]
+[ext_resource type="Script" uid="uid://dq3onkkajtfwd" path="res://scripts/combat-rework/impacts/BuffImpact.cs" id="12_ke2ow"]
 [ext_resource type="Script" uid="uid://djphbmi42r8an" path="res://scripts/combat-rework/WeaponTester.cs" id="12_qfm1y"]
+[ext_resource type="Resource" uid="uid://c12qh08nirib7" path="res://resources/buffs/stun_debaff.tres" id="12_ujl30"]
 [ext_resource type="Script" uid="uid://by03p85l5gryq" path="res://scripts/combat-rework/impacts/DamageImpact.cs" id="13_fulsm"]
 [ext_resource type="Script" uid="uid://bnx1rr1mmdi2h" path="res://scripts/combat-rework/impacts/PushImpact.cs" id="14_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://bim3lqr3d6kbk" path="res://scenes/bullet.tscn" id="15_60mlk"]
@@ -22,6 +25,7 @@
 [ext_resource type="Script" uid="uid://l61oehgr5mqp" path="res://scripts/movement-rework/ImpulseMoveMod.cs" id="18_l71n6"]
 [ext_resource type="Script" uid="uid://doexgkher5x4x" path="res://scripts/movement-rework/DashMoveMod.cs" id="19_ke2ow"]
 [ext_resource type="Script" uid="uid://d2sy34aajhswk" path="res://scripts/PlayerController.cs" id="20_60mlk"]
+[ext_resource type="Script" uid="uid://eligri1je1nm" path="res://scripts/buffs/core/BuffComponent.cs" id="25_ke2ow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 16.0
@@ -57,6 +61,11 @@ script = ExtResource("14_4r5pv")
 Force = 400.0
 metadata/_custom_type_script = "uid://bnx1rr1mmdi2h"
 
+[sub_resource type="Resource" id="Resource_ujl30"]
+script = ExtResource("12_ke2ow")
+Buffs = [ExtResource("11_l71n6"), ExtResource("12_ujl30")]
+metadata/_custom_type_script = "uid://dq3onkkajtfwd"
+
 [sub_resource type="Resource" id="Resource_qfm1y"]
 script = ExtResource("17_fulsm")
 Force = 300.0
@@ -71,7 +80,7 @@ metadata/_custom_type_script = "uid://wubpt1ktg0fk"
 script = ExtResource("17_a38lo")
 BasePower = 25.0
 BaseSpeed = 500.0
-Impacts = Array[Object]([SubResource("Resource_a38lo"), SubResource("Resource_5mlg8")])
+Impacts = Array[Object]([SubResource("Resource_a38lo"), SubResource("Resource_5mlg8"), SubResource("Resource_ujl30")])
 Rules = Array[Object]([SubResource("Resource_qfm1y"), SubResource("Resource_guxcb")])
 metadata/_custom_type_script = "uid://dax06wx6uly62"
 
@@ -161,3 +170,7 @@ script = ExtResource("11_d2wvv")
 dash = NodePath("../DashMoveMod")
 sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://dtclimdk2nytx"
+
+[node name="BuffComponent" type="Node" parent="." unique_id=574657981]
+script = ExtResource("25_ke2ow")
+metadata/_custom_type_script = "uid://eligri1je1nm"

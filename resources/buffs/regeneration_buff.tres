@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BuffData" format=3 uid="uid://cip7f3ltj3yd"]
+
+[ext_resource type="Script" uid="uid://bte75cuidri2c" path="res://scripts/buffs/gameplay/RegenerationEffect.cs" id="1_kxp1k"]
+[ext_resource type="Script" uid="uid://cv58foqbc4phv" path="res://scripts/buffs/core/BuffData.cs" id="1_wne4a"]
+
+[sub_resource type="Resource" id="Resource_wne4a"]
+script = ExtResource("1_kxp1k")
+HpPerTick = 15.0
+metadata/_custom_type_script = "uid://bte75cuidri2c"
+
+[resource]
+script = ExtResource("1_wne4a")
+Id = "regeneration"
+Duration = 3.0
+MaxStacks = 1
+IsTickable = true
+TickInterval = 1.0
+Effects = [SubResource("Resource_wne4a")]
+metadata/_custom_type_script = "uid://cv58foqbc4phv"

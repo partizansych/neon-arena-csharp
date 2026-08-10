@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BuffData" format=3 uid="uid://c12qh08nirib7"]
+
+[ext_resource type="Script" uid="uid://lihe8qi4pncd" path="res://scripts/stats/ModifierData.cs" id="1_4td58"]
+[ext_resource type="Script" uid="uid://cv58foqbc4phv" path="res://scripts/buffs/core/BuffData.cs" id="1_i4mtn"]
+[ext_resource type="Script" uid="uid://depdchx2hoii5" path="res://scripts/buffs/gameplay/StunEffect.cs" id="2_wuriy"]
+
+[sub_resource type="Resource" id="Resource_31cv2"]
+script = ExtResource("1_4td58")
+Type = 2
+Value = -1.0
+metadata/_custom_type_script = "uid://lihe8qi4pncd"
+
+[sub_resource type="Resource" id="Resource_ujl30"]
+script = ExtResource("2_wuriy")
+SpeedMod = SubResource("Resource_31cv2")
+metadata/_custom_type_script = "uid://depdchx2hoii5"
+
+[resource]
+script = ExtResource("1_i4mtn")
+Id = "stun"
+Duration = 1.0
+MaxStacks = 1
+Effects = [SubResource("Resource_ujl30")]
+metadata/_custom_type_script = "uid://cv58foqbc4phv"

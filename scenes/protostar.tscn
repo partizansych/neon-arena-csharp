@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bieixtq3teoh0" path="res://scripts/Hitbox.cs" id="11_vcg0a"]
 [ext_resource type="Script" uid="uid://l61oehgr5mqp" path="res://scripts/movement-rework/ImpulseMoveMod.cs" id="12_3fhth"]
 [ext_resource type="Script" uid="uid://d1i7vj6ry0wtw" path="res://scripts/health/RpgHealth.cs" id="13_3fhth"]
+[ext_resource type="Script" uid="uid://eligri1je1nm" path="res://scripts/buffs/core/BuffComponent.cs" id="14_aj4a7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 12.0
@@ -94,3 +95,7 @@ metadata/_custom_type_script = "uid://cjfwl21lnmv18"
 [node name="ImpulseMoveMod" type="Node" parent="." unique_id=1274974316]
 script = ExtResource("12_3fhth")
 metadata/_custom_type_script = "uid://l61oehgr5mqp"
+
+[node name="BuffComponent" type="Node" parent="." unique_id=634689676]
+script = ExtResource("14_aj4a7")
+metadata/_custom_type_script = "uid://eligri1je1nm"

@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Stats;
 
 [GlobalClass]
 public partial class RpgHealth : Node {

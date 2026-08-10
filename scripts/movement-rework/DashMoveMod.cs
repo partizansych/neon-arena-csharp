@@ -5,8 +5,8 @@ namespace Movement;
 
 [GlobalClass]
 public partial class DashMoveMod : MoveMod {
-    public event System.Action Started;
-    public event System.Action Finished;
+    public event Action Started;
+    public event Action Finished;
 
     [Export] public float Speed = 700f;
     [Export] public float Duration = 0.27f;
